@@ -27,7 +27,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="148dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/onboarding1_img" />
@@ -75,17 +75,21 @@
         tools:layout_editor_absoluteY="571dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/next_button2"
+        android:id="@+id/skip_button"
         android:layout_width="340dp"
         android:layout_height="55dp"
-        android:backgroundTint="#000564"
-        android:fontFamily="@font/poppins"
-        android:text="Next"
-        android:textColor="#FFFFFF"
+        android:layout_marginTop="626dp"
+        android:layout_marginStart="37dp"
+        android:text="Skip"
+        android:textColor="#383636"
         android:textSize="16sp"
+        android:fontFamily="@font/poppins"
+        android:backgroundTint="#FFFFFF"
+        app:strokeWidth="3dp"
+        app:strokeColor="@color/outline_blue"
         app:cornerRadius="0dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="626dp" />
+        tools:layout_editor_absoluteY="626dp"  />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
