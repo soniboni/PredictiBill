@@ -22,41 +22,41 @@
 
     <ImageView
         android:id="@+id/onboarding_img"
-        android:layout_width="278dp"
-        android:layout_height="272dp"
+        android:layout_width="298dp"
+        android:layout_height="283dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="148dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/onboarding1_img" />
 
     <TextView
-        android:id="@+id/subheading_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="484dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="Stay organized and never miss a charge again. \n All your recurring expenses, neatly tracked in \n one app."
-        android:textColor="#383636"
-        android:textSize="14dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/heading_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="452dp"
+        android:layout_marginTop="476dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
         android:text="Track Every Subscription Easily!"
         android:textColor="#000564"
         android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subheading_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="508dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Stay organized and never miss a charge again. \n All your recurring expenses, neatly tracked in \n one app."
+        android:textColor="#383636"
+        android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,26 +70,32 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:cornerRadius="0dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="571dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/skip_button"
         android:layout_width="340dp"
         android:layout_height="55dp"
-        android:layout_marginTop="626dp"
-        android:layout_marginStart="37dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/poppins"
         android:text="Skip"
         android:textColor="#383636"
         android:textSize="16sp"
-        android:fontFamily="@font/poppins"
-        android:backgroundTint="#FFFFFF"
-        app:strokeWidth="3dp"
-        app:strokeColor="@color/outline_blue"
         app:cornerRadius="0dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="626dp"  />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.951"
+        app:strokeColor="@color/outline_blue"
+        app:strokeWidth="3dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
