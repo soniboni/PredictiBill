@@ -9,6 +9,36 @@
     <string name="profile_icon">Profile</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="subscription_txt">Subscriptions</string>
+    <string name="subscriptions_txt">Subscriptions</string>
+    <string name="payments_txt">Payments</string>
+    <string name="profile_txt">Profile</string>
+    <string name="analytics_txt">Analytics</string>
+
+    <!-- HOME FRAGMENT TEXT -->
+    <string name="home_hi_lbl">Hi, Charles</string>
+    <string name="home_welcome_lbl">Welcome Back!"</string>
+    <string name="home_subsspending_txt">Monthly Subscription Spending</string>
+    <string name="home_date_txt">As of May 2, 2025</string>
+    <string name="home_percent_txt">9% of this month’s subscription charges billed.</string>
+    <string name="home_youvespent_txt">You\'ve spent</string>
+    <string name="home_outof_txt">out of the expected</string>
+    <string name="home_spentmoney_txt">₱ 2,500.00</string>
+    <string name="home_expectedmoney_txt">₱ 21,232.00</string>
+    <string name="home_nextbill_txt">Next Upcoming Bill</string>
+    <string name="home_billingnote_txt">Your bills in the next 7 days.</string>
+    <string name="home_upcomingsubsname1_txt">Netflix</string>
+    <string name="home_upcomingbillingcycle1_txt">Monthly</string>
+    <string name="home_upcomingduedate1_txt">Due on April 23, 2025</string>
+    <string name="home_upcomingcategory1_txt">Entertainment</string>
+    <string name="home_upcomingprice1_txt">₱549.00</string>
+    <string name="home_upcomingsubsname2_txt">Netflix</string>
+    <string name="home_upcomingbillingcycle2_txt">Monthly</string>
+    <string name="home_upcomingduedate2_txt">Due on April 23, 2025</string>
+    <string name="home_upcomingcategory2_txt">Entertainment</string>
+    <string name="home_upcomingprice2_txt">₱549.00</string>
+
+
+
+
 
 </resources>
