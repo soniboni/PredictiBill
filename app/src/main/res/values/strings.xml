@@ -8,4 +8,7 @@
     <string name="payments_icon">Payments</string>
     <string name="profile_icon">Profile</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="subscription_txt">Subscriptions</string>
+
 </resources>
