@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PredictiBill</string>
+
+    <!-- NAVIGATION BAR ICONS TEXT -->
+    <string name="analytics_icon">Analytics</string>
+    <string name="subscriptions_icon">Subscriptions</string>
+    <string name="home_icon">Home</string>
+    <string name="payments_icon">Payments</string>
+    <string name="profile_icon">Profile</string>
+
 </resources>
