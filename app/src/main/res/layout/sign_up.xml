@@ -63,20 +63,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/checkIcon3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/check_icon"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="508dp" />
-
-    <ImageView
         android:id="@+id/checkIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/check_icon"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="446dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.624"
+        app:srcCompat="@drawable/check_icon" />
+
+    <ImageView
+        android:id="@+id/checkIcon4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.669"
+        app:srcCompat="@drawable/check_icon" />
+
+    <ImageView
+        android:id="@+id/checkIcon6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714"
+        app:srcCompat="@drawable/check_icon" />
 
     <TextView
         android:id="@+id/pass3_text"
@@ -91,14 +111,6 @@
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/checkIcon2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/check_icon"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="476dp" />
 
     <TextView
         android:id="@+id/pass2_text"
@@ -202,7 +214,6 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="Confirm your Password"
-        android:hintTextColor="#8A8585"
         android:paddingBottom="4dp"
         app:boxBackgroundMode="none"
         app:endIconMode="password_toggle"
@@ -232,7 +243,6 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="Enter your Password"
-        android:hintTextColor="##8A8585"
         android:paddingBottom="4dp"
         app:boxBackgroundMode="none"
         app:endIconMode="password_toggle"
@@ -244,18 +254,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.471">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_text"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/password_underline"
-            android:ems="10"
-            android:fontFamily="@font/poppins"
-            android:inputType="textPassword"
-            android:paddingStart="14dp"
-            android:textColor="#383636"
-            android:textSize="14sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/password_text"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/password_underline"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:inputType="textPassword"
+        android:paddingStart="14dp"
+        android:textSize="14sp" />
+</com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/email_text"

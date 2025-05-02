@@ -1,5 +1,9 @@
 package com.example.predictibill;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class OnboardingThree extends AppCompatActivity {
@@ -7,5 +11,15 @@ public class OnboardingThree extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.onboarding_three);
+
+        Button getStartedButton = findViewById(R.id.getStarted_button);
+        getStartedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OnboardingThree.this, SignUp.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Optional
+            }
+        });
     }
 }

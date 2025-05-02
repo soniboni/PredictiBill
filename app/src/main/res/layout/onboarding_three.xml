@@ -61,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/next_button"
+        android:id="@+id/getStarted_button"
         android:layout_width="340dp"
         android:layout_height="55dp"
         android:backgroundTint="#000564"
