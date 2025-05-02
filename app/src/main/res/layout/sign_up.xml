@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/subheading_txt3"
+        android:id="@+id/pass_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
@@ -79,7 +79,7 @@
         tools:layout_editor_absoluteY="446dp" />
 
     <TextView
-        android:id="@+id/subheading_txt5"
+        android:id="@+id/pass3_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
@@ -101,7 +101,7 @@
         tools:layout_editor_absoluteY="476dp" />
 
     <TextView
-        android:id="@+id/subheading_txt4"
+        android:id="@+id/pass2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
