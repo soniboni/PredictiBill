@@ -52,12 +52,68 @@
         android:id="@+id/pass_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="444dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="556dp"
         android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="At least 8 characters."
         android:textColor="#8A8585"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pass3_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="620dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Both upper and lower case letters."
+        android:textColor="#8A8585"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pass2_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="588dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Atleast 1 number."
+        android:textColor="#8A8585"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/footer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="784dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Already have an account?"
+        android:textColor="#000564"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loginFooter_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="784dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="Log in."
+        android:textColor="#000564"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -97,62 +153,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.714"
         app:srcCompat="@drawable/check_icon" />
-
-    <TextView
-        android:id="@+id/pass3_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="508dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="Both upper and lower case letters."
-        android:textColor="#8A8585"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/pass2_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="476dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="Atleast 1 number."
-        android:textColor="#8A8585"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/footer_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="672dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="Already have an account?"
-        android:textColor="#000564"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/loginFooter_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="268dp"
-        android:layout_marginTop="672dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="center"
-        android:text="Log in."
-        android:textColor="#000564"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signUp_button"
@@ -210,35 +210,6 @@
         app:layout_constraintVertical_bias="0.25" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/confirm_password_layout"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="Confirm your Password"
-        android:paddingBottom="4dp"
-        app:boxBackgroundMode="none"
-        app:endIconMode="password_toggle"
-        app:endIconTint="#383636"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirm_password_text"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/password_underline"
-            android:ems="10"
-            android:fontFamily="@font/poppins"
-            android:inputType="textPassword"
-            android:paddingStart="14dp"
-            android:textColor="#383636"
-            android:textSize="14sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_layout"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -252,19 +223,48 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471">
+        app:layout_constraintVertical_bias="0.428">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/password_text"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/password_underline"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:inputType="textPassword"
-        android:paddingStart="14dp"
-        android:textSize="14sp" />
-</com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/password_underline"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:inputType="textPassword"
+            android:paddingStart="14dp"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirm_password_layout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Confirm your Password"
+        android:paddingBottom="4dp"
+        app:boxBackgroundMode="none"
+        app:endIconMode="password_toggle"
+        app:endIconTint="#383636"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirm_password_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/password_underline"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:inputType="textPassword"
+            android:paddingStart="14dp"
+            android:textColor="#383636"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/email_text"
