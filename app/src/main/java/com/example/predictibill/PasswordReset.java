@@ -8,25 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PasswordRecovery extends AppCompatActivity {
+public class PasswordReset extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.password_recovery);
+        setContentView(R.layout.password_reset);
         Button cancelButton = findViewById(R.id.cancel_button);
-        Button verifyButton = findViewById(R.id.verify_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PasswordRecovery.this, Login.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Optional transition
-            }
-        });
-        verifyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PasswordRecovery.this, PasswordReset.class);
+                Intent intent = new Intent(PasswordReset.this, Login.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Optional transition
             }

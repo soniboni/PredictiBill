@@ -28,6 +28,7 @@
         <activity android:name=".Login" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".PasswordRecovery"/>
+        <activity android:name=".PasswordReset"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
