@@ -1,0 +1,55 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <!-- Home Fragment -->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.predictibill.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <!-- Analytics Fragment -->
+    <fragment
+        android:id="@+id/navigation_analytics"
+        android:name="com.example.predictibill.ui.analytics.AnalyticsFragment"
+        android:label="fragment_analytics"
+        tools:layout="@layout/fragment_analytics" />
+
+    <!-- Payments Fragment -->
+    <fragment
+        android:id="@+id/navigation_payments"
+        android:name="com.example.predictibill.ui.payments.PaymentsFragment"
+        android:label="fragment_payments"
+        tools:layout="@layout/fragment_payments" />
+
+    <!-- Subscriptions Fragment -->
+    <fragment
+        android:id="@+id/navigation_subscriptions"
+        android:name="com.example.predictibill.ui.subscriptions.SubscriptionsFragment"
+        android:label="fragment_subscriptions"
+        tools:layout="@layout/fragment_subscriptions">
+        <!-- Action to navigate to AddSubscription Fragment -->
+        <action
+            android:id="@+id/action_subscriptionsFragment_to_addSubscriptions"
+            app:destination="@id/navigation_addsubscriptions" />
+    </fragment>
+
+    <!-- Add Subscription Fragment -->
+    <fragment
+        android:id="@+id/navigation_addsubscriptions"
+        android:name="com.example.predictibill.ui.subscriptions.AddSubscriptionFragment"
+        android:label="fragment_add_subscriptions"
+        tools:layout="@layout/fragments_add_subscriptions" />
+
+
+    <!-- Profile Fragment -->
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.predictibill.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Logo Image -->
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="35dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="58dp"
+        android:src="@drawable/logo_blue"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"/>
+
+
+    <TextView
+        android:id="@+id/addsubscription"
+        android:layout_width="329dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/logo_image"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="2sp"
+        android:text="@string/addsubscription"
+        android:textAppearance="@style/subscriptio" />
+
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="565dp"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/back_button" />
+
+
+</android.widget.RelativeLayout>
