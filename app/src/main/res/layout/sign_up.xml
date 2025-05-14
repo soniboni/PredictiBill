@@ -167,7 +167,7 @@
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/skip_button"
+        android:id="@+id/signUpGoogle_button"
         android:layout_width="340dp"
         android:layout_height="55dp"
         android:backgroundTint="#FFFFFF"
@@ -187,7 +187,8 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/loginFooter_text"
+        android:id="@+id/loginFooter_txt"
+        android:clickable="true"
         android:layout_width="89dp"
         android:layout_height="22dp"
         android:fontFamily="@font/poppins_semibold"
@@ -211,7 +212,7 @@
         android:gravity="start|center_vertical"
         android:paddingStart="14dp"
         android:text="Already have an account?"
-        android:textColor="#000564"
+        android:textColor="#8A8585"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -296,10 +297,8 @@
             android:fontFamily="@font/poppins"
             android:inputType="textPassword"
             android:paddingStart="14dp"
-            android:textColor="#383636"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/confirm_password_layout"
@@ -329,7 +328,6 @@
             android:textColor="#383636"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <CheckBox
         android:id="@+id/agree_checkbox"
