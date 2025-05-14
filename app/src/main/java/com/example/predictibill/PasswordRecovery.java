@@ -8,31 +8,20 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ForgotPassword extends AppCompatActivity {
+public class PasswordRecovery extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forgot_password);
+        setContentView(R.layout.password_recovery);
         Button cancelButton = findViewById(R.id.cancel_button);
-        Button continueButton = findViewById(R.id.continue_button);
-
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ForgotPassword.this, Login.class);
+                Intent intent = new Intent(PasswordRecovery.this, Login.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Optional transition
             }
         });
-
-
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ForgotPassword.this, PasswordRecovery.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Optional
-            }
-        });
     }
+
 }
