@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.analytics.AnalyticsFragment">
 
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="35dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="183dp"
+        android:layout_marginTop="58dp"
+        android:src="@drawable/logo_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
         android:id="@+id/analytics_txtlbl"
         android:layout_width="wrap_content"
@@ -33,10 +43,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.153"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintVertical_bias="0.29" />
 
     <FrameLayout
         android:layout_width="339dp"
@@ -62,10 +72,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
+        app:layout_constraintVertical_bias="0.56" />
 
     <TextView
         android:id="@+id/analytics_txtlbl4"
@@ -86,7 +96,7 @@
     <TextView
         android:layout_width="329dp"
         android:layout_height="25dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="1dp"
         android:text="Understand subscription spending at a glance."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.439"
