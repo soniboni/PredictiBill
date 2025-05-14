@@ -24,6 +24,7 @@
         <activity android:name=".OnboardingTwo" />
         <activity android:name=".OnboardingThree" />
         <activity android:name=".SignUp" />
+        <activity android:name=".AccountCreated" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
