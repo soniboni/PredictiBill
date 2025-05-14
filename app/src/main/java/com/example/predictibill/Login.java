@@ -15,10 +15,19 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.login);
 
         TextView signUpFooterTxt = findViewById(R.id.signUpFooter_txt);
+        TextView forgotPasswordTxt = findViewById(R.id.forgotPassword_txt);
         signUpFooterTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, SignUp.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Optional animation
+            }
+        });
+        forgotPasswordTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, ForgotPassword.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Optional animation
             }
