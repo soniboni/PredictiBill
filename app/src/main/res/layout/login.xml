@@ -74,27 +74,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.422"
-        tools:ignore="MissingConstraints" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginGoogle_button"
-        android:layout_width="340dp"
-        android:layout_height="55dp"
-        android:backgroundTint="#FFFFFF"
-        android:fontFamily="@font/poppins"
-        android:text="Login with Google"
-        android:textColor="#383636"
-        android:textSize="16sp"
-        app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.488"
-        app:strokeColor="@color/outline_blue"
-        app:strokeWidth="3dp"
+        app:layout_constraintVertical_bias="0.824"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -112,31 +92,13 @@
         app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
-
-    <TextView
-        android:id="@+id/forgotPassword_txt"
-        android:clickable="true"
-        android:layout_width="229dp"
-        android:layout_height="22dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="start|center_vertical"
-        android:paddingStart="14dp"
-        android:text="Forgot Password?"
-        android:textColor="#8A8585"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.927" />
 
     <TextView
         android:id="@+id/signUpFooter_txt"
-        android:clickable="true"
         android:layout_width="89dp"
         android:layout_height="22dp"
+        android:clickable="true"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="start|center_vertical"
         android:paddingStart="14dp"
@@ -148,7 +110,45 @@
         app:layout_constraintHorizontal_bias="0.779"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.927" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginGoogle_button"
+        android:layout_width="340dp"
+        android:layout_height="55dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/poppins"
+        android:text="Login with Google"
+        android:textColor="#383636"
+        android:textSize="16sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.889"
+        app:strokeColor="@color/outline_blue"
+        app:strokeWidth="3dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/forgotPassword_txt"
+        android:layout_width="167dp"
+        android:layout_height="24dp"
+        android:clickable="true"
+        android:fontFamily="@font/poppins"
+        android:gravity="start|center_vertical"
+        android:paddingStart="14dp"
+        android:text="Forgot Password?"
+        android:textColor="#8A8585"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.371" />
 
 
     <EditText
