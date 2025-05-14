@@ -39,14 +39,14 @@
         android:id="@+id/home_welcome_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="137dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/home_welcome_lbl"
         android:textColor="@color/grey"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/home_rectangle_1"
