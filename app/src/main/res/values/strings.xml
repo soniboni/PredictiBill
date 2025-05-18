@@ -78,6 +78,7 @@
     <string name="profile_logout_button">Logout</string>
     <string name="profile_deactivate_account_button">Deactivate Account</string>
 
+
     <!-- Profile & Settings / Change Password -->
     <string name="profile_the_password_must_lbl">The password must be different than before.</string>
 
@@ -92,58 +93,86 @@
     <string name="profile_continue_button">Continue</string>
     <string name="profile_cancel_button">Cancel</string>
 
+
     <!-- Profile & Settings / Help -->
+    <!-- Heading -->
     <string name="profile_welcome_to_lbl">Welcome to PredictiBill Help!</string>
     <string name="profile_heres_a_quick_lbl">Here\'s a quick guide to get you started:</string>
 
+    <!-- What does PredictiBill do? -->
     <string name="profile_what_does_predictibill_lbl">What does PredictiBill do?</string>
     <string name="profile_predictibill_helps_you_txt">
-        PredictiBill helps you track, organize, and manage all your recurring subscriptions in one place.
-        You’ll get timely reminders before upcoming charges and gain insights into your spending habits.</string>
+        PredictiBill helps you track, organize, and manage \nall your recurring subscriptions in one place. You’ll
+        \nget timely reminders before upcoming charges \nand gain insights into your spending habits.</string>
 
+    <!-- Common Questions -->
     <string name="profile_common_questions_lbl">Common Questions</string>
+
+    <!-- Question 1 - Q: Can I cancel subscriptions through the app? -->
     <string name="profile_question_1_lbl">Q: Can I cancel subscriptions through the app?</string>
+    <!-- Answer to Question 1 -->
     <string name="profile_answer_1_txt">
-        A: No. PredictiBill is a tracking tool only. You can mark subscriptions and see details,
-        but cancellations must be done via the provider\'s platform (e.g., Netflix, Spotify).</string>
+        A: No. PredictiBill is a tracking tool only. You can
+        \nmark subscriptions and see details, but
+        \ncancellations must be done via the provider\'s
+        \nplatform (e.g., Netflix, Spotify).</string>
 
+    <!-- Question 2 - Q: How do I add a subscription? -->
     <string name="profile_question_2_lbl">Q: How do I add a subscription?</string>
+    <!-- Answer to Question 1 -->
     <string name="profile_answer_2_txt">
-        A: Go to the Subscriptions tab and tap Add Subscription. Fill in the name, price, category, and billing cycle.</string>
+        A: Go to the Subscriptions tab and tap Add
+        \nSubscription. Fill in the name, price, category, and
+        \nbilling cycle.</string>
 
+    <!-- Q: Will I get reminders?-->
     <string name="profile_question_3_lbl">Q: Will I get reminders?</string>
+    <!-- Answer to Question 3 -->
     <string name="profile_answer_3_txt">
-        A: Yes! PredictiBill sends alerts for upcoming billing dates if notifications are enabled in your settings.</string>
+        A: Yes! PredictiBill sends alerts for upcoming billing
+        \ndates if notifications are enabled in your settings.</string>
+
 
     <!-- Profile & Settings / Privacy Policy -->
+    <!-- Heading-->
     <string name="profile_last_updated_lbl">Last updated: April 05, 2025</string>
+
+    <!-- 1. Information We Collect -->
     <string name="profile_information_we_collect_lbl">1. Information We Collect</string>
-    <string name="profile_we_only_collect_txt">We only collect information you provide manually:
-        Subscription details (name, cost, billing date, etc.)
-        Optional email address for notifications
-        No payment credentials or sensitive financial data are collected</string>
+    <string name="profile_we_only_collect_txt">We only collect information you provide manually:</string>
+    <string name="profile_information_to_collect_txt">
+        \n \u2022 Subscription details (name, cost, billing date, \n  "   " etc.)
+        \n \u2022 Optional email address for notifications
+        \n \u2022 No payment credentials or sensitive financial \n "  " data are collected</string>
 
+    <!-- 2. How We Use Your Information -->
     <string name="profile_how_we_use_lbl">2. How We Use Your Information</string>
-    <string name="profile_we_use_your_txt">We use your data solely to:
-        Track your subscriptions
-        Send reminders and generate analytics
-        Improve your in-app experience</string>
+    <string name="profile_we_use_your_txt">We use your data solely to:</string>
+    <string name="profile_use_data_to_txt">
+        \n \u2022 Track your subscriptions
+        \n \u2022 Send reminders and generate analytics
+        \n \u2022 Improve your in-app experience</string>
 
+    <!-- 3. Data Storage & Security -->
     <string name="profile_data_storage_security_lbl">3. Data Storage &amp; Security</string>
     <string name="profile_all_data_is_txt">
-        All data is stored locally on your device unless cloud sync (e.g., Firebase) is enabled
-        We use standard encryption practices for any cloud-stored data</string>
+        \n \u2022 All data is stored locally on your device \n "   " unless cloud sync (e.g., Firebase) is enabled.
+        \n \u2022 We use standard encryption practices for any \n "   " cloud-stored data.</string>
 
+    <!-- 4. Sharing Your Data -->
     <string name="profile_sharing_your_data_lbl">4. Sharing Your Data</string>
-    <string name="profile_we_do_not_txt">
-        We do not sell or share your data with third parties.</string>
+    <string name="profile_we_do_not_txt">\n \u2022 We do not sell or share your data with third \n "   " parties.</string>
 
+    <!-- 5. Your Rights -->
     <string name="profile_your_rights_lbl">5. Your Rights</string>
-    <string name="profile_you_can_txt">
-        You can:
-            View and export your data
-            Delete your data at any time
-            Control notification permissions in your device or app settings</string>
+    <string name="profile_you_can_txt">\u2022 You can:</string>
+    <string name="profile_user_rights_txt">
+         \n \u2022 View and export your data
+         \n \u2022 Delete your data at any time
+         \n \u2022 Control notification permissions in your \n "   " device or app settings</string>
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
