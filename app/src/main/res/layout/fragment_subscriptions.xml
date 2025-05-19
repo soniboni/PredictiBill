@@ -1,173 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@color/white">
 
-    <!-- Logo Image -->
-    <ImageView
-        android:id="@+id/logo_image"
-        android:layout_width="35dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="56dp"
-        android:src="@drawable/logo_blue"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
-    <!-- Rectangle 5 with billing_cyc -->
-
-    <!-- Rectangle 1 at the bottom -->
-
-    <TextView
-        android:id="@+id/subscriptio"
-        android:layout_width="329dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/logo_image"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center_vertical"
-        android:lineSpacingExtra="2sp"
-        android:text="@string/subscriptio"
-        android:textAppearance="@style/subscriptio" />
-
-    <TextView
-        android:id="@+id/track_all_r"
-        android:layout_width="329dp"
-        android:layout_height="25dp"
-        android:layout_below="@id/subscriptio"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="-5dp"
-        android:layout_marginEnd="25dp"
-        android:gravity="center_vertical"
-        android:lineSpacingExtra="-5sp"
-        android:text="@string/track_all_r"
-        android:textAppearance="@style/track_all_r" />
-
-    <TextView
-        android:id="@+id/filter_by"
-        android:layout_width="332dp"
-        android:layout_height="27dp"
-        android:layout_below="@id/track_all_r"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:lineSpacingExtra="-5sp"
-        android:text="@string/filter_by"
-        android:textAppearance="@style/filter_by" />
-
-    <android.widget.RelativeLayout
-        android:id="@+id/oval_1"
-        android:layout_width="99dp"
-        android:layout_height="32dp"
-        android:layout_below="@id/filter_by"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/sub_oval">
+        <!-- Logo Image -->
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="35dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/logo_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:lineSpacingExtra="1sp"
-            android:text="@string/category"
-            android:textAppearance="@style/category" />
-    </android.widget.RelativeLayout>
+            android:id="@+id/subscriptio"
+            android:layout_width="329dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="25dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/subscriptio"
+            android:textAppearance="@style/subscriptio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_image" />
 
-    <View
-        android:id="@+id/oval_2"
-        android:layout_width="99dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/sub_oval"
-        android:layout_below="@id/filter_by"
-        android:layout_alignParentStart="true"/>
+        <TextView
+            android:id="@+id/track_all_r"
+            android:layout_width="329dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginEnd="25dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="-5sp"
+            android:text="@string/track_all_r"
+            android:textAppearance="@style/track_all_r"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscriptio" />
 
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="62dp"
-        android:layout_height="19dp"
-        android:layout_below="@id/oval_2"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="174dp"
-        android:layout_marginTop="-26dp"
-        android:gravity="center"
-        android:lineSpacingExtra="1sp"
-        android:text="@string/status"
-        android:textAppearance="@style/status" />
+        <TextView
+            android:id="@+id/filter_by"
+            android:layout_width="332dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="25dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="-5sp"
+            android:text="@string/filter_by"
+            android:textAppearance="@style/filter_by"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/track_all_r" />
 
-    <View
-        android:id="@+id/oval_3"
-        android:layout_width="99dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="288dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/sub_oval"
-        android:layout_below="@id/filter_by"
-        android:layout_alignParentStart="true"/>
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filter_chip_group"
+            android:layout_width="339dp"
+            android:layout_height="63dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="1dp"
+            android:padding="8dp"
+            app:chipSpacingHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.347"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_by"
+            app:selectionRequired="true"
+            app:singleSelection="true">
 
-    <TextView
-        android:id="@+id/billing_cyc"
-        android:layout_width="95dp"
-        android:layout_height="19dp"
-        android:layout_below="@id/oval_3"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="-26dp"
-        android:gravity="center"
-        android:lineSpacingExtra="1sp"
-        android:text="@string/billing_cyc"
-        android:textAppearance="@style/billing_cyc" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:checkable="true"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                android:text="Category"
+                android:textAppearance="@style/track_all_r"
+                android:textColor="@color/black"
+                app:chipCornerRadius="50dp" />
 
-    <View
-        android:id="@+id/rectangle_1"
-        android:layout_width="367dp"
-        android:layout_height="75dp"
-        android:layout_below="@id/oval_3"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/sub_rectangle" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:checkable="true"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                android:text="Status"
+                android:textAppearance="@style/track_all_r"
+                android:textColor="@color/black"
+                app:chipCornerRadius="50dp" />
 
-    <TextView
-        android:id="@+id/subscription_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text=""
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/rectangle_1"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_billing_cycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:checkable="true"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                android:text="Billing Cycle"
+                android:textAppearance="@style/track_all_r"
+                android:textColor="@color/black"
+                app:chipCornerRadius="50dp" />
+        </com.google.android.material.chip.ChipGroup>
 
-    <View
-        android:id="@+id/rectangle_2"
-        android:layout_width="367dp"
-        android:layout_height="75dp"
-        android:layout_below="@id/rectangle_1"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="9dp"
-        android:background="@drawable/sub_rectangle" />
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="340dp"
+            android:background="@drawable/round_button"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_chip_group" />
 
-    <Button
-        android:id="@+id/submit_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/rectangle_2"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="161dp"
-        android:layout_marginEnd="26dp"
-        android:background="@drawable/round_button"
-        android:textColor="@color/white"
-        android:textSize="14sp" />  <!-- Slightly smaller text size -->
-
-
-</android.widget.RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

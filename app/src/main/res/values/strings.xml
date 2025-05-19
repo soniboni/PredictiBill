@@ -42,8 +42,11 @@
     <string name="category">Category</string>
     <string name="status">Status</string>
     <string name="billing_cyc">Billing Cycle</string>
-    <string name="addsubscription">Add a Subscription</string>
+    <string name="add_subscription">Add a Subscription</string>
+    <string name="payments">Payments</string>
 
+    <!-- PAYMENT FRAGMENT TEXT -->
+    <string name="browse_your_payments">Browse your payments by date or categories</string>
 
 
 
