@@ -71,7 +71,7 @@
         <item name="android:textColor">#000564</item>
     </style>
 
-    <style name="category_1.2">
+    <style name="category_1">
         <item name="android:textSize">17sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">#000564</item>
