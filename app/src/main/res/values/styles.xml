@@ -123,4 +123,152 @@
         <item name="android:textColor">#000564</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
+
+    <!-- Subscriptions Detail Fragment -->
+    <style name="subs_details_lbl">
+        <item name="android:textSize">25sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="subs_details_name_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_name">
+        <item name="android:textSize">30sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_brown</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="subs_details_subsID_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_subsID">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_note_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_note">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_category_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_status_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_startdate_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_startdate">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_nextbilldate_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_nextbilldate">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_billingcycle_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_billingcycle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_price_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_price">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_paymentmethod_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_paymentmethod">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_lastpaiddue_lbl">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="subs_details_lastpaiddue">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
 </resources>

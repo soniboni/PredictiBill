@@ -56,4 +56,27 @@
     <string name="addsubscription">Add a Subscription</string>
     <string name="submit_button">+</string>
 
+    <!-- SUBSCRIPTION DETAIL FRAGMENT TEXT -->
+    <string name="back_button">Back button</string>
+    <string name="subs_details_lbl">Subscription Details</string>
+    <string name="subs_details_name_lbl">Name</string>
+    <string name="subs_details_name">Netflix</string>
+    <string name="subs_details_subsID_lbl">Subscription ID</string>
+    <string name="subs_details_subsID">SUB01</string>
+    <string name="subs_details_note_lbl">Note</string>
+    <string name="subs_details_note">For the whole family subscription.</string>
+    <string name="subs_details_category_lbl">Category</string>
+    <string name="subs_details_status_lbl">Status</string>
+    <string name="subs_details_startdate_lbl">Start Date</string>
+    <string name="subs_details_startdate">April 23, 2023</string>
+    <string name="subs_details_nextbilldate_lbl">Next Billing Date</string>
+    <string name="subs_details_nextbilldate">April 23, 2025</string>
+    <string name="subs_details_billingcycle_lbl">Billing Cycle</string>
+    <string name="subs_details_billingcycle">Monthly</string>
+    <string name="subs_details_price_lbl">Price</string>
+    <string name="subs_details_price">₱549.00</string>
+    <string name="subs_details_paymentmethod_lbl">Payment Method</string>
+    <string name="subs_details_paymentmethod">E-Wallet (Gcash)</string>
+    <string name="subs_details_lastpaiddue_lbl">Last Paid Due</string>
+    <string name="subs_details_lastpaiddue">March 23, 2025. #PAY0001</string>
 </resources>
