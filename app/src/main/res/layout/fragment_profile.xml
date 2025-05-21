@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <!-- Logo Image -->
     <ImageView
@@ -19,65 +18,276 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_blue" />
 
+    <!-- Main Heading - Profile & Settings Title -->
     <TextView
         android:id="@+id/profile_profile_settings_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_profile_settings_lbl"
-        android:textColor="@color/dark_blue"
-        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.175"
+        app:layout_constraintHorizontal_bias="0.126"
+        android:text="@string/profile_profile_settings_lbl"
+        android:textAppearance="@style/main_heading"/>
 
+    <!-- Subheading -->
     <TextView
         android:id="@+id/manage_your_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/profile_manage_your_account_lbl"
-        android:textColor="@color/grey"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.40"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.210"
+        app:layout_constraintHorizontal_bias="0.40"
+        android:text="@string/profile_manage_your_account_lbl"
+        android:textAppearance="@style/main_subheadings"/>
 
+
+    <!-- User Account Icon Image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:srcCompat="@drawable/account_img" />
+
+    <!-- Account Name -->
     <TextView
         android:id="@+id/profile_account_name_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_account_name_txt"
-        android:textColor="@color/brown"
-        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.280"
+        app:layout_constraintHorizontal_bias="0.470"
+        android:text="@string/profile_account_name_txt"
+        android:textAppearance="@style/account_name"/>
 
+    <!-- Email Account -->
     <TextView
         android:id="@+id/profile_email_account_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/profile_email_account_txt"
-        android:textColor="@color/brown"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.309"
+        app:layout_constraintHorizontal_bias="0.435"
+        android:text="@string/profile_email_account_txt"
+        android:textAppearance="@style/email_account"/>
 
+
+    <!-- Bold Subheadings - Account Settings  -->
+    <TextView
+        android:id="@+id/profile_account_settings_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.370"
+        app:layout_constraintHorizontal_bias="0.10"
+        android:text="@string/profile_account_settings_lbl"
+        android:textAppearance="@style/main_bold_subheadings"/>
+
+    <!-- Subheading - Clickable Text/Button  - Change Password  -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_change_password_button"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.405"
+        app:layout_constraintHorizontal_bias="0.490"
+        android:text="@string/profile_change_password_lbl"
+        android:textSize="14sp"
+        android:textColor="#383636"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|center_vertical"
+        android:clickable="true"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Bottom Divider Line -->
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1.5dp"
+        android:background="@color/stroke_grey"
+        app:layout_constraintTop_toBottomOf="@id/profile_change_password_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- Bold Subheadings - Notification Settings  -->
+    <TextView
+        android:id="@+id/profile_notification_settings_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.460"
+        app:layout_constraintHorizontal_bias="0.11"
+        android:text="@string/profile_notification_settings_lbl"
+        android:textAppearance="@style/main_bold_subheadings"/>
+
+    <!-- TO DO: Subheadings - Toggle Button - In-app reminders -->
+
+
+    <!-- TO DO: Subheadings - Toggle Button - Email alerts -->
+
+
+
+    <!-- Bold Subheadings - Preferences  -->
+    <TextView
+        android:id="@+id/profile_preference_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.590"
+        app:layout_constraintHorizontal_bias="0.09"
+        android:text="@string/profile_preference_lbl"
+        android:textAppearance="@style/main_bold_subheadings"/>
+
+    <!-- TO DO: Subheadings - Spinner (Dropdown Menu) - Currency (PHP & USD) -->
+
+
+
+    <!-- Bold Subheadings - About  -->
+    <TextView
+        android:id="@+id/profile_about_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.680"
+        app:layout_constraintHorizontal_bias="0.08"
+        android:text="@string/profile_about_lbl"
+        android:textAppearance="@style/main_bold_subheadings"/>
+
+    <!-- Subheading - Clickable Text/Button - Help -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_help_button"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.720"
+        app:layout_constraintHorizontal_bias="0.490"
+        android:text="@string/profile_help_lbl"
+        android:textSize="14sp"
+        android:textColor="#383636"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|center_vertical"
+        android:clickable="true"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Bottom Divider Line -->
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1.5dp"
+        android:background="@color/stroke_grey"
+        app:layout_constraintTop_toBottomOf="@id/profile_help_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- Subheading - Clickable Text/Button - Help -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_privacy_notice_button"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.775"
+        app:layout_constraintHorizontal_bias="0.490"
+        android:text="@string/profile_privacy_policy_lbl"
+        android:textSize="14sp"
+        android:textColor="#383636"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|center_vertical"
+        android:clickable="true"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Bottom Divider Line -->
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1.5dp"
+        android:background="@color/stroke_grey"
+        app:layout_constraintTop_toBottomOf="@id/profile_privacy_notice_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- Buttons  -->
+    <!-- Logout Button  -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logout_button"
+        android:layout_width="340dp"
+        android:layout_height="55dp"
+        android:backgroundTint="@color/charcoal"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.889"
+        app:layout_constraintHorizontal_bias="0.492"
+        android:text="@string/profile_logout_lbl"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/poppins_thin"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Deactivate Account Button  -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/deactivate_account_button"
+        android:layout_width="340dp"
+        android:layout_height="55dp"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.492"
+        android:text="@string/profile_deactivate_account_lbl"
+        android:textSize="18sp"
+        android:textColor="@color/brown"
+        android:fontFamily="@font/poppins_thin"
+        app:strokeColor="@color/charcoal"
+        app:strokeWidth="3dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

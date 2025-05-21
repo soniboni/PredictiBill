@@ -60,23 +60,20 @@
 
     <string name="profile_notification_settings_lbl">Notification Settings</string>
     <string name="profile_app_reminders_lbl">In-app reminders</string>
-    <string name="profile_email_alerts_lbl">Email Alerts</string>
+    <string name="profile_email_alerts_lbl">Email alerts</string>
 
-    <string name="profile_preferences_lbl">Preferences</string>
-    <string name="profile_currency_lbl">In-app reminders</string>
+    <string name="profile_preference_lbl">Preference</string>
+    <string name="profile_currency_lbl">Currency</string>
     <string name="profile_php_currency_lbl">PHP</string>
     <string name="profile_usd_currency_lbl">USD</string>
 
-    <string name="profile_theme_lbl">Email Alerts</string>
-    <string name="profile_lighttheme_lbl">Light</string>
-    <string name="profile_darktheme_lbl">Dark</string>
 
     <string name="profile_about_lbl">About</string>
     <string name="profile_help_lbl">Help</string>
     <string name="profile_privacy_policy_lbl">Privacy Policy</string>
 
-    <string name="profile_logout_button">Logout</string>
-    <string name="profile_deactivate_account_button">Deactivate Account</string>
+    <string name="profile_logout_lbl">Logout</string>
+    <string name="profile_deactivate_account_lbl">Deactivate Account</string>
 
 
     <!-- Profile & Settings / Change Password -->
