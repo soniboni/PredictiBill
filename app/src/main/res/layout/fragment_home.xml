@@ -27,11 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="108dp"
-        android:fontFamily="@font/poppins_regular"
         android:text="@string/home_hi_lbl"
-        android:textColor="@color/brown"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:textAppearance="@style/home_hi_lbl"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
