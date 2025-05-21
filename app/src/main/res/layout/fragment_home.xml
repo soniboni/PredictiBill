@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="1dp"
+    tools:context=".ui.home.HomeFragment"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        tools:context=".ui.home.HomeFragment">
+        android:background="@color/white">
 
         <!-- TODO: Update blank fragment layout -->
 
