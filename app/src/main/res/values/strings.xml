@@ -59,7 +59,7 @@
     <string name="profile_change_password_lbl">Change Password</string>
 
     <string name="profile_notification_settings_lbl">Notification Settings</string>
-    <string name="profile_app_reminders_lbl">In-app reminders</string>
+    <string name="profile_in_app_reminders_lbl">In-app reminders</string>
     <string name="profile_email_alerts_lbl">Email alerts</string>
 
     <string name="profile_preference_lbl">Preference</string>

@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.175"
+        app:layout_constraintVertical_bias="0.140"
         app:layout_constraintHorizontal_bias="0.126"
         android:text="@string/profile_profile_settings_lbl"
         android:textAppearance="@style/main_heading"/>
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.210"
+        app:layout_constraintVertical_bias="0.175"
         app:layout_constraintHorizontal_bias="0.40"
         android:text="@string/profile_manage_your_account_lbl"
         android:textAppearance="@style/main_subheadings"/>
@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.285"
+        app:layout_constraintVertical_bias="0.235"
         app:layout_constraintHorizontal_bias="0.08"
         app:srcCompat="@drawable/account_img" />
 
@@ -69,7 +69,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.280"
+        app:layout_constraintVertical_bias="0.230"
         app:layout_constraintHorizontal_bias="0.470"
         android:text="@string/profile_account_name_txt"
         android:textAppearance="@style/account_name"/>
@@ -83,7 +83,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.309"
+        app:layout_constraintVertical_bias="0.260"
         app:layout_constraintHorizontal_bias="0.435"
         android:text="@string/profile_email_account_txt"
         android:textAppearance="@style/email_account"/>
@@ -98,12 +98,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.370"
-        app:layout_constraintHorizontal_bias="0.10"
+        app:layout_constraintVertical_bias="0.325"
+        app:layout_constraintHorizontal_bias="0.13"
         android:text="@string/profile_account_settings_lbl"
         android:textAppearance="@style/main_bold_subheadings"/>
 
-    <!-- Subheading - Clickable Text/Button  - Change Password  -->
+    <!-- IN-PROGRESS: Subheading - Clickable Text/Button  - Change Password  -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/profile_change_password_button"
         android:layout_width="340dp"
@@ -114,7 +114,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.405"
+        app:layout_constraintVertical_bias="0.355"
         app:layout_constraintHorizontal_bias="0.490"
         android:text="@string/profile_change_password_lbl"
         android:textSize="14sp"
@@ -143,17 +143,97 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.460"
-        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintVertical_bias="0.420"
+        app:layout_constraintHorizontal_bias="0.14"
         android:text="@string/profile_notification_settings_lbl"
         android:textAppearance="@style/main_bold_subheadings"/>
 
-    <!-- TO DO: Subheadings - Toggle Button - In-app reminders -->
+    <!-- Subheadings - In-app reminders -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_in_app_reminders_lbl"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.490"
+        android:text="@string/profile_in_app_reminders_lbl"
+        android:textSize="14sp"
+        android:textColor="#383636"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|center_vertical"
+        android:clickable="false"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Bottom Divider Line -->
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1.5dp"
+        android:background="@color/stroke_grey"
+        app:layout_constraintTop_toBottomOf="@id/profile_in_app_reminders_lbl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    
+    <!-- IN-PROGRESS: In-app Reminders Toggle Button -->
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/in_app_reminders_toggle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.890"
+        />
 
 
-    <!-- TO DO: Subheadings - Toggle Button - Email alerts -->
+    <!-- Subheadings - Email alerts -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_email_alerts_lbl"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.510"
+        app:layout_constraintHorizontal_bias="0.490"
+        android:text="@string/profile_email_alerts_lbl"
+        android:textSize="14sp"
+        android:textColor="#383636"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|center_vertical"
+        android:clickable="false"
+        tools:ignore="MissingConstraints" />
 
+    <!-- Bottom Divider Line -->
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1.5dp"
+        android:background="@color/stroke_grey"
+        app:layout_constraintTop_toBottomOf="@id/profile_email_alerts_lbl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- IN-PROGRESS: Email Alerts Toggle Button -->
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/email_alerts_toggle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.510"
+        app:layout_constraintHorizontal_bias="0.890"/>
+    
 
     <!-- Bold Subheadings - Preferences  -->
     <TextView
@@ -164,13 +244,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.590"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintVertical_bias="0.575"
+        app:layout_constraintHorizontal_bias="0.11"
         android:text="@string/profile_preference_lbl"
         android:textAppearance="@style/main_bold_subheadings"/>
 
-    <!-- TO DO: Subheadings - Spinner (Dropdown Menu) - Currency (PHP & USD) -->
+    <!-- IN-PROGRESS: Subheadings - Currency (PHP & USD) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_currency_dropdown"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.610"
+        app:layout_constraintHorizontal_bias="0.490"
+        android:text="@string/profile_currency_lbl"
+        android:textSize="14sp"
+        android:textColor="#383636"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|center_vertical"
+        android:clickable="false"
+        tools:ignore="MissingConstraints" />
 
+    <!-- Bottom Divider Line -->
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1.5dp"
+        android:background="@color/stroke_grey"
+        app:layout_constraintTop_toBottomOf="@id/profile_currency_dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    
+    <!-- Currency Dropdown Menu (Spinner) -->
+    <Spinner
+        android:id="@+id/currency_spinner"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.609"
+        app:layout_constraintHorizontal_bias="0.865"
+        android:background="@drawable/sub_rectangle"
+        android:padding="10dp"
+        android:spinnerMode="dropdown"/>
+        <!--android:popupBackground="@drawable/dropdown_popup_bg"-->
 
 
     <!-- Bold Subheadings - About  -->
@@ -182,12 +305,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.680"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintVertical_bias="0.670"
+        app:layout_constraintHorizontal_bias="0.10"
         android:text="@string/profile_about_lbl"
         android:textAppearance="@style/main_bold_subheadings"/>
 
-    <!-- Subheading - Clickable Text/Button - Help -->
+    <!-- IN-PROGRESS: Subheading - Clickable Text/Button - Help -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/profile_help_button"
         android:layout_width="340dp"
@@ -198,7 +321,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.720"
+        app:layout_constraintVertical_bias="0.705"
         app:layout_constraintHorizontal_bias="0.490"
         android:text="@string/profile_help_lbl"
         android:textSize="14sp"
@@ -218,7 +341,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- Subheading - Clickable Text/Button - Help -->
+    <!-- IN-PROGRESS: Subheading - Clickable Text/Button - Privacy Policy -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/profile_privacy_notice_button"
         android:layout_width="340dp"
@@ -229,7 +352,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.775"
+        app:layout_constraintVertical_bias="0.760"
         app:layout_constraintHorizontal_bias="0.490"
         android:text="@string/profile_privacy_policy_lbl"
         android:textSize="14sp"
@@ -250,7 +373,7 @@
 
 
     <!-- Buttons  -->
-    <!-- Logout Button  -->
+    <!-- IN-PROGRESS: Logout Button  -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/logout_button"
         android:layout_width="340dp"
@@ -261,7 +384,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.889"
+        app:layout_constraintVertical_bias="0.865"
         app:layout_constraintHorizontal_bias="0.492"
         android:text="@string/profile_logout_lbl"
         android:textSize="18sp"
@@ -269,7 +392,7 @@
         android:fontFamily="@font/poppins_thin"
         tools:ignore="MissingConstraints" />
 
-    <!-- Deactivate Account Button  -->
+    <!-- IN-PROGRESS: Deactivate Account Button  -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deactivate_account_button"
         android:layout_width="340dp"
@@ -280,7 +403,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.955"
+        app:layout_constraintVertical_bias="0.930"
         app:layout_constraintHorizontal_bias="0.492"
         android:text="@string/profile_deactivate_account_lbl"
         android:textSize="18sp"
