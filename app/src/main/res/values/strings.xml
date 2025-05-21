@@ -39,6 +39,13 @@
     <string name="home_overdue_bills_txt">Overdue Bills</string>
     <string name="home_overdue_bills_note">Your bills that are overdue.</string>
 
+    <!-- HOME FRAGMENT (BILL CARD) TEXT -->
+    <string name="bill_name">Netflix</string>
+    <string name="billing_cycle">Monthly</string>
+    <string name="bill_dueon">Due on</string>
+    <string name="bill_duedate">April 23, 2025</string>
+    <string name="bill_price">₱549.00</string>
+
     <!-- SUBSCRIPTIONS FRAGMENT TEXT -->
     <string name="track_all_r">Track all recurring payments in one place.</string>
     <string name="subscriptio">Subscriptions</string>
@@ -48,10 +55,5 @@
     <string name="billing_cyc">Billing Cycle</string>
     <string name="addsubscription">Add a Subscription</string>
     <string name="submit_button">+</string>
-
-
-
-
-
 
 </resources>

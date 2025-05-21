@@ -343,7 +343,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-
+        <!-- Next Upcoming Bill Section -->
         <TextView
             android:id="@+id/home_upcoming_billing_txt"
             android:layout_width="wrap_content"
@@ -387,6 +387,7 @@
 
         </LinearLayout>
 
+        <!-- Overdue Bills Section -->
         <TextView
             android:id="@+id/home_overdue_bills_txt"
             android:layout_width="wrap_content"
