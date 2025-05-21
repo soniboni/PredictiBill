@@ -1,10 +1,14 @@
 package com.example.predictibill.ui.subscriptions;
 
+import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +18,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.predictibill.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class AddSubscriptionFragment extends Fragment {
     public AddSubscriptionFragment() {
@@ -63,11 +69,11 @@ public class AddSubscriptionFragment extends Fragment {
         adapterStatus.setDropDownViewResource(R.layout.dropdown_items);
         statusSpinner.setAdapter(adapterStatus);
 
+        // Spinner for Billing Cycle
         Spinner billingSpinner = view.findViewById(R.id.billing_cycle_spinner);
         List<String> billingList = new ArrayList<>();
         billingList.add("Monthly");
-        billingList.add("Annualy");
-
+        billingList.add("Annually");
 
         ArrayAdapter<String> adapterBilling = new ArrayAdapter<>(
                 requireContext(),
@@ -75,6 +81,53 @@ public class AddSubscriptionFragment extends Fragment {
                 billingList
         );
         adapterBilling.setDropDownViewResource(R.layout.dropdown_items);
-       billingSpinner.setAdapter(adapterBilling);
+        billingSpinner.setAdapter(adapterBilling);
+
+        setupDatePicker(view, R.id.start_date_container, R.id.start_date_display, "Select Start Date");
+        setupDatePicker(view, R.id.next_billing_date_container, R.id.next_billing_date_display, "Select Next Billing Date");
+
+        // Set initial minimum date for next billing (today)
+        setNextBillingMinDate(Calendar.getInstance());
+    }
+
+    private void setupDatePicker(View view, int containerId, int displayId, String title) {
+        LinearLayout dateContainer = view.findViewById(containerId);
+        TextView dateDisplay = view.findViewById(displayId);
+
+        dateContainer.setOnClickListener(v -> {
+            final Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    requireContext(),
+                    (dialogView, selectedYear, selectedMonth, selectedDay) -> {
+                        Calendar selectedDate = Calendar.getInstance();
+                        selectedDate.set(selectedYear, selectedMonth, selectedDay);
+
+                        String formattedDate = String.format(Locale.getDefault(),
+                                "%d/%d/%d", selectedDay, selectedMonth + 1, selectedYear);
+                        dateDisplay.setText(formattedDate);
+                        dateDisplay.setTextColor(Color.BLACK);
+
+                        // If this is the start date picker, update next billing minimum date
+                        if (containerId == R.id.start_date_container) {
+                            setNextBillingMinDate(selectedDate);
+                        }
+                    },
+                    year, month, day
+            );
+
+            // Set dialog title
+            datePickerDialog.setTitle(title);
+            datePickerDialog.show();
+        });
+    }
+
+    private void setNextBillingMinDate(Calendar minDate) {
+        LinearLayout nextBillingContainer = getView().findViewById(R.id.next_billing_date_container);
+        TextView nextBillingDisplay = getView().findViewById(R.id.next_billing_date_display);
+
     }
 }
