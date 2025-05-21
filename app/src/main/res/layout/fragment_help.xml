@@ -20,193 +20,178 @@
         app:layout_constraintVertical_bias="0.092"
         app:srcCompat="@drawable/logo_icontext_blue" />
 
-    <!-- Heading -->
+
+    <!--  Heading - Title -->
     <TextView
         android:id="@+id/profile_help_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_help_lbl"
-        android:textColor="@color/dark_blue"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.160" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.160"
+        app:layout_constraintHorizontal_bias="0.50"
+        android:text="@string/profile_help_lbl"
+        android:textAppearance="@style/headings"/>
 
+
+    <!-- Heading - Welcome Title -->
     <TextView
         android:id="@+id/profile_welcome_to_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_welcome_to_lbl"
-        android:textColor="@color/dark_blue"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintVertical_bias="0.225"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.25"
+        android:text="@string/profile_welcome_to_lbl"
+        android:textAppearance="@style/headings"/>
 
+    <!-- Subheading - Here's a quick guide... -->
     <TextView
         android:id="@+id/profile_heres_a_quick_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/profile_heres_a_quick_lbl"
-        android:textColor="@color/charcoal"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
-        app:layout_constraintVertical_bias="0.255"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.253"
+        app:layout_constraintHorizontal_bias="0.210"
+        android:text="@string/profile_heres_a_quick_lbl"
+        android:textAppearance="@style/subheadings"/>
 
-    <!-- What does PredictiBill do? -->
+
+    <!-- Heading - What does PredictiBill do? -->
     <TextView
         android:id="@+id/profile_what_does_predictibill_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_what_does_predictibill_lbl"
-        android:textColor="@color/dark_blue"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.20"
-        app:layout_constraintVertical_bias="0.330"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.330"
+        app:layout_constraintHorizontal_bias="0.20"
+        android:text="@string/profile_what_does_predictibill_lbl"
+        android:textAppearance="@style/headings"/>
 
+    <!-- Subheading -->
     <TextView
         android:id="@+id/profile_predictibill_helps_you_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/profile_predictibill_helps_you_txt"
-        android:textColor="@color/charcoal"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintVertical_bias="0.382"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.382"
+        app:layout_constraintHorizontal_bias="0.55"
+        android:text="@string/profile_predictibill_helps_you_txt"
+        android:textAppearance="@style/subheadings"/>
 
-    <!-- Common Questions -->
+
+    <!-- Heading - Common Questions -->
     <TextView
         android:id="@+id/profile_common_questions_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_common_questions_lbl"
-        android:textColor="@color/dark_blue"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintVertical_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.500"
+        app:layout_constraintHorizontal_bias="0.13"
+        android:text="@string/profile_common_questions_lbl"
+        android:textAppearance="@style/headings"/>
 
-    <!-- Question 1 - Q: Can I cancel subscriptions through the app? -->
+    <!-- Bold Subheading - Question 1 - Q: Can I cancel subscriptions through the app? -->
     <TextView
         android:id="@+id/profile_question_1_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_question_1_lbl"
-        android:textColor="@color/charcoal"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.40"
-        app:layout_constraintVertical_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.40"
+        android:text="@string/profile_question_1_lbl"
+        android:textAppearance="@style/bold_subheadings"/>
 
-    <!-- Answer to Question 1-->
+    <!-- Subheading - Answer to Question 1 -->
     <TextView
         android:id="@+id/profile_answer_1_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/profile_answer_1_txt"
-        android:textColor="@color/brown"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.40"
-        app:layout_constraintVertical_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.587"
+        app:layout_constraintHorizontal_bias="0.40"
+        android:text="@string/profile_answer_1_txt"
+        android:textAppearance="@style/subheadings"/>
 
-    <!-- Question 2 - Q: How do I add a subscription? -->
+
+    <!-- Bold Subheading - Question 2 - Q: How do I add a subscription? -->
     <TextView
         android:id="@+id/profile_question_2_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_question_2_lbl"
-        android:textColor="@color/charcoal"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintVertical_bias="0.660"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.660"
+        app:layout_constraintHorizontal_bias="0.15"
+        android:text="@string/profile_question_2_lbl"
+        android:textAppearance="@style/bold_subheadings"/>
 
-    <!-- Answer to Question 2-->
+    <!-- Subheading - Answer to Question 2 -->
     <TextView
         android:id="@+id/profile_answer_2_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/profile_answer_2_txt"
-        android:textColor="@color/charcoal"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintVertical_bias="0.716"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.716"
+        app:layout_constraintHorizontal_bias="0.50"
+        android:text="@string/profile_answer_2_txt"
+        android:textAppearance="@style/subheadings"/>
 
-    <!-- Question 3 - Q: Will I get reminders?-->
+
+    <!-- Bold Subheading - Question 3 - Q: Will I get reminders? -->
     <TextView
         android:id="@+id/profile_question_3_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/profile_question_3_lbl"
-        android:textColor="@color/charcoal"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintVertical_bias="0.770"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.770"
+        app:layout_constraintHorizontal_bias="0.12"
+        android:text="@string/profile_question_3_lbl"
+        android:textAppearance="@style/bold_subheadings"/>
 
-    <!-- Answer to Question 3-->
+    <!-- Subheading - Answer to Question 3 -->
     <TextView
         android:id="@+id/profile_answer_3_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/profile_answer_3_txt"
-        android:textColor="@color/charcoal"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.60"
-        app:layout_constraintVertical_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.812"
+        app:layout_constraintHorizontal_bias="0.60"
+        android:text="@string/profile_answer_3_txt"
+        android:textAppearance="@style/subheadings"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
