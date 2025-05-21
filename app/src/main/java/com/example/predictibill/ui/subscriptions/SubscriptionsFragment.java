@@ -29,8 +29,8 @@ public class SubscriptionsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button submitButton = view.findViewById(R.id.submit_button);
-        submitButton.setOnClickListener(v -> {
+        Button Add_subButton = view.findViewById(R.id.submit_button);
+        Add_subButton.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_subscriptionsFragment_to_addSubscriptions);
         });
     }

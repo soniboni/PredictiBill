@@ -73,13 +73,14 @@
             android:layout_height="16dp"
             android:gravity="center_vertical"
             android:lineSpacingExtra="19sp"
-            android:text="Subscription ID"
+            android:text="@string/subscription_id"
             android:textAppearance="@style/subscription_id"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageUploadCard"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"/>
 
+        <!-- to be changed when database is connected(this is auto incremented)-->
         <TextView
             android:id="@+id/subscription_id_number"
             android:layout_width="117dp"
@@ -144,7 +145,8 @@
             android:background="@drawable/sub_rectangle"
             android:inputType="textCapWords"
             android:paddingStart="12dp"
-            android:textColorHint="#999999"
+            android:textColorHint="@color/black"
+            android:gravity="top|start"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -183,8 +185,8 @@
 
         <Spinner
             android:id="@+id/subscription_category_spinner"
-            android:layout_width="188dp"
-            android:layout_height="41dp"
+            android:layout_width="177dp"
+            android:layout_height="44dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -200,8 +202,8 @@
         <!-- Billing Cycle Section -->
         <Spinner
             android:id="@+id/subscription_status_spinner"
-            android:layout_width="0dp"
-            android:layout_height="42dp"
+            android:layout_width="174dp"
+            android:layout_height="45dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
@@ -249,9 +251,9 @@
             android:id="@+id/start_date_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
-            android:text="Start Date"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/startdate"
             android:textAppearance="@style/category_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/billing_cycle_spinner" />
@@ -292,13 +294,14 @@
 
         <!--Next Billing Date-->
 
+
         <TextView
             android:id="@+id/next_billing_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="224dp"
-            android:layout_marginTop="12dp"
-            android:text="Next Billing Date"
+            android:layout_marginStart="204dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/nextbillingdate"
             android:textAppearance="@style/category_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/billing_cycle_spinner" />
@@ -307,9 +310,8 @@
             android:id="@+id/next_billing_date_container"
             android:layout_width="178dp"
             android:layout_height="41dp"
-            android:layout_marginStart="14dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="28dp"
             android:background="@drawable/sub_rectangle"
             android:clickable="true"
             android:focusable="true"
@@ -317,8 +319,7 @@
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toBottomOf="@+id/next_billing_label">
 
             <ImageView
@@ -333,9 +334,95 @@
                 android:id="@+id/next_billing_date_display"
                 android:layout_width="125dp"
                 android:layout_height="20dp"
-                android:textColor="#999999"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toStartOf="@+id/payment_method_label"
+            app:layout_constraintHorizontal_bias="0.095"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/start_date_container"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <EditText
+            android:id="@+id/price_input"
+            android:layout_width="173dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:inputType="textCapWords"
+            android:paddingStart="12dp"
+            android:textColorHint="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_label"
+            app:layout_constraintVertical_bias="0.144" />
+
+        <TextView
+            android:id="@+id/payment_method_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_method"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/next_billing_date_container"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <Spinner
+            android:id="@+id/payment_method_spinner"
+            android:layout_width="172dp"
+            android:layout_height="39dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/sub_rectangle"
+            android:padding="10dp"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/price_input"
+            app:layout_constraintTop_toBottomOf="@+id/payment_method_label"
+            app:layout_constraintVertical_bias="0.142" />
+
+        <Button
+            android:id="@+id/add_sub_button"
+            android:layout_width="361dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/sub_rectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.657"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_input" />
+
+        <TextView
+            android:layout_width="166dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="104dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/add_subscription"
+            android:textAppearance="@style/add_sub_button"
+            app:layout_constraintBottom_toBottomOf="@+id/add_sub_button"
+            app:layout_constraintStart_toStartOf="@+id/add_sub_button"
+            app:layout_constraintTop_toTopOf="@+id/add_sub_button"
+            app:layout_constraintVertical_bias="1.0" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

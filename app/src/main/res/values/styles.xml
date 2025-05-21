@@ -76,4 +76,11 @@
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">#000564</item>
     </style>
+
+    <style name="add_sub_button">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
 </resources>
