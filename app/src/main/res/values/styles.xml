@@ -3,7 +3,7 @@
     <style name="track_all_r" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.03</item>
-        <item name="android:textColor">#808080</item>
+        <item name="android:textColor">@color/grey</item>
     </style>
 
     <style name="subscriptio">
@@ -55,7 +55,7 @@
     <style name="subscription_id">
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.03</item>
-        <item name="android:textColor">#808080</item>
+        <item name="android:textColor">@color/dark_blue</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
@@ -63,6 +63,7 @@
         <item name="android:textSize">17sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">#000564</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <style name="note">
