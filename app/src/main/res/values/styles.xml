@@ -8,6 +8,42 @@
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
+    <style name="home_welcome_lbl">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="home_upcoming_billing_txt">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="home_upcoming_billing_note">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="home_overdue_bills_txt">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="home_overdue_bills_note">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+
     <!-- Subscriptions Fragment -->
     <style name="track_all_r">
         <item name="android:textSize">16sp</item>
