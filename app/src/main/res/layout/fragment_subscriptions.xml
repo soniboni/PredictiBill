@@ -60,26 +60,7 @@
         android:text="@string/filter_by"
         android:textAppearance="@style/filter_by" />
 
-    <android.widget.RelativeLayout
-        android:id="@+id/oval_1"
-        android:layout_width="99dp"
-        android:layout_height="32dp"
-        android:layout_below="@id/filter_by"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/sub_oval">
 
-        <TextView
-            android:id="@+id/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:lineSpacingExtra="1sp"
-            android:text="@string/category"
-            android:textAppearance="@style/category" />
-    </android.widget.RelativeLayout>
 
     <View
         android:id="@+id/oval_2"
