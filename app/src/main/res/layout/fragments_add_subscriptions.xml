@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/upload_image"
-                    android:textAppearance="@style/upload_an_image"
+                    android:textAppearance="@style/upload_image"
                     android:textSize="14sp"
                     android:paddingTop="8dp"/>
 
