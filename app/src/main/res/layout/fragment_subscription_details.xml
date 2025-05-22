@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.572"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Logo" />
+            app:layout_constraintTop_toBottomOf="@+id/Logo"/>
 
         <!-- Subscription Image Card -->
         <androidx.cardview.widget.CardView
@@ -68,7 +68,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.444"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sub_detail_backBtn"></androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toBottomOf="@+id/sub_detail_backBtn">
+
+        </androidx.cardview.widget.CardView>
 
         <!-- Name Section -->
         <TextView
