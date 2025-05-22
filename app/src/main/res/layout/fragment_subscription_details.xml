@@ -12,9 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
-
-    <!-- TODO: Update blank fragment layout -->
+        android:background="@color/white"
+        android:paddingBottom="32dp">
 
         <!-- Logo -->
         <ImageView
@@ -32,7 +31,7 @@
             android:id="@+id/sub_detail_backBtn"
             android:layout_width="53dp"
             android:layout_height="53dp"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/back_button"
             android:contentDescription="@string/back_button"
@@ -50,10 +49,11 @@
             android:text="@string/subs_details_lbl"
             android:textAppearance="@style/subs_details_lbl"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.608"
+            app:layout_constraintHorizontal_bias="0.572"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Logo"/>
+            app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
+        <!-- Subscription Image Card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/subscription_image_card"
             android:layout_width="346dp"
@@ -68,36 +68,315 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.444"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sub_detail_backBtn">
+            app:layout_constraintTop_toBottomOf="@+id/sub_detail_backBtn"></androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
-
+        <!-- Name Section -->
         <TextView
             android:id="@+id/subs_details_name_lbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:text="@string/subs_details_name_lbl"
             android:textAppearance="@style/subs_details_name_lbl"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.011"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subscription_image_card"/>
 
         <TextView
+            android:id="@+id/subs_details_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="4dp"
             android:text="@string/subs_details_name"
             android:textAppearance="@style/subs_details_name"
-            android:gravity="start|center_vertical"
-            android:lineSpacingExtra="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subs_details_name_lbl" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Subscription ID Section -->
+        <TextView
+            android:id="@+id/subs_details_subsID_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/subs_details_subsID_lbl"
+            android:textAppearance="@style/subs_details_subsID_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_image_card" />
 
+        <TextView
+            android:id="@+id/subs_details_subsID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/subs_details_subsID"
+            android:textAppearance="@style/subs_details_subsID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_subsID_lbl" />
+
+        <!-- Note Section -->
+        <TextView
+            android:id="@+id/subs_details_note_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/subs_details_note_lbl"
+            android:textAppearance="@style/subs_details_note_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_name" />
+
+        <TextView
+            android:id="@+id/subs_details_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="28dp"
+            android:text="@string/subs_details_note"
+            android:textAppearance="@style/subs_details_note"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_note_lbl" />
+
+        <!-- Category Section -->
+        <TextView
+            android:id="@+id/subs_details_category_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_category_lbl"
+            android:textAppearance="@style/subs_details_category_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_note"/>
+
+        <ImageView
+            android:id="@+id/category_name"
+            android:layout_width="87dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/category_name_entertainment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_note"/>
+
+        <!-- Status Section -->
+        <TextView
+            android:id="@+id/subs_details_status_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_status_lbl"
+            android:textAppearance="@style/subs_details_status_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_category_lbl"/>
+
+        <ImageView
+            android:id="@+id/status"
+            android:layout_width="87dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/status_upcoming"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_name" />
+
+        <!-- Start Date Section -->
+        <TextView
+            android:id="@+id/subs_details_startdate_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_startdate_lbl"
+            android:textAppearance="@style/subs_details_startdate_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_status_lbl"/>
+
+        <TextView
+            android:id="@+id/subs_details_startdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/subs_details_startdate"
+            android:textAppearance="@style/subs_details_startdate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_note" />
+
+        <!-- Next Billing Date Section -->
+        <TextView
+            android:id="@+id/subs_details_nextbilldate_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_nextbilldate_lbl"
+            android:textAppearance="@style/subs_details_nextbilldate_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_startdate"/>
+
+        <TextView
+            android:id="@+id/subs_details_nextbilldate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/subs_details_nextbilldate"
+            android:textAppearance="@style/subs_details_nextbilldate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.895"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_startdate" />
+
+        <!-- Billing Cycle Section -->
+        <TextView
+            android:id="@+id/subs_details_billingcycle_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_billingcycle_lbl"
+            android:textAppearance="@style/subs_details_billingcycle_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_nextbilldate"/>
+
+        <TextView
+            android:id="@+id/subs_details_billingcycle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/subs_details_billingcycle"
+            android:textAppearance="@style/subs_details_billingcycle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_nextbilldate" />
+
+        <!-- Price Section -->
+        <TextView
+            android:id="@+id/subs_details_price_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_price_lbl"
+            android:textAppearance="@style/subs_details_price_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_billingcycle"/>
+
+        <TextView
+            android:id="@+id/subs_details_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/subs_details_price"
+            android:textAppearance="@style/subs_details_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.904"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_billingcycle" />
+
+        <!-- Payment Method Section -->
+        <TextView
+            android:id="@+id/subs_details_paymentmethod_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_paymentmethod_lbl"
+            android:textAppearance="@style/subs_details_paymentmethod_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_price"/>
+
+        <TextView
+            android:id="@+id/subs_details_paymentmethod"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/subs_details_paymentmethod"
+            android:textAppearance="@style/subs_details_paymentmethod"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.888"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_price" />
+
+        <!-- Last Paid Due Section -->
+        <TextView
+            android:id="@+id/subs_details_lastpaiddue_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_lastpaiddue_lbl"
+            android:textAppearance="@style/subs_details_lastpaiddue_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_paymentmethod"/>
+
+        <TextView
+            android:id="@+id/subs_details_lastpaiddue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/subs_details_lastpaiddue"
+            android:textAppearance="@style/subs_details_lastpaiddue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_paymentmethod" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
