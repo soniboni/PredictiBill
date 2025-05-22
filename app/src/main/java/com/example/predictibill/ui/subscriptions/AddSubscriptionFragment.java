@@ -1,7 +1,9 @@
 package com.example.predictibill.ui.subscriptions;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +12,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -32,10 +37,21 @@ public class AddSubscriptionFragment extends Fragment {
     private TextView startDateDisplay, nextBillingDateDisplay;
     private Spinner categorySpinner, statusSpinner, billingSpinner, paymentMethodSpinner;
     private EditText subscriptionNameEditText, subscriptionPriceEditText;
+    private ImageView previewImageView;
+    private Uri selectedImageUri;
 
     public AddSubscriptionFragment() {
         super(R.layout.fragments_add_subscriptions);
     }
+
+    private final ActivityResultLauncher<Intent> imagePickerLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
+                    selectedImageUri = result.getData().getData();
+                    previewImageView.setImageURI(selectedImageUri);
+                    Toast.makeText(requireContext(), "Image selected!", Toast.LENGTH_SHORT).show();
+                }
+            });
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +75,11 @@ public class AddSubscriptionFragment extends Fragment {
         nextBillingDateDisplay = view.findViewById(R.id.next_billing_date_display);
         subscriptionNameEditText = view.findViewById(R.id.subscription_name_input);
         subscriptionPriceEditText = view.findViewById(R.id.price_input);
+        previewImageView = view.findViewById(R.id.previewImageView);
+
+        // Image upload logic
+        View imageUploadCard = view.findViewById(R.id.imageUploadCard);
+        imageUploadCard.setOnClickListener(v -> openImagePicker());
 
         // Populate spinners
         populateSpinner(categorySpinner, List.of("Entertainment", "Productivity & Tools", "Cloud Storage", "Membership", "Food & Delivery"));
@@ -66,19 +87,27 @@ public class AddSubscriptionFragment extends Fragment {
         populateSpinner(billingSpinner, List.of("Monthly", "Quarterly", "Annually"));
         populateSpinner(paymentMethodSpinner, List.of("E-wallet (Gcash)", "Debit Card"));
 
+        // Date pickers
         setupDatePicker(view, R.id.start_date_container, startDateDisplay, "Select Start Date");
         setupDatePicker(view, R.id.next_billing_date_container, nextBillingDateDisplay, "Select Next Billing Date");
-
         setNextBillingMinDate(Calendar.getInstance());
 
+        // Submit button
         Button submitBtn = view.findViewById(R.id.add_sub_button);
         submitBtn.setOnClickListener(v -> {
             if (isFormValid()) {
+                // You can also use selectedImageUri here to upload or store it
                 Navigation.findNavController(view).navigate(R.id.action_addSubscriptions_to_subscriptionsFragment);
             } else {
                 Toast.makeText(requireContext(), "Please fill in all required fields.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        imagePickerLauncher.launch(Intent.createChooser(intent, "Select Image"));
     }
 
     private void populateSpinner(Spinner spinner, List<String> items) {
@@ -119,7 +148,7 @@ public class AddSubscriptionFragment extends Fragment {
     }
 
     private void setNextBillingMinDate(Calendar minDate) {
-        // set date restrictions base on monthly, quarterly and annually
+        // Future: Restrict the next billing date based on selected start + cycle
     }
 
     private boolean isFormValid() {

@@ -55,7 +55,7 @@
     <style name="subscription_id">
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.03</item>
-        <item name="android:textColor">#808080</item>
+        <item name="android:textColor">#000564</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
@@ -82,5 +82,12 @@
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="upload_an_image">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">#000564</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
     </style>
 </resources>
