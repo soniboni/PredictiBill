@@ -85,6 +85,14 @@
     </style>
 
 
+    <!-- Change Password -->
+    <style name="password_texts">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/password_text_grey</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+
     <!-- Help  & Privacy Notice  -->
     <style name="headings">
         <item name="android:textSize">20sp</item>
