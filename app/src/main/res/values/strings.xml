@@ -57,7 +57,9 @@
     <string name="submit_button">+</string>
 
     <!-- SUBSCRIPTION DETAIL FRAGMENT TEXT -->
+    <string name="logo">Logo</string>
     <string name="back_button">Back button</string>
+    <string name="u_subscription_image_card">Subscription Image</string>
     <string name="subs_details_lbl">Subscription Details</string>
     <string name="subs_details_name_lbl">Name</string>
     <string name="subs_details_name">Netflix</string>
@@ -79,4 +81,8 @@
     <string name="subs_details_paymentmethod">E-Wallet (Gcash)</string>
     <string name="subs_details_lastpaiddue_lbl">Last Paid Due</string>
     <string name="subs_details_lastpaiddue">March 23, 2025. #PAY0001</string>
+    <string name="mark_as_paid_btn">Mark as Paid</string>
+    <string name="cancel_subs_btn">Cancel Subscription</string>
+    <string name="edit_info_btn">Edit Information</string>
+    <string name="delete_subs_btn">Delete Subscription</string>
 </resources>

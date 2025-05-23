@@ -12,10 +12,10 @@ import com.example.predictibill.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SubscriptionDetailsFragment#newInstance} factory method to
+ * Use the {@link SubscriptionDetailsUpcomingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SubscriptionDetailsFragment extends Fragment {
+public class SubscriptionDetailsUpcomingFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class SubscriptionDetailsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SubscriptionDetailsFragment() {
+    public SubscriptionDetailsUpcomingFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class SubscriptionDetailsFragment extends Fragment {
      * @return A new instance of fragment SubscriptionDetails.
      */
     // TODO: Rename and change types and number of parameters
-    public static SubscriptionDetailsFragment newInstance(String param1, String param2) {
-        SubscriptionDetailsFragment fragment = new SubscriptionDetailsFragment();
+    public static SubscriptionDetailsUpcomingFragment newInstance(String param1, String param2) {
+        SubscriptionDetailsUpcomingFragment fragment = new SubscriptionDetailsUpcomingFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class SubscriptionDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subscription_details, container, false);
+        return inflater.inflate(R.layout.fragment_subscription_details_upcoming, container, false);
     }
 }
