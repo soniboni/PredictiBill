@@ -10,8 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.predictibill.R;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SubscriptionsFragment extends Fragment {
 
@@ -29,9 +35,55 @@ public class SubscriptionsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button Add_subButton = view.findViewById(R.id.submit_button);
-        Add_subButton.setOnClickListener(v -> {
+        List<Subscription> subscriptionList = new ArrayList<>();
+        // Add dummy data or previous subscriptions if any
+        subscriptionList.add(new Subscription("Netflix", 299.0, "Entertainment", "Upcoming", "Monthly", "April 1, 2025", "May 1, 2025"));
+        subscriptionList.add(new Subscription("Spotify", 149.0, "Music", "Upcoming", "Monthly", "April 16, 2025", "May 16, 2025"));
+
+        // Check if arguments bundle contains new subscription
+        if (getArguments() != null && getArguments().containsKey("new_subscription")) {
+            Subscription newSub = (Subscription) getArguments().getSerializable("new_subscription");
+            subscriptionList.add(newSub);
+        }
+
+        RecyclerView recyclerView = view.findViewById(R.id.subscription_recycler_view);
+        SubscriptionAdapter adapter = new SubscriptionAdapter(subscriptionList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Setup Add button listener
+        Button addButton = view.findViewById(R.id.submit_button);
+        addButton.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_subscriptionsFragment_to_addSubscriptions);
         });
+    }
+
+    public static class Subscription implements Serializable {
+        private String name;
+        private double price;
+        private String category;
+        private String status;
+        private String billingCycle;
+        private String startDate;
+        private String dueDate;
+
+        public Subscription(String name, double price, String category, String status, String billingCycle, String startDate, String dueDate) {
+            this.name = name;
+            this.price = price;
+            this.category = category;
+            this.status = status;
+            this.billingCycle = billingCycle;
+            this.startDate = startDate;
+            this.dueDate = dueDate;
+        }
+
+        // Getters for all fields here
+        public String getName() { return name; }
+        public double getPrice() { return price; }
+        public String getCategory() { return category; }
+        public String getStatus() { return status; }
+        public String getBillingCycle() { return billingCycle; }
+        public String getStartDate() { return startDate; }
+        public String getDueDate() { return dueDate; }
     }
 }

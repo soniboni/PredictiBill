@@ -23,6 +23,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -96,8 +97,21 @@ public class AddSubscriptionFragment extends Fragment {
         Button submitBtn = view.findViewById(R.id.add_sub_button);
         submitBtn.setOnClickListener(v -> {
             if (isFormValid()) {
-                // You can also use selectedImageUri here to upload or store it
-                Navigation.findNavController(view).navigate(R.id.action_addSubscriptions_to_subscriptionsFragment);
+                // Create subscription from inputs
+                String name = subscriptionNameEditText.getText().toString();
+                double price = Double.parseDouble(subscriptionPriceEditText.getText().toString());
+                String category = categorySpinner.toString();
+                String status = statusSpinner.toString();
+                String billingCycle = billingSpinner.toString();
+                String startDate = startDateDisplay.getText().toString();
+                String dueDate = nextBillingDateDisplay.getText().toString();
+
+                SubscriptionsFragment.Subscription newSub = new SubscriptionsFragment.Subscription(name, price, category, status, billingCycle, startDate, dueDate);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("new_subscription", newSub);
+
+                Navigation.findNavController(v).navigate(R.id.action_addSubscriptions_to_subscriptionsFragment, bundle);
             } else {
                 Toast.makeText(requireContext(), "Please fill in all required fields.", Toast.LENGTH_SHORT).show();
             }
@@ -169,4 +183,6 @@ public class AddSubscriptionFragment extends Fragment {
     private boolean isSpinnerValid(Spinner spinner) {
         return spinner.getSelectedItem() != null && !spinner.getSelectedItem().toString().trim().isEmpty();
     }
+
+
 }
