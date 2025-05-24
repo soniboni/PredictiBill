@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.payments.PaymentsFragment">
+
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="35dp"
+        android:layout_height="37dp"
+        android:src="@drawable/logo_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067" />
+
+    <TextView
+        android:id="@+id/payments_txtlbl"
+        android:layout_width="329dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="2sp"
+        android:text="@string/payments"
+        android:textAppearance="@style/payments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_image" />
+
+    <TextView
+        android:id="@+id/browse_your_payments"
+        android:layout_width="329dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="-5sp"
+        android:text="@string/browse_your_payments"
+        android:textAppearance="@style/track_all_r"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/payments_txtlbl" />
+
+    <TextView
+        android:id="@+id/filter_by"
+        android:layout_width="332dp"
+        android:layout_height="27dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="-5sp"
+        android:text="@string/filter_by"
+        android:textAppearance="@style/filter_by"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/browse_your_payments"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/filter_chip_group"
+        android:layout_width="349dp"
+        android:layout_height="74dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="1dp"
+        android:padding="8dp"
+        app:chipSpacingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_by"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:checkable="true"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:text="Method"
+            android:textAppearance="@style/track_all_r"
+            android:textColor="@color/black"
+            app:chipCornerRadius="50dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:checkable="true"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:text="Category"
+            android:textAppearance="@style/track_all_r"
+            android:textColor="@color/black"
+            app:chipCornerRadius="50dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_billing_cycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:checkable="true"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:text="Billing Cycle"
+            android:textAppearance="@style/track_all_r"
+            android:textColor="@color/black"
+            app:chipCornerRadius="50dp" />
+    </com.google.android.material.chip.ChipGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
