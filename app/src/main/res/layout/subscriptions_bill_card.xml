@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="367dp"
     android:layout_height="64dp"
-    android:layout_marginBottom="12dp"
+    android:layout_margin="10dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/home_rectangle_4"
         android:padding="5dp">
 
         <!-- Icon -->
@@ -22,7 +23,6 @@
             android:scaleType="fitCenter"
             android:src="@drawable/bills_icon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.006"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -32,25 +32,22 @@
             android:id="@+id/bill_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="@string/bill_name"
             android:textAppearance="@style/bill_name"
-            app:layout_constraintBottom_toBottomOf="@+id/bill_dueon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.027"
             app:layout_constraintStart_toEndOf="@+id/bill_icon"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintVertical_bias="0.0" />
 
         <!-- Billing Cycle -->
         <TextView
             android:id="@+id/billing_cycle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="@string/billing_cycle"
             android:textAppearance="@style/billing_cycle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.027"
             app:layout_constraintStart_toEndOf="@+id/bill_icon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.515" />
@@ -60,14 +57,15 @@
             android:id="@+id/bill_dueon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="@string/bill_dueon"
             android:textAppearance="@style/bill_dueon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.027"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/bill_icon"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintVertical_bias="1.0" />
 
         <!-- Bill Due Date -->
         <TextView
