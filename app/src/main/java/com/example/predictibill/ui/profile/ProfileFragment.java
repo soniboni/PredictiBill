@@ -4,11 +4,19 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.predictibill.R;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,9 @@ import com.example.predictibill.R;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+    private SwitchMaterial in_app_reminders_toggle_button;
+    private SwitchMaterial email_alerts_toggle_button;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,18 +60,42 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    // A function for the Notifications Toggle Buttons (In-app reminders & Email Alerts)
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Initialize the toggle buttons
+        in_app_reminders_toggle_button = view.findViewById(R.id.in_app_reminders_toggle_button);
+        email_alerts_toggle_button = view.findViewById(R.id.email_alerts_toggle_button);
+
+        // Load saved preferences
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
+        boolean inAppReminders = prefs.getBoolean("in_app_reminders", false);
+        boolean emailAlerts = prefs.getBoolean("email_alerts", false);
+
+        // Set toggle states from preferences
+        in_app_reminders_toggle_button.setChecked(inAppReminders);
+        email_alerts_toggle_button.setChecked(emailAlerts);
+
+        // Set listeners to save preferences when toggles change and
+        // display toast messages to confirm that the toggle buttons work
+        in_app_reminders_toggle_button.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefs.edit().putBoolean("in_app_reminders", isChecked).apply();
+            String message = "In-app reminders " + (isChecked ? "enabled" : "disabled");
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+        });
+
+        email_alerts_toggle_button.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefs.edit().putBoolean("email_alerts", isChecked).apply();
+            String message = "Email alerts " + (isChecked ? "enabled" : "disabled");
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+        });
     }
 }
