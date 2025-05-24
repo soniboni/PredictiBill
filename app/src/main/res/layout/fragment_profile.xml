@@ -178,7 +178,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- IN-PROGRESS: In-app Reminders Toggle Button -->
+    <!-- In-app Reminders Toggle Button -->
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/in_app_reminders_toggle_button"
         android:layout_width="wrap_content"
@@ -188,7 +188,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.468"
-        app:layout_constraintHorizontal_bias="0.890"
+        app:layout_constraintHorizontal_bias="0.895"
         android:checkable="true"
         app:thumbTint="@color/toggle_button_thumb_color"
         app:trackTint="@color/toggle_button_track_color" />
@@ -224,7 +224,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- IN-PROGRESS: Email Alerts Toggle Button -->
+    <!-- Email Alerts Toggle Button -->
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/email_alerts_toggle_button"
         android:layout_width="wrap_content"
@@ -234,7 +234,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.526"
-        app:layout_constraintHorizontal_bias="0.890"
+        app:layout_constraintHorizontal_bias="0.895"
         android:checkable="true"
         app:thumbTint="@color/toggle_button_thumb_color"
         app:trackTint="@color/toggle_button_track_color" />
@@ -254,28 +254,28 @@
         android:text="@string/profile_preference_lbl"
         android:textAppearance="@style/main_bold_subheadings"/>
 
-    <!-- IN-PROGRESS: Subheadings - Currency (PHP & USD) -->
+    <!-- Subheadings - Currency (PHP & USD) -->
+    <!-- Bottom Divider Line -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/profile_currency_dropdown"
         android:layout_width="340dp"
         android:layout_height="45dp"
         android:backgroundTint="@color/white"
-        app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.635"
-        app:layout_constraintHorizontal_bias="0.490"
-        android:text="@string/profile_currency_lbl"
-        android:textSize="14sp"
-        android:textColor="#383636"
+        android:clickable="false"
         android:fontFamily="@font/poppins_regular"
         android:gravity="start|center_vertical"
-        android:clickable="false"
+        android:text="@string/profile_currency_lbl"
+        android:textColor="#383636"
+        android:textSize="14sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.635"
         tools:ignore="MissingConstraints" />
 
-    <!-- Bottom Divider Line -->
     <View
         android:layout_width="340dp"
         android:layout_height="1.5dp"
@@ -287,7 +287,7 @@
     <!-- Currency Spinner -->
     <Spinner
         android:id="@+id/currency_spinner"
-        android:layout_width="95dp"
+        android:layout_width="80dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -295,11 +295,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.634"
         app:layout_constraintHorizontal_bias="0.855"
+        android:padding="3dp"
         android:background="@drawable/sub_rectangle"
         android:spinnerMode="dropdown"
+        android:popupBackground="@drawable/dropdown_popup_bg"
         android:textAppearance="@style/spinner_texts"
-        android:textAlignment="center"/>
-        <!-- android:popupBackground="@drawable/dropdown_popup_bg" -->
+        android:textAlignment="gravity"/>
+
+    <!-- Arrow down icon -->
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Open Category"
+        android:src="@drawable/arrow_down_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.634"
+        app:layout_constraintHorizontal_bias="0.867" />
 
 
     <!-- Bold Subheadings - About  -->

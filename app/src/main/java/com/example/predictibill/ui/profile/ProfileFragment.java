@@ -13,50 +13,29 @@ import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.predictibill.R;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileFragment extends Fragment {
 
     private SwitchMaterial in_app_reminders_toggle_button;
     private SwitchMaterial email_alerts_toggle_button;
+    private Spinner currency_spinner;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    // Currency options
+    private static final String[] currencies = {"PHP", "USD"};
+
 
     public ProfileFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -67,22 +46,37 @@ public class ProfileFragment extends Fragment {
     }
 
     // A function for the Notifications Toggle Buttons (In-app reminders & Email Alerts)
+    // and Currency Spinner
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize the toggle buttons
+        // Initialize the toggle buttons and spinner
         in_app_reminders_toggle_button = view.findViewById(R.id.in_app_reminders_toggle_button);
         email_alerts_toggle_button = view.findViewById(R.id.email_alerts_toggle_button);
+        currency_spinner = view.findViewById(R.id.currency_spinner);
 
         // Load saved preferences
         SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
         boolean inAppReminders = prefs.getBoolean("in_app_reminders", false);
         boolean emailAlerts = prefs.getBoolean("email_alerts", false);
+
+        // Set PHP as default currency only if it doesn't already exist
+        if (!prefs.contains("selected_currency")) {
+            editor.putString("selected_currency", "PHP");
+            editor.apply();
+        }
+
+        String savedCurrency = prefs.getString("selected_currency", "PHP");
 
         // Set toggle states from preferences
         in_app_reminders_toggle_button.setChecked(inAppReminders);
         email_alerts_toggle_button.setChecked(emailAlerts);
+
+        // Setup currency spinner
+        setupCurrencySpinner(savedCurrency);
 
         // Set listeners to save preferences when toggles change and
         // display toast messages to confirm that the toggle buttons work
@@ -97,5 +91,80 @@ public class ProfileFragment extends Fragment {
             String message = "Email alerts " + (isChecked ? "enabled" : "disabled");
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void setupCurrencySpinner(String savedCurrency) {
+        // Custom adapter to apply gray text color
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                currencies
+        ) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                ((TextView) view).setTextColor(getResources().getColor(R.color.brown, null)); // Main spinner text
+                return view;
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                ((TextView) view).setTextColor(getResources().getColor(R.color.brown, null)); // Dropdown items
+                return view;
+            }
+        };
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currency_spinner.setAdapter(adapter);
+
+        // Set default selection
+        int savedPosition = getCurrencyPosition(savedCurrency);
+        if (savedPosition == -1) savedPosition = 0; // fallback to PHP if invalid
+        currency_spinner.setSelection(savedPosition, false); // false = avoid triggering listener
+
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
+
+        currency_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            private boolean isFirstSelection = true;
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (isFirstSelection) {
+                    isFirstSelection = false;
+                    return; // skip first call on setup
+                }
+
+                String selectedCurrency = currencies[position];
+                String previousCurrency = prefs.getString("selected_currency", "PHP");
+
+                // Save new selection
+                prefs.edit().putString("selected_currency", selectedCurrency).apply();
+
+                if (!selectedCurrency.equals(previousCurrency)) {
+                        Toast.makeText(requireContext(), "Currency changed to " + selectedCurrency, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+    }
+
+    private int getCurrencyPosition(String currency) {
+        for (int i = 0; i < currencies.length; i++) {
+            if (currencies[i].equalsIgnoreCase(currency)) {
+                return i;
+            }
+        }
+        return 0; // Default to PHP
+    }
+
+    // Utility method to get the currently selected currency from anywhere in your app
+    public static String getSelectedCurrency(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("user_settings", Context.MODE_PRIVATE);
+        return prefs.getString("selected_currency", "PHP");
     }
 }
