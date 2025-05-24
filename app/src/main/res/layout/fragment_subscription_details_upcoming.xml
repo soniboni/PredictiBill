@@ -32,12 +32,10 @@
             android:id="@+id/sub_detail_backBtn"
             android:layout_width="53dp"
             android:layout_height="53dp"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
             android:background="@drawable/back_button"
             android:contentDescription="@string/back_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
@@ -46,11 +44,12 @@
             android:id="@+id/sub_details_lbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="28dp"
             android:text="@string/subs_details_lbl"
             android:textAppearance="@style/subs_details_lbl"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.152"
+            app:layout_constraintHorizontal_bias="0.054"
             app:layout_constraintStart_toEndOf="@+id/sub_detail_backBtn"
             app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
@@ -76,10 +75,10 @@
                 android:layout_gravity="center">
 
                 <ImageView
-                    android:id="@+id/u_subscription_image_card"
+                    android:id="@+id/upcoming_subscription_image_card"
                     android:layout_width="346dp"
                     android:layout_height="124dp"
-                    android:contentDescription="@string/u_subscription_image_card"
+                    android:contentDescription="@string/upcoming_subscription_image_card"
                     android:src="@drawable/subscription_image_card"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -99,17 +98,18 @@
             android:layout_marginTop="15dp"
             android:text="@string/subs_details_name_lbl"
             android:textAppearance="@style/subs_details_name_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subscription_image_card" />
 
         <TextView
-            android:id="@+id/subs_details_name"
+            android:id="@+id/upcomingsubs_details_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="4dp"
-            android:text="@string/subs_details_name"
+            android:text="@string/upcomingsubs_details_name"
             android:textAppearance="@style/subs_details_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -131,14 +131,14 @@
             app:layout_constraintTop_toBottomOf="@+id/subscription_image_card" />
 
         <TextView
-            android:id="@+id/subs_details_subsID"
+            android:id="@+id/upcomingsubs_details_subsID"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="30dp"
             android:gravity="end|center_vertical"
-            android:text="@string/subs_details_subsID"
+            android:text="@string/upcomingsubs_details_subsID"
             android:textAppearance="@style/subs_details_subsID"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -156,16 +156,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_name" />
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_name" />
 
         <TextView
-            android:id="@+id/subs_details_note"
+            android:id="@+id/upcomingsubs_details_note"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="28dp"
-            android:text="@string/subs_details_note"
+            android:text="@string/upcomingsubs_details_note"
             android:textAppearance="@style/subs_details_note"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -183,10 +183,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_note" />
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_note" />
 
         <ImageView
-            android:id="@+id/category_name"
+            android:id="@+id/upcoming_category_name"
             android:layout_width="87dp"
             android:layout_height="30dp"
             android:layout_marginTop="12dp"
@@ -196,7 +196,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_note" />
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_note" />
 
         <!-- Status Section -->
         <TextView
@@ -213,7 +213,7 @@
             app:layout_constraintTop_toBottomOf="@+id/subs_details_category_lbl" />
 
         <ImageView
-            android:id="@+id/status"
+            android:id="@+id/upcoming_status"
             android:layout_width="87dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -223,7 +223,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category_name" />
+            app:layout_constraintTop_toBottomOf="@+id/upcoming_category_name" />
 
         <!-- Start Date Section -->
         <TextView
@@ -240,19 +240,19 @@
             app:layout_constraintTop_toBottomOf="@+id/subs_details_status_lbl" />
 
         <TextView
-            android:id="@+id/subs_details_startdate"
+            android:id="@+id/upcomingsubs_details_startdate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="30dp"
             android:gravity="end|center_vertical"
-            android:text="@string/subs_details_startdate"
+            android:text="@string/upcomingsubs_details_startdate"
             android:textAppearance="@style/subs_details_startdate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_note" />
+            app:layout_constraintTop_toBottomOf="@+id/upcoming_status" />
 
         <!-- Next Billing Date Section -->
         <TextView
@@ -266,22 +266,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_startdate" />
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_startdate_lbl" />
 
         <TextView
-            android:id="@+id/subs_details_nextbilldate"
+            android:id="@+id/upcomingsubs_details_nextbilldate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:gravity="end|center_vertical"
-            android:text="@string/subs_details_nextbilldate"
+            android:text="@string/upcomingsubs_details_nextbilldate"
             android:textAppearance="@style/subs_details_nextbilldate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.895"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_startdate" />
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_startdate" />
 
         <!-- Billing Cycle Section -->
         <TextView
@@ -295,22 +295,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_nextbilldate" />
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_nextbilldate_lbl" />
 
         <TextView
-            android:id="@+id/subs_details_billingcycle"
+            android:id="@+id/upcomingsubs_details_billingcycle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:gravity="end|center_vertical"
-            android:text="@string/subs_details_billingcycle"
+            android:text="@string/upcomingsubs_details_billingcycle"
             android:textAppearance="@style/subs_details_billingcycle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.907"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_nextbilldate" />
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_nextbilldate" />
 
         <!-- Price Section -->
         <TextView
@@ -324,22 +324,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_billingcycle" />
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_billingcycle_lbl" />
 
         <TextView
-            android:id="@+id/subs_details_price"
+            android:id="@+id/upcomingsubs_details_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:gravity="end|center_vertical"
-            android:text="@string/subs_details_price"
+            android:text="@string/upcomingsubs_details_price"
             android:textAppearance="@style/subs_details_price"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.904"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_billingcycle" />
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_billingcycle" />
 
         <!-- Payment Method Section -->
         <TextView
@@ -353,22 +353,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_price" />
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_price_lbl" />
 
         <TextView
-            android:id="@+id/subs_details_paymentmethod"
+            android:id="@+id/upcomingsubs_details_paymentmethod"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:gravity="end|center_vertical"
-            android:text="@string/subs_details_paymentmethod"
+            android:text="@string/upcomingsubs_details_paymentmethod"
             android:textAppearance="@style/subs_details_paymentmethod"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.888"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_price" />
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_price" />
 
         <!-- Last Paid Due Section -->
         <TextView
@@ -382,30 +382,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_paymentmethod" />
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_paymentmethod_lbl" />
 
         <TextView
-            android:id="@+id/subs_details_lastpaiddue"
+            android:id="@+id/upcomingsubs_details_lastpaiddue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:gravity="end|center_vertical"
-            android:text="@string/subs_details_lastpaiddue"
+            android:text="@string/upcomingsubs_details_lastpaiddue"
             android:textAppearance="@style/subs_details_lastpaiddue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_paymentmethod" />
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_paymentmethod" />
 
 
-            <!-- Mark As Paid Button -->
-
-        <!-- Cancel Subscription Button -->
-
-        <!-- Edit Information Button -->
-
+        <!-- Mark As Paid Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mark_as_paid_btn"
             android:layout_width="150dp"
@@ -422,6 +417,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subs_details_lastpaiddue_lbl" />
 
+        <!-- Cancel Subscription Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cancel_subs_btn"
             android:layout_width="180dp"
@@ -436,10 +432,11 @@
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/mark_as_paid_btn"
-            app:layout_constraintTop_toBottomOf="@+id/subs_details_lastpaiddue"
+            app:layout_constraintTop_toBottomOf="@+id/upcomingsubs_details_lastpaiddue"
             app:strokeColor="@color/light_brown"
             app:strokeWidth="3dp" />
 
+        <!-- Edit Information Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/edit_info_btn"
             android:layout_width="340dp"
