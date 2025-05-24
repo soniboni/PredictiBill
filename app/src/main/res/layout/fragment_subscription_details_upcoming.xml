@@ -244,7 +244,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="13dp"
             android:layout_marginEnd="30dp"
             android:gravity="end|center_vertical"
             android:text="@string/upcomingsubs_details_startdate"
@@ -401,9 +401,12 @@
 
 
         <!-- Mark As Paid Button -->
+
+        <!-- Cancel Subscription Button -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mark_as_paid_btn"
-            android:layout_width="150dp"
+            android:layout_width="155dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
@@ -417,7 +420,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subs_details_lastpaiddue_lbl" />
 
-        <!-- Cancel Subscription Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cancel_subs_btn"
             android:layout_width="180dp"
