@@ -82,9 +82,20 @@
     <string name="upcomingsubs_details_subsID">SUB01</string>
     <string name="upcomingsubs_details_note">For the whole family subscription.</string>
     <string name="upcomingsubs_details_startdate">April 23, 2023</string>
-    <string name="upcomingsubs_details_nextbilldate">April 23, 2025</string>
+    <string name="upcomingsubs_details_nextbilldate">June 23, 2025</string>
     <string name="upcomingsubs_details_billingcycle">Monthly</string>
     <string name="upcomingsubs_details_price">₱549.00</string>
     <string name="upcomingsubs_details_paymentmethod">E-Wallet (Gcash)</string>
-    <string name="upcomingsubs_details_lastpaiddue">March 23, 2025. #PAY0001</string>
+    <string name="upcomingsubs_details_lastpaiddue">May 23, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS UPCOMING (VALUES) FRAGMENT TEXT -->
+    <string name="paidsubs_details_name">Notion Plus</string>
+    <string name="paidsubs_details_subsID">SUB01</string>
+    <string name="paidsubs_details_note">For the whole family subscription.</string>
+    <string name="paidsubs_details_startdate">January 12, 2024</string>
+    <string name="paidsubs_details_nextbilldate">May 12, 2025</string>
+    <string name="paidsubs_details_billingcycle">Monthly</string>
+    <string name="paidsubs_details_price">₱800.00</string>
+    <string name="paidsubs_details_paymentmethod">Debit Card</string>
+    <string name="paidsubs_details_lastpaiddue">April 12, 2025. #PAY0001</string>
 </resources>
