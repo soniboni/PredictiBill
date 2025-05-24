@@ -76,6 +76,7 @@
     <string name="cancel_subs_btn">Cancel Subscription</string>
     <string name="edit_info_btn">Edit Information</string>
     <string name="delete_subs_btn">Delete Subscription</string>
+    <string name="restore_subs_btn">Restore Subscription</string>
 
     <!-- SUBSCRIPTION DETAILS UPCOMING (VALUES) FRAGMENT TEXT -->
     <string name="upcomingsubs_details_name">Netflix</string>
@@ -109,4 +110,15 @@
     <string name="overduesubs_details_price">₱1100.00</string>
     <string name="overduesubs_details_paymentmethod">Debit Card</string>
     <string name="overduesubs_details_lastpaiddue">February 23, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS CANCELLED (VALUES) FRAGMENT TEXT -->
+    <string name="cancelledsubs_details_name">Lazada VIP</string>
+    <string name="cancelledsubs_details_subsID">SUB01</string>
+    <string name="cancelledsubs_details_note">Shopping Galore</string>
+    <string name="cancelledsubs_details_startdate">March 25, 2022</string>
+    <string name="cancelledsubs_details_nextbilldate">February 25, 2025</string>
+    <string name="cancelledsubs_details_price">₱450.00</string>
+    <string name="cancelledsubs_details_billingcycle">Monthly</string>
+    <string name="cancelledsubs_details_paymentmethod">E-Wallet (Gcash)</string>
+    <string name="cancelledsubs_details_lastpaiddue">January 25, 2025. #PAY0001</string>
 </resources>

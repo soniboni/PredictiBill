@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.subscriptions.SubscriptionDetailsUpcomingFragment"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="32dp">
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="58dp"
+            android:contentDescription="@string/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_blue" />
+
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/sub_detail_backBtn"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/back_button"
+            android:contentDescription="@string/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Logo" />
+
+        <!-- Subscription Details Label -->
+        <TextView
+            android:id="@+id/sub_details_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/subs_details_lbl"
+            android:textAppearance="@style/subs_details_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toEndOf="@+id/sub_detail_backBtn"
+            app:layout_constraintTop_toBottomOf="@+id/Logo" />
+
+        <!-- Subscription Image Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/subscription_image_card"
+            android:layout_width="346dp"
+            android:layout_height="124dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sub_details_lbl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/cancelled_subscription_image_card"
+                    android:layout_width="346dp"
+                    android:layout_height="124dp"
+                    android:contentDescription="@string/upcoming_subscription_image_card"
+                    android:src="@drawable/subscription_image_card"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Name Section -->
+        <TextView
+            android:id="@+id/subs_details_name_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/subs_details_name_lbl"
+            android:textAppearance="@style/subs_details_name_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_image_card" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="200dp"
+            android:gravity="start|center_vertical"
+            android:text="@string/cancelledsubs_details_name"
+            android:textAppearance="@style/subs_details_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_name_lbl" />
+
+        <!-- Subscription ID Section -->
+        <TextView
+            android:id="@+id/subs_details_subsID_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/subs_details_subsID_lbl"
+            android:textAppearance="@style/subs_details_subsID_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_image_card" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_subsID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="260dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/cancelledsubs_details_subsID"
+            android:textAppearance="@style/subs_details_subsID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_subsID_lbl" />
+
+        <!-- Note Section -->
+        <TextView
+            android:id="@+id/subs_details_note_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/subs_details_note_lbl"
+            android:textAppearance="@style/subs_details_note_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_name" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="28dp"
+            android:text="@string/cancelledsubs_details_note"
+            android:textAppearance="@style/subs_details_note"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_note_lbl" />
+
+        <!-- Category Section -->
+        <TextView
+            android:id="@+id/subs_details_category_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_category_lbl"
+            android:textAppearance="@style/subs_details_category_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_note" />
+
+        <ImageView
+            android:id="@+id/cancelled_category_name"
+            android:layout_width="87dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="30dp"
+            android:contentDescription="@string/category"
+            android:src="@drawable/category_name_membership"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_note" />
+
+        <!-- Status Section -->
+        <TextView
+            android:id="@+id/subs_details_status_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_status_lbl"
+            android:textAppearance="@style/subs_details_status_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_category_lbl" />
+
+        <ImageView
+            android:id="@+id/cancelled_status"
+            android:layout_width="87dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="23dp"
+            android:contentDescription="@string/status"
+            android:src="@drawable/status_cancelled"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelled_category_name" />
+
+        <!-- Start Date Section -->
+        <TextView
+            android:id="@+id/subs_details_startdate_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_startdate_lbl"
+            android:textAppearance="@style/subs_details_startdate_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_status_lbl" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_startdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/cancelledsubs_details_startdate"
+            android:textAppearance="@style/subs_details_startdate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelled_status" />
+
+        <!-- Next Billing Date Section -->
+        <TextView
+            android:id="@+id/subs_details_nextbilldate_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_nextbilldate_lbl"
+            android:textAppearance="@style/subs_details_nextbilldate_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_startdate_lbl" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_nextbilldate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/cancelledsubs_details_nextbilldate"
+            android:textAppearance="@style/subs_details_nextbilldate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.895"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_startdate" />
+
+        <!-- Billing Cycle Section -->
+        <TextView
+            android:id="@+id/subs_details_billingcycle_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_billingcycle_lbl"
+            android:textAppearance="@style/subs_details_billingcycle_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_nextbilldate_lbl" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_billingcycle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/cancelledsubs_details_billingcycle"
+            android:textAppearance="@style/subs_details_billingcycle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_nextbilldate" />
+
+        <!-- Price Section -->
+        <TextView
+            android:id="@+id/subs_details_price_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_price_lbl"
+            android:textAppearance="@style/subs_details_price_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_billingcycle_lbl" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/cancelledsubs_details_price"
+            android:textAppearance="@style/subs_details_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.904"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_billingcycle" />
+
+        <!-- Payment Method Section -->
+        <TextView
+            android:id="@+id/subs_details_paymentmethod_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_paymentmethod_lbl"
+            android:textAppearance="@style/subs_details_paymentmethod_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_price_lbl" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_paymentmethod"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/cancelledsubs_details_paymentmethod"
+            android:textAppearance="@style/subs_details_paymentmethod"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.888"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_price" />
+
+        <!-- Last Paid Due Section -->
+        <TextView
+            android:id="@+id/subs_details_lastpaiddue_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subs_details_lastpaiddue_lbl"
+            android:textAppearance="@style/subs_details_lastpaiddue_lbl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subs_details_paymentmethod_lbl" />
+
+        <TextView
+            android:id="@+id/cancelledsubs_details_lastpaiddue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="end|center_vertical"
+            android:text="@string/cancelledsubs_details_lastpaiddue"
+            android:textAppearance="@style/subs_details_lastpaiddue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_paymentmethod" />
+
+        <!-- Cancel Subscription Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_subs_btn"
+            android:layout_width="340dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/restore_subs_btn"
+            android:textColor="@color/brown"
+            android:textSize="15sp"
+            app:cornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_lastpaiddue"
+            app:strokeColor="@color/light_brown"
+            app:strokeWidth="3dp" />
+
+        <!-- Edit Information Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_info_btn"
+            android:layout_width="340dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/edit_info_btn"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancel_subs_btn" />
+
+        <!-- Delete Subscription Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/delete_subs_btn"
+            android:layout_width="340dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/delete_subs_btn"
+            android:textColor="@color/brown"
+            android:textSize="15sp"
+            app:cornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_info_btn"
+            app:strokeColor="@color/red"
+            app:strokeWidth="3dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
