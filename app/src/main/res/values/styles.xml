@@ -271,4 +271,61 @@
         <item name="android:textColor">@color/brown</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
+
+    <!-- Subscriptions Detail Fragment Buttons (Dialog Box) -->
+    <style name="dialog_box_markaspaid">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="dialog_box_markaspaidnote">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/light_brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="dialog_box_savechanges">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="dialog_box_savechangesnote">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/light_brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="dialog_box_cancelsubs">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="dialog_box_cancelsubsnote">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/light_brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="dialog_box_deletesubs">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="dialog_box_deletesubsnote">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/light_brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
 </resources>

@@ -8,7 +8,7 @@
     <string name="payments_icon">Payments</string>
     <string name="profile_icon">Profile</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- HEADER TEXT -->
     <string name="subscriptions_txt">Subscriptions</string>
     <string name="payments_txt">Payments</string>
     <string name="profile_txt">Profile</string>
@@ -121,4 +121,29 @@
     <string name="cancelledsubs_details_billingcycle">Monthly</string>
     <string name="cancelledsubs_details_paymentmethod">E-Wallet (Gcash)</string>
     <string name="cancelledsubs_details_lastpaiddue">January 25, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS FRAGMENTS BUTTONS (DIALOG BOX) TEXT -->
+    <string name="image_view_question_mark">Question Mark</string>
+    <string name="image_view_exclamation_mark">Exclamation Mark</string>
+    <string name="mark_subs_as_paid_lbl">Mark Subscription as Paid?</string>
+    <string name="mark_subs_as_paid_note">This will update your subscription status\nto “Paid” for this billing cycle.</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="confirm_btn">Confirm</string>
+    <string name="save_changes_lbl">Save Changes?</string>
+    <string name="save_changes_note">You’ve made changes to this subscription.\nWould you like to save them?</string>
+    <string name="discard_btn">Discard</string>
+    <string name="save_changes_btn">Save Changes</string>
+    <string name="restore_subs_lbl">Restore Subscription?</string>
+    <string name="restore_subs_note">This will re-activate the canceled subscription\nand resume tracking.</string>
+    <string name="restore_btn">Restore</string>
+    <string name="cancel_subs_lbl">Cancel Subscription?</string>
+    <string name="cancel_subs_note">This will stop tracking this subscription\nand mark it as canceled.\nYou can restore it anytime.</string>
+    <string name="keep_tracking_btn">Keep Tracking</string>
+    <string name="delete_subs_lbl">Delete Subscription?</string>
+    <string name="delete_subs_note">This will permanently remove this subscription\nfrom your tracker. This action can’t be undone.</string>
+    <string name="delete_permanently_btn">Delete Permanently</string>
+
+
+
+
 </resources>

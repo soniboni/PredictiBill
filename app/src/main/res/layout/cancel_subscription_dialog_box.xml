@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="230dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_view_exclamation_mark"
+            android:layout_width="23dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="25dp"
+            android:contentDescription="@string/image_view_exclamation_mark"
+            android:src="@drawable/dialog_box_exclamationmark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cancel_subs_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/cancel_subs_lbl"
+            android:textAppearance="@style/dialog_box_cancelsubs"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_exclamation_mark"
+            app:layout_constraintStart_toStartOf="@+id/image_view_exclamation_mark"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_exclamation_mark" />
+
+        <TextView
+            android:id="@+id/cancel_subs_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:text="@string/cancel_subs_note"
+            android:textAppearance="@style/dialog_box_cancelsubsnote"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancel_subs_lbl" />
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancel_subs_note">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/red"
+                android:fontFamily="@font/poppins_light"
+                android:text="@string/cancel_subs_btn"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:cornerRadius="5dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/confirm_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_light"
+                android:text="@string/keep_tracking_btn"
+                android:textColor="@color/brown"
+                android:textSize="12sp"
+                app:cornerRadius="5dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/light_brown"
+                app:strokeWidth="2dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
