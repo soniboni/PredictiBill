@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -39,5 +40,8 @@ public class SubscriptionDetailsUpcomingFragment extends Fragment {
 
         ImageButton backButton = view.findViewById(R.id.sub_detail_upcoming_backBtn);
         backButton.setOnClickListener(v -> NavHostFragment.findNavController(this).navigateUp());
+
+        Button markAsPaidButton = view.findViewById(R.id.upcomingsubs_details_mark_as_paid_btn);
+        markAsPaidButton.setOnClickListener(v -> NavHostFragment.findNavController(this).navigate(R.id.action_subscriptionDetailsUpcoming_to_subscriptionDetailsPaid));
     }
 }

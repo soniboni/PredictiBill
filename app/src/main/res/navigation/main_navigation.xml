@@ -59,6 +59,11 @@
         <action
             android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
+
+        <!--Action to navigate to Subscription Details (Paid) Fragment when "Mark As Paid" button is clicked -->
+        <action
+            android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionDetailsPaid"
+            app:destination="@id/navigation_subscription_details_paid" />
     </fragment>
 
     <!-- Subscription Details (Paid) Fragment -->
@@ -83,6 +88,11 @@
         <action
             android:id="@+id/action_subscriptionDetailsOverdue_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
+
+        <!--Action to navigate to Subscription Details (Paid) Fragment when "Mark As Paid" button is clicked -->
+        <action
+            android:id="@+id/action_subscriptionDetailsOverdue_to_subscriptionDetailsPaid"
+            app:destination="@id/navigation_subscription_details_paid" />
     </fragment>
 
     <!-- Subscription Details (Cancelled) Fragment -->

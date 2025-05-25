@@ -401,9 +401,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_paymentmethod" />
 
-        <!-- Cancel Subscription Button -->
+        <!-- Restore Subscription Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_subs_btn"
+            android:id="@+id/cancelledsubs_details_restore_subs_btn"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
@@ -423,7 +423,7 @@
 
         <!-- Edit Information Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/edit_info_btn"
+            android:id="@+id/cancelledsubs_details_edit_info_btn"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
@@ -436,11 +436,11 @@
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cancel_subs_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_restore_subs_btn" />
 
         <!-- Delete Subscription Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/delete_subs_btn"
+            android:id="@+id/cancelledsubs_details_delete_subs_btn"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
@@ -453,7 +453,7 @@
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_info_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cancelledsubs_details_edit_info_btn"
             app:strokeColor="@color/red"
             app:strokeWidth="3dp" />
 

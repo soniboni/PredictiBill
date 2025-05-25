@@ -403,7 +403,7 @@
 
         <!-- Cancel Subscription Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_subs_btn"
+            android:id="@+id/paidsubs_details_cancel_subs_btn"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
@@ -423,7 +423,7 @@
 
         <!-- Edit Information Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/edit_info_btn"
+            android:id="@+id/paidsubs_details_edit_info_btn"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
@@ -436,7 +436,7 @@
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cancel_subs_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/paidsubs_details_cancel_subs_btn" />
 
         <!-- Delete Subscription Button -->
         <com.google.android.material.button.MaterialButton
@@ -453,7 +453,7 @@
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_info_btn"
+            app:layout_constraintTop_toBottomOf="@+id/paidsubs_details_edit_info_btn"
             app:strokeColor="@color/red"
             app:strokeWidth="3dp" />
 
