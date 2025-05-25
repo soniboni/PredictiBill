@@ -61,7 +61,7 @@
             app:destination="@id/navigation_subscriptions" />
     </fragment>
 
-    <!-- Subscription Details (Upcoming) Fragment -->
+    <!-- Subscription Details (Paid) Fragment -->
     <fragment
         android:id="@+id/navigation_subscription_details_paid"
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsPaidFragment"
@@ -70,6 +70,18 @@
         <!--Action to return to Subscription Fragment-->
         <action
             android:id="@+id/action_subscriptionDetailsPaid_to_subscriptionsFragment"
+            app:destination="@id/navigation_subscriptions" />
+    </fragment>
+
+    <!-- Subscription Details (Overdue) Fragment -->
+    <fragment
+        android:id="@+id/navigation_subscription_details_overdue"
+        android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsOverdueFragment"
+        android:label="fragment_subscription_details_overdue"
+        tools:layout="@layout/fragment_subscription_details_overdue" >
+        <!--Action to return to Subscription Fragment-->
+        <action
+            android:id="@+id/action_subscriptionDetailsOverdue_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
     </fragment>
 
