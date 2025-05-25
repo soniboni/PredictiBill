@@ -36,11 +36,15 @@ public class SubscriptionsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         List<Subscription> subscriptionList = new ArrayList<>();
-        // Add dummy data or previous subscriptions if any
-        subscriptionList.add(new Subscription("Netflix", 299.0, "Entertainment", "Upcoming", "Monthly", "April 1, 2025", "May 1, 2025"));
-        subscriptionList.add(new Subscription("Spotify", 149.0, "Music", "Upcoming", "Monthly", "April 16, 2025", "May 16, 2025"));
 
-        // Check if arguments bundle contains new subscription
+        // Dummy data
+        subscriptionList.add(new Subscription("Netflix", 299.0, "Entertainment", "Upcoming", "Monthly",
+                "April 1, 2025", "May 1, 2025", "Credit Card", "Watch on weekends only"));
+
+        subscriptionList.add(new Subscription("Spotify", 149.0, "Music", "Upcoming", "Monthly",
+                "April 16, 2025", "May 16, 2025", "E-wallet", "Premium plan"));
+
+        // Handle passed subscription from addSubscription screen
         if (getArguments() != null && getArguments().containsKey("new_subscription")) {
             Subscription newSub = (Subscription) getArguments().getSerializable("new_subscription");
             subscriptionList.add(newSub);
@@ -51,7 +55,7 @@ public class SubscriptionsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Setup Add button listener
+        // Button to add new subscriptions
         Button addButton = view.findViewById(R.id.submit_button);
         addButton.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_subscriptionsFragment_to_addSubscriptions);
@@ -59,15 +63,18 @@ public class SubscriptionsFragment extends Fragment {
     }
 
     public static class Subscription implements Serializable {
-        private String name;
-        private double price;
-        private String category;
-        private String status;
-        private String billingCycle;
-        private String startDate;
-        private String dueDate;
+        private final String name;
+        private final double price;
+        private final String category;
+        private final String status;
+        private final String billingCycle;
+        private final String startDate;
+        private final String dueDate;
+        private final String paymentMethod;
+        private final String note;
 
-        public Subscription(String name, double price, String category, String status, String billingCycle, String startDate, String dueDate) {
+        public Subscription(String name, double price, String category, String status, String billingCycle,
+                            String startDate, String dueDate, String paymentMethod, String note) {
             this.name = name;
             this.price = price;
             this.category = category;
@@ -75,9 +82,10 @@ public class SubscriptionsFragment extends Fragment {
             this.billingCycle = billingCycle;
             this.startDate = startDate;
             this.dueDate = dueDate;
+            this.paymentMethod = paymentMethod;
+            this.note = note;
         }
 
-        // Getters for all fields here
         public String getName() { return name; }
         public double getPrice() { return price; }
         public String getCategory() { return category; }
@@ -85,5 +93,7 @@ public class SubscriptionsFragment extends Fragment {
         public String getBillingCycle() { return billingCycle; }
         public String getStartDate() { return startDate; }
         public String getDueDate() { return dueDate; }
+        public String getPaymentMethod() { return paymentMethod; }
+        public String getNote() { return note; }
     }
 }

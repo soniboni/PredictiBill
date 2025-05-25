@@ -63,50 +63,62 @@
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/filter_chip_group"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:padding="8dp"
-        app:chipSpacingHorizontal="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/filter_by"
-        app:singleSelection="true">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:singleSelection="true"
+        app:selectionRequired="false"
+        app:chipSpacingHorizontal="12dp"
+        app:singleLine="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_method"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="112dp"
+            android:layout_height="55dp"
             android:backgroundTint="@color/white"
             android:checkable="true"
+            android:checked="false"
             android:text="Category"
+            android:textAlignment="center"
             android:textAppearance="@style/track_all_r"
             android:textColor="@color/black"
             app:chipCornerRadius="50dp" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="112dp"
+            android:layout_height="55dp"
             android:backgroundTint="@color/white"
             android:checkable="true"
+            android:checked="false"
             android:text="Status"
+            android:textAlignment="center"
             android:textAppearance="@style/track_all_r"
             android:textColor="@color/black"
             app:chipCornerRadius="50dp" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_billing_cycle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="55dp"
             android:backgroundTint="@color/white"
             android:checkable="true"
+            android:checked="false"
             android:text="Billing Cycle"
+            android:textAlignment="center"
             android:textAppearance="@style/track_all_r"
             android:textColor="@color/black"
             app:chipCornerRadius="50dp" />
+
     </com.google.android.material.chip.ChipGroup>
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subscription_recycler_view"
@@ -116,8 +128,10 @@
         android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/submit_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_chip_group" />
+        app:layout_constraintTop_toBottomOf="@id/filter_chip_group"
+        app:layout_constraintVertical_bias="0.0" />
     <Button
         android:id="@+id/submit_button"
         android:layout_width="60dp"

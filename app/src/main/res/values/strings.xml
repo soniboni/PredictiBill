@@ -54,6 +54,11 @@
     <string name="payment_method">Payment Method </string>
     <string name="Add_subscription"> Add Subscription</string>
     <string name="upload_image"> Upload an Image</string>
+    <string name="subscription_details"> Subscription Details</string>
+
+    <!-- SUBSCRIPTION DETAILS-->
+    <string name="last_paid_due">Last Paid Due</string>
+
 
 
 

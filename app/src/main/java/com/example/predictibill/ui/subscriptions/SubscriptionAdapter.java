@@ -16,6 +16,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
     private List<SubscriptionsFragment.Subscription> subscriptionList;
 
+    // Simplified constructor without click listener
     public SubscriptionAdapter(List<SubscriptionsFragment.Subscription> subscriptionList) {
         this.subscriptionList = subscriptionList;
     }
@@ -55,12 +56,12 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         holder.billingCycleTextView.setText(current.getBillingCycle());
         holder.categoryTextView.setText(current.getCategory());
         holder.statusTextView.setText(current.getStatus());
-        holder.priceTextView.setText("₱" + current.getPrice());
-        holder.dueDateTextView.setText("Due date on "+current.getDueDate());
+        holder.priceTextView.setText(String.format("₱%.2f", current.getPrice()));
+        holder.dueDateTextView.setText(String.format("Due: %s", current.getDueDate()));
     }
 
     @Override
     public int getItemCount() {
-        return subscriptionList.size();
+        return subscriptionList == null ? 0 : subscriptionList.size();
     }
 }

@@ -37,7 +37,7 @@ import java.util.Locale;
 public class AddSubscriptionFragment extends Fragment {
     private TextView startDateDisplay, nextBillingDateDisplay;
     private Spinner categorySpinner, statusSpinner, billingSpinner, paymentMethodSpinner;
-    private EditText subscriptionNameEditText, subscriptionPriceEditText;
+    private EditText subscriptionNameEditText, subscriptionPriceEditText, noteEditText;
     private ImageView previewImageView;
     private Uri selectedImageUri;
 
@@ -77,6 +77,7 @@ public class AddSubscriptionFragment extends Fragment {
         subscriptionNameEditText = view.findViewById(R.id.subscription_name_input);
         subscriptionPriceEditText = view.findViewById(R.id.price_input);
         previewImageView = view.findViewById(R.id.previewImageView);
+        noteEditText = view.findViewById(R.id.subscription_note_input);
 
         // Image upload logic
         View imageUploadCard = view.findViewById(R.id.imageUploadCard);
@@ -97,16 +98,20 @@ public class AddSubscriptionFragment extends Fragment {
         Button submitBtn = view.findViewById(R.id.add_sub_button);
         submitBtn.setOnClickListener(v -> {
             if (isFormValid()) {
-                // Create subscription from inputs
                 String name = subscriptionNameEditText.getText().toString();
                 double price = Double.parseDouble(subscriptionPriceEditText.getText().toString());
-                String category = categorySpinner.toString();
-                String status = statusSpinner.toString();
-                String billingCycle = billingSpinner.toString();
+                String category = categorySpinner.getSelectedItem().toString();
+                String status = statusSpinner.getSelectedItem().toString();
+                String billingCycle = billingSpinner.getSelectedItem().toString();
                 String startDate = startDateDisplay.getText().toString();
                 String dueDate = nextBillingDateDisplay.getText().toString();
+                String paymentMethod = paymentMethodSpinner.getSelectedItem().toString();  // add this
+                String note = noteEditText.getText().toString();  // add this
 
-                SubscriptionsFragment.Subscription newSub = new SubscriptionsFragment.Subscription(name, price, category, status, billingCycle, startDate, dueDate);
+                SubscriptionsFragment.Subscription newSub = new SubscriptionsFragment.Subscription(
+                        name, price, category, status, billingCycle, startDate, dueDate, paymentMethod, note
+                );
+
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("new_subscription", newSub);
