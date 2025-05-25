@@ -85,6 +85,18 @@
             app:destination="@id/navigation_subscriptions" />
     </fragment>
 
+    <!-- Subscription Details (Cancelled) Fragment -->
+    <fragment
+        android:id="@+id/navigation_subscription_details_cancelled"
+        android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsCancelledFragment"
+        android:label="fragment_subscription_details_cancelled"
+        tools:layout="@layout/fragment_subscription_details_cancelled" >
+        <!--Action to return to Subscription Fragment-->
+        <action
+            android:id="@+id/action_subscriptionDetailsCancelled_to_subscriptionsFragment"
+            app:destination="@id/navigation_subscriptions" />
+    </fragment>
+
     <!-- Profile Fragment -->
     <fragment
         android:id="@+id/navigation_profile"
