@@ -8,8 +8,9 @@
     <color name="grey">#808080</color>
     <color name="rectangle_color">#DCE6FA</color>"
     <color name="category_entertainment">#FF9A9A</color>
-    <color name="charcoal">#494545</color>
+    <color name="light_brown">#494545</color>
     <color name="stroke_grey">#A1A1A1</color>
     <color name="password_text_grey">#8A8585</color>
+    <color name="red">#9A2A2A</color>
 
 </resources>

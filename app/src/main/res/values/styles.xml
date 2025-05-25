@@ -47,7 +47,7 @@
 
 
     <!-- Profile & Settings  -->
-    <!-- Main Page - Profile & Settings -->
+    <!-- Profile & Settings (Main Page) -->
     <style name="main_heading">
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/dark_blue</item>
@@ -108,14 +108,46 @@
 
     <style name="subheadings">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/charcoal</item>
+        <item name="android:textColor">@color/light_brown</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <style name="bold_subheadings">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/charcoal</item>
+        <item name="android:textColor">@color/light_brown</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
+
+
+    <!-- Profile & Settings (Main Page) & Change Password Fragments Buttons (Dialog Box) -->
+    <style name="dialog_box_headings">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="dialog_box_subheadings">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/light_brown</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="dialog_box_white_lbl_btn">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/poppins_thin</item>
+    </style>
+
+    <style name="dialog_box_grey_lbl_btn">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/light_brown</item>
+        <item name="android:fontFamily">@font/poppins_thin</item>
+    </style>
+
+
 
 </resources>
