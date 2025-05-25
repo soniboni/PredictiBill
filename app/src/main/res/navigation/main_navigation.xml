@@ -61,6 +61,18 @@
             app:destination="@id/navigation_subscriptions" />
     </fragment>
 
+    <!-- Subscription Details (Upcoming) Fragment -->
+    <fragment
+        android:id="@+id/navigation_subscription_details_paid"
+        android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsPaidFragment"
+        android:label="fragment_subscription_details_paid"
+        tools:layout="@layout/fragment_subscription_details_paid" >
+        <!--Action to return to Subscription Fragment-->
+        <action
+            android:id="@+id/action_subscriptionDetailsPaid_to_subscriptionsFragment"
+            app:destination="@id/navigation_subscriptions" />
+    </fragment>
+
     <!-- Profile Fragment -->
     <fragment
         android:id="@+id/navigation_profile"
