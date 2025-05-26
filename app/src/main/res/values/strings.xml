@@ -45,6 +45,8 @@
     <string name="category">Category</string>
     <string name="status">Status</string>
     <string name="billing_cyc">Billing Cycle</string>
+
+    <!--ADD SUBSCRIPTION FRAGMENT TEXTS-->
     <string name="add_subscription">Add a Subscription</string>
     <string name="name"> Name </string>
     <string name="note">Note</string>
@@ -55,11 +57,6 @@
     <string name="Add_subscription"> Add Subscription</string>
     <string name="upload_image"> Upload an Image</string>
     <string name="subscription_details"> Subscription Details</string>
-
-    <!-- SUBSCRIPTION DETAILS-->
-    <string name="last_paid_due">Last Paid Due</string>
-
-
 
 
     <!-- PAYMENT FRAGMENT TEXT -->

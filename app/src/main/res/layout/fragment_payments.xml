@@ -29,6 +29,7 @@
         android:text="@string/payments"
         android:textAppearance="@style/payments"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo_image" />
 
@@ -36,14 +37,14 @@
         android:id="@+id/browse_your_payments"
         android:layout_width="329dp"
         android:layout_height="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="-5dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="25dp"
         android:gravity="center_vertical"
         android:lineSpacingExtra="-5sp"
         android:text="@string/browse_your_payments"
         android:textAppearance="@style/track_all_r"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/payments_txtlbl" />
 
@@ -52,15 +53,15 @@
         android:layout_width="332dp"
         android:layout_height="27dp"
         android:gravity="center_vertical"
-        android:lineSpacingExtra="-5sp"
+        android:lineSpacingExtra="5sp"
         android:text="@string/filter_by"
         android:textAppearance="@style/filter_by"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="0.341"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/browse_your_payments"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintVertical_bias="0" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/filter_chip_group"
@@ -122,6 +123,22 @@
             android:textColor="@color/black"
             app:chipCornerRadius="50dp" />
     </com.google.android.material.chip.ChipGroup>
+
+
+        <!-- RecyclerView to list paid subscriptions -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/payments_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="0dp"
+            android:paddingBottom="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/filter_chip_group"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

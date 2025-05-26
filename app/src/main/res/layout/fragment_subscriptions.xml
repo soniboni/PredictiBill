@@ -46,35 +46,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
     <TextView
         android:id="@+id/filter_by"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="332dp"
+        android:layout_height="27dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="-5sp"
         android:text="@string/filter_by"
         android:textAppearance="@style/filter_by"
-        app:layout_constraintTop_toBottomOf="@id/track_all_r"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.021"
+        app:layout_constraintHorizontal_bias="0.341"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- RecyclerView for Subscriptions -->
+        app:layout_constraintTop_toBottomOf="@id/track_all_r" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/filter_chip_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/filter_by"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:singleSelection="true"
-        app:selectionRequired="false"
         app:chipSpacingHorizontal="12dp"
-        app:singleLine="true">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_by"
+        app:selectionRequired="false"
+        app:singleLine="true"
+        app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_method"
@@ -117,9 +117,6 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subscription_recycler_view"
         android:layout_width="0dp"
@@ -128,10 +125,11 @@
         android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/submit_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_chip_group"
         app:layout_constraintVertical_bias="0.0" />
+
     <Button
         android:id="@+id/submit_button"
         android:layout_width="60dp"
@@ -143,5 +141,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

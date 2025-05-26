@@ -2,10 +2,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:padding="8dp"
-    android:layout_margin="3dp"
+    android:layout_margin="0dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/home_rectangle_1">
+    android:background="@drawable/payments_item_container">
+
 
     <LinearLayout
         android:layout_width="0dp"
@@ -17,17 +18,17 @@
             android:id="@+id/subscription_name"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
-            android:text="Name"
+            android:text="NetFlix"
             android:textAppearance="@style/subscription_name" />
 
         <TextView
             android:id="@+id/subscription_billing_cycle"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="-7dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
             android:text="Billing Cycle"
             android:textAppearance="@style/subscription_billing_cycle" />
@@ -36,25 +37,25 @@
             android:id="@+id/subscription_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="-3dp"
-            android:layout_marginLeft="10dp"
             android:text="Category"
             android:textAppearance="@style/subscription_category" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="72dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="end"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/subscription_status"
+            android:id="@+id/subscription_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Status"
+            android:layout_marginRight="15dp"
+            android:text="#PAY0001"
             android:textAppearance="@style/subscription_status" />
 
         <TextView
@@ -62,16 +63,16 @@
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_marginTop="-4dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginRight="15dp"
             android:text="$549.00"
             android:textAppearance="@style/subscription_price" />
 
         <TextView
             android:id="@+id/subscription_due_date"
-            android:text="Due Date April 23, 2025"
-            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/subscription_due_date"/>
+            android:layout_marginRight="15dp"
+            android:text="Due Date April 23, 2025"
+            android:textAppearance="@style/subscription_due_date" />
     </LinearLayout>
 </LinearLayout>
