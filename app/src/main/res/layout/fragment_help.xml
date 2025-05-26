@@ -1,197 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    android:fillViewport="true">
 
-    <!-- Logo Image -->
-    <ImageView
-        android:id="@+id/Logo"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:paddingStart="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092"
-        app:srcCompat="@drawable/logo_icontext_blue" />
-
-
-    <!--  Heading - Title -->
-    <TextView
-        android:id="@+id/profile_help_lbl"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.160"
-        app:layout_constraintHorizontal_bias="0.50"
-        android:text="@string/profile_help_lbl"
-        android:textAppearance="@style/headings"/>
+        android:padding="16dp"
+        android:paddingBottom="130dp"
+        tools:context=".ui.profile.ProfileFragment">
 
 
-    <!-- Heading - Welcome Title -->
-    <TextView
-        android:id="@+id/profile_welcome_to_lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.225"
-        app:layout_constraintHorizontal_bias="0.25"
-        android:text="@string/profile_welcome_to_lbl"
-        android:textAppearance="@style/headings"/>
+        <!-- Logo Image -->
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_icontext_blue"
+            android:contentDescription="@string/logo_content_description"/>
 
-    <!-- Subheading - Here's a quick guide... -->
-    <TextView
-        android:id="@+id/profile_heres_a_quick_lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.253"
-        app:layout_constraintHorizontal_bias="0.210"
-        android:text="@string/profile_heres_a_quick_lbl"
-        android:textAppearance="@style/subheadings"/>
+        <!-- Heading - Title -->
+        <TextView
+            android:id="@+id/profile_help_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/profile_help_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Logo"/>
 
+        <!-- Heading - Welcome Title -->
+        <TextView
+            android:id="@+id/profile_welcome_to_lbl"
+            android:layout_width="300dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/profile_welcome_to_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_help_lbl"/>
 
-    <!-- Heading - What does PredictiBill do? -->
-    <TextView
-        android:id="@+id/profile_what_does_predictibill_lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.330"
-        app:layout_constraintHorizontal_bias="0.20"
-        android:text="@string/profile_what_does_predictibill_lbl"
-        android:textAppearance="@style/headings"/>
+        <!-- Subheading - Here's a quick guide... -->
+        <TextView
+            android:id="@+id/profile_heres_a_quick_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/profile_heres_a_quick_lbl"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_welcome_to_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_welcome_to_lbl"/>
 
-    <!-- Subheading -->
-    <TextView
-        android:id="@+id/profile_predictibill_helps_you_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.382"
-        app:layout_constraintHorizontal_bias="0.55"
-        android:text="@string/profile_predictibill_helps_you_txt"
-        android:textAppearance="@style/subheadings"/>
+        <!-- Heading - What does PredictiBill do? -->
+        <TextView
+            android:id="@+id/profile_what_does_predictibill_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/profile_what_does_predictibill_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintStart_toStartOf="@id/profile_heres_a_quick_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_heres_a_quick_lbl"/>
 
+        <!-- Subheading -->
+        <TextView
+            android:id="@+id/profile_predictibill_helps_you_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_predictibill_helps_you_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_what_does_predictibill_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_what_does_predictibill_lbl"/>
 
-    <!-- Heading - Common Questions -->
-    <TextView
-        android:id="@+id/profile_common_questions_lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.500"
-        app:layout_constraintHorizontal_bias="0.13"
-        android:text="@string/profile_common_questions_lbl"
-        android:textAppearance="@style/headings"/>
+        <!-- Heading - Common Questions -->
+        <TextView
+            android:id="@+id/profile_common_questions_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/profile_common_questions_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintStart_toStartOf="@id/profile_predictibill_helps_you_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_predictibill_helps_you_txt"/>
 
-    <!-- Bold Subheading - Question 1 - Q: Can I cancel subscriptions through the app? -->
-    <TextView
-        android:id="@+id/profile_question_1_lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.525"
-        app:layout_constraintHorizontal_bias="0.40"
-        android:text="@string/profile_question_1_lbl"
-        android:textAppearance="@style/bold_subheadings"/>
+        <!-- Bold Subheading - Question 1 - Q: Can I cancel subscriptions through the app? -->
+        <TextView
+            android:id="@+id/profile_question_1_lbl"
+            android:layout_width="340dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_question_1_lbl"
+            android:textAppearance="@style/bold_subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_common_questions_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_common_questions_lbl"/>
 
-    <!-- Subheading - Answer to Question 1 -->
-    <TextView
-        android:id="@+id/profile_answer_1_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.587"
-        app:layout_constraintHorizontal_bias="0.40"
-        android:text="@string/profile_answer_1_txt"
-        android:textAppearance="@style/subheadings"/>
+        <!-- Subheading - Answer to Question 1 -->
+        <TextView
+            android:id="@+id/profile_answer_1_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_answer_1_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_question_1_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_question_1_lbl"/>
 
+        <!-- Bold Subheading - Question 2 - Q: How do I add a subscription? -->
+        <TextView
+            android:id="@+id/profile_question_2_lbl"
+            android:layout_width="230dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/profile_question_2_lbl"
+            android:textAppearance="@style/bold_subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_answer_1_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_answer_1_txt"/>
 
-    <!-- Bold Subheading - Question 2 - Q: How do I add a subscription? -->
-    <TextView
-        android:id="@+id/profile_question_2_lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.660"
-        app:layout_constraintHorizontal_bias="0.15"
-        android:text="@string/profile_question_2_lbl"
-        android:textAppearance="@style/bold_subheadings"/>
+        <!-- Subheading - Answer to Question 2 -->
+        <TextView
+            android:id="@+id/profile_answer_2_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_answer_2_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_question_2_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_question_2_lbl"/>
 
-    <!-- Subheading - Answer to Question 2 -->
-    <TextView
-        android:id="@+id/profile_answer_2_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.716"
-        app:layout_constraintHorizontal_bias="0.50"
-        android:text="@string/profile_answer_2_txt"
-        android:textAppearance="@style/subheadings"/>
+        <!-- Bold Subheading - Question 3 - Q: Will I get reminders? -->
+        <TextView
+            android:id="@+id/profile_question_3_lbl"
+            android:layout_width="170dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/profile_question_3_lbl"
+            android:textAppearance="@style/bold_subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_answer_2_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_answer_2_txt"/>
 
+        <!-- Subheading - Answer to Question 3 -->
+        <TextView
+            android:id="@+id/profile_answer_3_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_answer_3_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_question_3_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_question_3_lbl"/>
 
-    <!-- Bold Subheading - Question 3 - Q: Will I get reminders? -->
-    <TextView
-        android:id="@+id/profile_question_3_lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.770"
-        app:layout_constraintHorizontal_bias="0.12"
-        android:text="@string/profile_question_3_lbl"
-        android:textAppearance="@style/bold_subheadings"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Subheading - Answer to Question 3 -->
-    <TextView
-        android:id="@+id/profile_answer_3_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.812"
-        app:layout_constraintHorizontal_bias="0.60"
-        android:text="@string/profile_answer_3_txt"
-        android:textAppearance="@style/subheadings"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

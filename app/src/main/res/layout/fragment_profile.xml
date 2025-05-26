@@ -13,6 +13,7 @@
         android:paddingBottom="140dp"
         tools:context=".ui.profile.ProfileFragment">
 
+
         <!-- Logo Image -->
         <ImageView
             android:id="@+id/Logo"
@@ -22,12 +23,13 @@
             android:layout_marginTop="58dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo_blue" />
+            app:srcCompat="@drawable/logo_blue"
+            android:contentDescription="@string/logo_content_description"/>
 
         <!-- Main Heading - Profile & Settings Title -->
         <TextView
             android:id="@+id/profile_profile_settings_lbl"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="36dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="32dp"
@@ -57,7 +59,8 @@
             android:layout_marginStart="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/manage_your_account"
-            app:srcCompat="@drawable/account_img" />
+            app:srcCompat="@drawable/account_img"
+            android:contentDescription="@string/account_image_content_description"/>
 
         <!-- Account Name -->
         <TextView
@@ -112,7 +115,7 @@
             android:textColor="#383636"
             android:fontFamily="@font/poppins_regular"
             android:gravity="start|center_vertical"
-            android:clickable="true" />
+            android:clickable="true"/>
 
         <!-- Divider Line -->
         <View
@@ -124,7 +127,7 @@
             android:background="@color/stroke_grey"
             app:layout_constraintTop_toBottomOf="@id/profile_change_password_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Bold Subheadings - Notification Settings  -->
         <TextView
@@ -156,7 +159,7 @@
             android:textColor="#383636"
             android:fontFamily="@font/poppins_regular"
             android:gravity="start|center_vertical"
-            android:clickable="false" />
+            android:clickable="false"/>
 
         <!-- In-app Reminders Toggle Button -->
         <com.google.android.material.switchmaterial.SwitchMaterial
@@ -169,7 +172,7 @@
             app:layout_constraintBottom_toBottomOf="@id/profile_in_app_reminders_lbl"
             android:checkable="true"
             app:thumbTint="@color/toggle_button_thumb_color"
-            app:trackTint="@color/toggle_button_track_color" />
+            app:trackTint="@color/toggle_button_track_color"/>
 
         <!-- Divider Line -->
         <View
@@ -181,7 +184,7 @@
             android:background="@color/stroke_grey"
             app:layout_constraintTop_toBottomOf="@id/profile_in_app_reminders_lbl"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Email alerts -->
         <com.google.android.material.button.MaterialButton
@@ -200,7 +203,7 @@
             android:textColor="#383636"
             android:fontFamily="@font/poppins_regular"
             android:gravity="start|center_vertical"
-            android:clickable="false" />
+            android:clickable="false"/>
 
         <!-- Email Alerts Toggle Button -->
         <com.google.android.material.switchmaterial.SwitchMaterial
@@ -213,7 +216,7 @@
             app:layout_constraintBottom_toBottomOf="@id/profile_email_alerts_lbl"
             android:checkable="true"
             app:thumbTint="@color/toggle_button_thumb_color"
-            app:trackTint="@color/toggle_button_track_color" />
+            app:trackTint="@color/toggle_button_track_color"/>
 
         <!-- Divider Line -->
         <View
@@ -225,7 +228,7 @@
             android:background="@color/stroke_grey"
             app:layout_constraintTop_toBottomOf="@id/profile_email_alerts_lbl"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Bold Subheadings - Preferences  -->
         <TextView
@@ -257,7 +260,7 @@
             android:gravity="start|center_vertical"
             android:text="@string/profile_currency_lbl"
             android:textColor="#383636"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
 
         <!-- Currency Spinner -->
         <Spinner
@@ -282,11 +285,11 @@
             android:layout_height="25dp"
             android:layout_marginEnd="45dp"
             android:backgroundTint="@color/white"
-            android:contentDescription="Open Category"
+            android:contentDescription="@string/open_category_content_description"
             android:src="@drawable/arrow_down_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/profile_currency_dropdown"
-            app:layout_constraintBottom_toBottomOf="@id/profile_currency_dropdown" />
+            app:layout_constraintBottom_toBottomOf="@id/profile_currency_dropdown"/>
 
         <!-- Divider Line -->
         <View
@@ -298,7 +301,7 @@
             android:background="@color/stroke_grey"
             app:layout_constraintTop_toBottomOf="@id/profile_currency_dropdown"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Bold Subheadings - About  -->
         <TextView
@@ -330,7 +333,7 @@
             android:textColor="#383636"
             android:fontFamily="@font/poppins_regular"
             android:gravity="start|center_vertical"
-            android:clickable="true" />
+            android:clickable="true"/>
 
         <!-- Divider Line -->
         <View
@@ -342,7 +345,7 @@
             android:background="@color/stroke_grey"
             app:layout_constraintTop_toBottomOf="@id/profile_help_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Privacy Policy Button -->
         <com.google.android.material.button.MaterialButton
@@ -361,7 +364,7 @@
             android:textColor="#383636"
             android:fontFamily="@font/poppins_regular"
             android:gravity="start|center_vertical"
-            android:clickable="true" />
+            android:clickable="true"/>
 
         <!-- Divider Line -->
         <View
@@ -373,7 +376,7 @@
             android:background="@color/stroke_grey"
             app:layout_constraintTop_toBottomOf="@id/profile_privacy_notice_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Logout Button -->
         <com.google.android.material.button.MaterialButton
@@ -391,7 +394,7 @@
             android:text="@string/profile_logout_lbl"
             android:textSize="18sp"
             android:textColor="@color/white"
-            android:fontFamily="@font/poppins_regular" />
+            android:fontFamily="@font/poppins_regular"/>
 
         <!-- Deactivate Account Button -->
         <com.google.android.material.button.MaterialButton
@@ -411,7 +414,8 @@
             android:textColor="@color/brown"
             android:fontFamily="@font/poppins_regular"
             app:strokeColor="@color/light_brown"
-            app:strokeWidth="3dp" />
+            app:strokeWidth="3dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
