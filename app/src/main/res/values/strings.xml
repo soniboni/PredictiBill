@@ -173,7 +173,8 @@
     <string name="image_view_exclamation_mark">Exclamation Mark</string>
 
     <string name="logout_lbl">Logout?</string>
-    <string name="logout_note">Are you sure you want to log out of your account?</string>
+    <string name="logout_note">Are you sure you want to log out
+        \nof your account?</string>
 
     <string name="logout_btn">Logout</string>
     <string name="stay_logged_in_btn">Stay Logged In</string>
