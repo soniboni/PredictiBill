@@ -64,6 +64,11 @@
         <action
             android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionDetailsPaid"
             app:destination="@id/navigation_subscription_details_paid" />
+
+        <!--Action to navigate to Subscription Details (Cancelled) Fragment when "Cancel Subscription" button is clicked -->
+        <action
+            android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionDetailsCancelled"
+            app:destination="@id/navigation_subscription_details_cancelled" />
     </fragment>
 
     <!-- Subscription Details (Paid) Fragment -->

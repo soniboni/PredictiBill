@@ -51,7 +51,7 @@
         <!-- Buttons -->
         <!-- Discard Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_btn"
+            android:id="@+id/discard_btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
@@ -76,7 +76,7 @@
 
         <!-- Save Changes Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/restore_btn"
+            android:id="@+id/save_changes_btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_marginStart="170dp"

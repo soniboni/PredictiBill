@@ -51,7 +51,7 @@
         <!-- Buttons -->
         <!-- Cancel Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_btn"
+            android:id="@+id/mark_as_paid_cancel_btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
