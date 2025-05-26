@@ -25,11 +25,11 @@
 
         <!-- Heading/Title -->
         <TextView
-            android:id="@+id/cancel_subs_lbl"
+            android:id="@+id/delete_subs_lbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/cancel_subs_lbl"
+            android:text="@string/delete_subs_lbl"
             android:textAppearance="@style/dialog_box_headings"
             app:layout_constraintEnd_toEndOf="@+id/image_view_exclamation_mark"
             app:layout_constraintStart_toStartOf="@+id/image_view_exclamation_mark"
@@ -37,19 +37,19 @@
 
         <!-- Subheading/Note -->
         <TextView
-            android:id="@+id/cancel_subs_note"
+            android:id="@+id/delete_subs_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/cancel_subs_note"
+            android:text="@string/delete_subs_note"
             android:textAlignment="center"
             android:textAppearance="@style/dialog_box_subheadings"
-            app:layout_constraintEnd_toEndOf="@+id/cancel_subs_lbl"
-            app:layout_constraintStart_toStartOf="@+id/cancel_subs_lbl"
-            app:layout_constraintTop_toBottomOf="@+id/cancel_subs_lbl" />
+            app:layout_constraintEnd_toEndOf="@+id/delete_subs_lbl"
+            app:layout_constraintStart_toStartOf="@+id/delete_subs_lbl"
+            app:layout_constraintTop_toBottomOf="@+id/delete_subs_lbl" />
 
         <!-- Buttons -->
-        <!-- Cancel Subscription Button -->
+        <!-- Delete Subscription Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cancel_btn"
             android:layout_width="130dp"
@@ -63,16 +63,16 @@
             android:letterSpacing="-0.06"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/cancel_subs_btn"
+            android:text="@string/delete_permanently_btn"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cancel_subs_note"
-            app:layout_constraintStart_toStartOf="@+id/cancel_subs_note"
-            app:layout_constraintTop_toBottomOf="@+id/cancel_subs_note" />
+            app:layout_constraintEnd_toEndOf="@+id/delete_subs_note"
+            app:layout_constraintStart_toStartOf="@+id/delete_subs_note"
+            app:layout_constraintTop_toBottomOf="@+id/delete_subs_note" />
 
-        <!-- Keep Tracking Button -->
+        <!-- Cancel Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/confirm_btn"
             android:layout_width="130dp"
@@ -86,16 +86,16 @@
             android:letterSpacing="-0.04"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/keep_tracking_btn"
+            android:text="@string/cancel_btn"
             android:textColor="@color/light_brown"
             android:textSize="12sp"
             app:cornerRadius="4dp"
             app:strokeColor="@color/light_brown"
             app:strokeWidth="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cancel_subs_note"
-            app:layout_constraintStart_toStartOf="@+id/cancel_subs_note"
-            app:layout_constraintTop_toBottomOf="@+id/cancel_subs_note" />
+            app:layout_constraintEnd_toEndOf="@+id/delete_subs_note"
+            app:layout_constraintStart_toStartOf="@+id/delete_subs_note"
+            app:layout_constraintTop_toBottomOf="@+id/delete_subs_note" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -137,7 +137,7 @@
     <string name="restore_subs_note">This will re-activate the canceled subscription\nand resume tracking.</string>
     <string name="restore_btn">Restore</string>
     <string name="cancel_subs_lbl">Cancel Subscription?</string>
-    <string name="cancel_subs_note">This will stop tracking this subscription\nand mark it as canceled.\nYou can restore it anytime.</string>
+    <string name="cancel_subs_note">This will stop tracking this subscription and mark it\nas canceled. You can restore it anytime.</string>
     <string name="keep_tracking_btn">Keep Tracking</string>
     <string name="delete_subs_lbl">Delete Subscription?</string>
     <string name="delete_subs_note">This will permanently remove this subscription\nfrom your tracker. This action can’t be undone.</string>
