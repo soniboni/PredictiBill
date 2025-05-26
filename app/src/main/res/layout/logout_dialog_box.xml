@@ -54,8 +54,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logout_btn"
             android:layout_width="130dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="51dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="175dp"
             android:backgroundTint="@color/dark_blue"
@@ -73,8 +73,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stay_logged_in_btn"
             android:layout_width="130dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="51dp"
             android:layout_marginStart="170dp"
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/white"
