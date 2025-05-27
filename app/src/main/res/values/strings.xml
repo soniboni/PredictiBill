@@ -183,14 +183,14 @@
 
     <string name="logout_lbl">Logout?</string>
     <string name="logout_note">Are you sure you want to log out
-        \nof your account?</string>
+        of your account?</string>
 
     <string name="logout_btn">Logout</string>
     <string name="stay_logged_in_btn">Stay Logged In</string>
 
     <string name="deactivate_account_lbl">Deactivate Account?</string>
     <string name="deactivate_account_note">Your account will be deactivated and you will no
-        \nlonger be able to use the app. You can reactivate \nit by logging back in.</string>
+        longer be able to use the app. You can reactivate it by logging back in.</string>
 
     <string name="deactivate_btn">Deactivate</string>
     <string name="cancel_btn">Cancel</string>
@@ -198,17 +198,17 @@
     <!-- CHANGE PASSWORD FRAGMENT BUTTONS (DIALOG BOX) TEXT -->
     <string name="confirm_change_password_lbl">Confirm Change Password?</string>
     <string name="confirm_change_password_note">You are about to change your password. Make
-        \nsure you've saved it somewhere safe.</string>
+    sure you have saved it somewhere safe.</string>
 
     <string name="change_password_btn">Change Password</string>
 
     <string name="discard_password_change_lbl">Discard Password Change?</string>
     <string name="discard_password_change_note">Are you sure you want to cancel updating your
-        \npassword?</string>
+        password?</string>
 
     <string name="discard_change_btn">Discard Change</string>
     <string name="go_back_btn">Go Back</string>
 
 
 
-</resources>
+</resources
