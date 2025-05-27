@@ -45,11 +45,32 @@
         tools:layout="@layout/fragments_add_subscriptions" />
 
 
-    <!-- Profile Fragment -->
+    <!-- Profile (Profile & Settings Main Page) Fragment -->
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.predictibill.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <!-- Change Password Fragment -->
+    <fragment
+        android:id="@+id/navigation_change_password"
+        android:name="com.example.predictibill.ui.profile.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+
+    <!-- Help Fragment -->
+    <fragment
+        android:id="@+id/navigation_help"
+        android:name="com.example.predictibill.ui.profile.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
+
+    <!-- Privacy Notice Fragment -->
+    <fragment
+        android:id="@+id/navigation_privacy_notice"
+        android:name="com.example.predictibill.ui.profile.PrivacyNoticeFragment"
+        android:label="fragment_privacy_notice"
+        tools:layout="@layout/fragment_privacy_notice" />
 
 </navigation>

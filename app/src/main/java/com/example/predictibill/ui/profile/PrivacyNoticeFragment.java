@@ -12,10 +12,10 @@ import com.example.predictibill.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PrivacyPolicyFragment#newInstance} factory method to
+ * Use the {@link PrivacyNoticeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PrivacyPolicyFragment extends Fragment {
+public class PrivacyNoticeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class PrivacyPolicyFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PrivacyPolicyFragment() {
+    public PrivacyNoticeFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class PrivacyPolicyFragment extends Fragment {
      * @return A new instance of fragment PrivacyPolicyFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PrivacyPolicyFragment newInstance(String param1, String param2) {
-        PrivacyPolicyFragment fragment = new PrivacyPolicyFragment();
+    public static PrivacyNoticeFragment newInstance(String param1, String param2) {
+        PrivacyNoticeFragment fragment = new PrivacyNoticeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class PrivacyPolicyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_privacy_policy, container, false);
+        return inflater.inflate(R.layout.fragment_privacy_notice, container, false);
     }
 }

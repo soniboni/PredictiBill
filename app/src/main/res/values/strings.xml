@@ -69,7 +69,7 @@
 
     <string name="profile_about_lbl">About</string>
     <string name="profile_help_lbl">Help</string>
-    <string name="profile_privacy_policy_lbl">Privacy Policy</string>
+    <string name="profile_privacy_notice_lbl">Privacy Policy</string>
 
     <string name="profile_logout_lbl">Logout</string>
     <string name="profile_deactivate_account_lbl">Deactivate Account</string>
