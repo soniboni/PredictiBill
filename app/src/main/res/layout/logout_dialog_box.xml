@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="320dp"
     android:layout_height="230dp"
     app:cardElevation="10dp"
-    app:cardCornerRadius="16dp">
+    app:cardCornerRadius="16dp"
+    android:backgroundTint="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,9 +57,9 @@
             android:id="@+id/logout_btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="105dp"
+            android:layout_marginEnd="150dp"
             android:backgroundTint="@color/dark_blue"
             app:cornerRadius="4dp"
 
@@ -68,14 +70,14 @@
             android:letterSpacing="-0.04"
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_regular" />
-<!--        app:layout_constraintStart_toStartOf="@+id/logout_note"-->
+        <!--        app:layout_constraintStart_toStartOf="@+id/logout_note"-->
 
         <!-- Stay Logged In Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stay_logged_in_btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginStart="145dp"
             android:layout_marginEnd="0dp"
             android:backgroundTint="@color/white"

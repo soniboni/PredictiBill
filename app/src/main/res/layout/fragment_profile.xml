@@ -380,7 +380,7 @@
 
         <!-- Logout Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/logout_button"
+            android:id="@+id/profile_logout_button"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginTop="40dp"
@@ -398,7 +398,7 @@
 
         <!-- Deactivate Account Button -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/deactivate_account_button"
+            android:id="@+id/profile_deactivate_account_button"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
@@ -408,7 +408,7 @@
             app:cornerRadius="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logout_button"
+            app:layout_constraintTop_toBottomOf="@id/profile_logout_button"
             android:text="@string/profile_deactivate_account_lbl"
             android:textSize="18sp"
             android:textColor="@color/brown"

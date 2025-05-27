@@ -51,21 +51,22 @@
         android:name="com.example.predictibill.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
-        <!-- Action to navigate to Change Password Fragment when "Change Password" clickable text/button is clicked -->
+        <!-- Action to navigate to Change Password Fragment when "Change Password" button is clicked -->
         <action
             android:id="@+id/action_navigationProfile_to_changePasswordFragment"
             app:destination="@id/navigation_change_password"/>
 
-        <!-- Action to navigate to Help Fragment when "Help" clickable text/button is clicked -->
+        <!-- Action to navigate to Help Fragment when "Help" button is clicked -->
         <action
             android:id="@+id/action_navigationProfile_to_helpFragment"
             app:destination="@id/navigation_help"/>
 
-        <!-- Action to navigate to Privacy Policy Fragment when "Privacy Policy" clickable text/button is clicked -->
+        <!-- Action to navigate to Privacy Policy Fragment when "Privacy Policy" button is clicked -->
         <action
             android:id="@+id/action_navigationProfile_to_privacyPolicyFragment"
             app:destination="@id/navigation_privacy_policy"/>
     </fragment>
+
 
         <!-- Action to navigate to 'login.xml' when "Logout" button is clicked -->
 <!--        <action-->
@@ -90,10 +91,11 @@
             app:destination="@id/navigation_profile"/>
     </fragment>
 
-        <!-- Action to navigate to Profile & Settings (Main Page) Fragment when the "Cancel" button is clicked -->
+        <!-- Action to navigate to Profile & Settings (Main Page) Fragment when the "Continue" button is clicked -->
 
 
-        <!-- Action to navigate to - Fragment when the "Change Password" button is clicked -->
+        <!-- Action to navigate to Change Password Fragment when the "Cancel" button is clicked -->
+
 
 
     <!-- Help Fragment -->

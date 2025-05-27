@@ -162,10 +162,9 @@
     <!-- 5. Your Rights -->
     <string name="profile_your_rights_lbl">5. Your Rights</string>
     <string name="profile_you_can_txt">" "\u2022 You can:</string>
-    <string name="profile_user_rights_txt">
-         \u2022 View and export your data
+    <string name="profile_user_rights_txt">\u2022 View and export your data
          \n\u2022 Delete your data at any time
-         \n\u2022 Control notification permissions in your \n "   " device or app settings</string>
+         \n\u2022 Control notification permissions in your \n "  "device or app settings</string>
 
 
     <!-- PROFILE AND SETTINGS CONTENT DESCRIPTION TEXT -->

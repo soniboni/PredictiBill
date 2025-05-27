@@ -1,6 +1,7 @@
 package com.example.predictibill.ui.profile;
 
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,9 +32,9 @@ public class ProfileFragment extends Fragment {
     private SwitchMaterial email_alerts_toggle_button;
     private Spinner currency_spinner;
 
-    Dialog dialog;
-    Button cancel_btn, change_password_btn, profile_help_button, profile_privacy_policy_button,
-            logout_button, deactivate_account_button;
+    // Modal dialogs
+    private Dialog logoutDialog;
+    private Dialog deactivateAccountDialog;
 
     // Currency options
     private static final String[] currencies = {"PHP", "USD"};
@@ -50,15 +51,73 @@ public class ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
-    // A function for the Notifications Toggle Buttons (In-app reminders & Email Alerts)
-    // and Currency Spinner
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Button Functionality
+        // Initialize modal dialogs
+        setupLogoutDialog();
+        setupDeactivateAccountDialog();
+
+        // 2. Button Functionality (ID from fragment)
+
+        // Change Password Button - Direct Navigation to Change Password Fragment
         Button changePassword = view.findViewById(R.id.profile_change_password_button);
-        changePassword.setOnClickListener(v -> showChangePasswordDialog());
+        changePassword.setOnClickListener(v -> {
+            try {
+                // Navigate directly to the Change Password Fragment
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.action_navigationProfile_to_changePasswordFragment);
+            } catch (Exception e) {
+                // Fallback error handling
+                Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        });
+
+        // Help Button - Direct Navigation to Help Fragment
+        Button help = view.findViewById(R.id.profile_help_button);
+        help.setOnClickListener(v -> {
+            try {
+                // Navigate directly to the Help Fragment
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.action_navigationProfile_to_helpFragment);
+            } catch (Exception e) {
+                // Fallback error handling
+                Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        });
+
+        // Privacy Policy Button - Direct Navigation to Privacy Policy Fragment
+        Button privacyPolicy = view.findViewById(R.id.profile_privacy_policy_button);
+        privacyPolicy.setOnClickListener(v -> {
+            try {
+                // Navigate directly to the Privacy Policy Fragment
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.action_navigationProfile_to_privacyPolicyFragment);
+            } catch (Exception e) {
+                // Fallback error handling
+                Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        });
+
+        // Logout Button - Show Logout Modal
+        Button logoutButton = view.findViewById(R.id.profile_logout_button);
+        logoutButton.setOnClickListener(v -> {
+            if (logoutDialog != null) {
+                logoutDialog.show();
+            }
+        });
+
+        // Deactivate Account Button - Show Deactivate Modal
+        Button deactivateButton = view.findViewById(R.id.profile_deactivate_account_button);
+        deactivateButton.setOnClickListener(v -> {
+            if (deactivateAccountDialog != null) {
+                deactivateAccountDialog.show();
+            }
+        });
 
         // Initialize the toggle buttons and spinner
         in_app_reminders_toggle_button = view.findViewById(R.id.in_app_reminders_toggle_button);
@@ -102,40 +161,126 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void showChangePasswordDialog() {
-        if (getContext() == null) return;
+    private void setupLogoutDialog() {
+        logoutDialog = new Dialog(requireContext());
+        logoutDialog.setContentView(R.layout.logout_dialog_box);
 
-        dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.confirm_change_password_dialog_box);
-
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-            Drawable dialog_box_bg = ContextCompat.getDrawable(getContext(), R.drawable.dialog_box_bg);
-            dialog.getWindow().setBackgroundDrawable(dialog_box_bg);
+        // Make background transparent
+        if (logoutDialog.getWindow() != null) {
+            logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
 
-        dialog.setCancelable(false);
-        // Initialize buttons
-        cancel_btn = dialog.findViewById(R.id.cancel_btn);
-        change_password_btn = dialog.findViewById(R.id.change_password_btn);
+        logoutDialog.setCancelable(false);
 
-        if (cancel_btn != null) {
-            //Dismiss the dialog box when the cancel button is clicked
-            cancel_btn.setOnClickListener(v -> dialog.dismiss());
+        // Get buttons from the logout dialog layout
+        Button logoutBtn = logoutDialog.findViewById(R.id.logout_btn);
+        Button stayLoggedInBtn = logoutDialog.findViewById(R.id.stay_logged_in_btn);
+
+        // Logout button functionality
+        logoutBtn.setOnClickListener(v -> {
+            // Clear user session/preferences
+            clearUserSession();
+
+            // Close the dialog
+            logoutDialog.dismiss();
+
+            // Navigate to login screen or main activity
+            navigateToLogin();
+
+            Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
+        });
+
+        // Stay logged in button functionality
+        stayLoggedInBtn.setOnClickListener(v -> {
+            logoutDialog.dismiss();
+            Toast.makeText(requireContext(), "You're still logged in", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    private void setupDeactivateAccountDialog() {
+        deactivateAccountDialog = new Dialog(requireContext());
+        deactivateAccountDialog.setContentView(R.layout.deactivate_account_dialog_box);
+
+        // Make background transparent
+        if (deactivateAccountDialog.getWindow() != null) {
+            deactivateAccountDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
 
-        if (change_password_btn != null) {
-            change_password_btn.setOnClickListener(v -> {
-                dialog.dismiss();
-                // Navigate to the paid subscription details
-                NavHostFragment.findNavController(this)
-                        .navigate(R.id.action_navigationProfile_to_changePasswordFragment);
-            });
-        }
+        deactivateAccountDialog.setCancelable(false);
 
-        // Show the dialog
-        dialog.show();
+        // Get buttons from the deactivate dialog layout
+        Button deactivate_btn = deactivateAccountDialog.findViewById(R.id.deactivate_btn);
+        Button cancel_btn = deactivateAccountDialog.findViewById(R.id.cancel_btn);
+
+        // Deactivate button functionality
+        deactivate_btn.setOnClickListener(v -> {
+            // Perform account deactivation logic
+            deactivateAccount();
+
+            // Close the dialog
+            deactivateAccountDialog.dismiss();
+
+            // Navigate to login screen or main activity
+            navigateToLogin();
+
+            Toast.makeText(requireContext(), "Account deactivated", Toast.LENGTH_SHORT).show();
+        });
+
+        // Cancel button functionality
+        cancel_btn.setOnClickListener(v -> {
+            deactivateAccountDialog.dismiss();
+            Toast.makeText(requireContext(), "Account deactivation cancelled", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    private void clearUserSession() {
+        // Clear all user preferences/session data
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.apply();
+
+        // You can also clear other app-specific data here
+        // For example: clear database, clear cached data, etc.
+    }
+
+    private void deactivateAccount() {
+        // Clear user session data
+        clearUserSession();
+
+        // Add additional deactivation logic here:
+        // - Call API to deactivate account on server
+        // - Clear local database
+        // - Clear any cached user data
+
+        // Example API call (uncomment and modify as needed):
+        // ApiService.deactivateAccount(userId, new ApiCallback() {
+        //     @Override
+        //     public void onSuccess() {
+        //         // Handle successful deactivation
+        //     }
+        //
+        //     @Override
+        //     public void onError(String error) {
+        //         // Handle deactivation error
+        //     }
+        // });
+    }
+
+    private void navigateToLogin() {
+        try {
+            // Navigate to login screen
+            // Replace with your actual login destination
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.navigation_profile);
+        } catch (Exception e) {
+            // If navigation fails, you might want to restart the app
+            // or handle the error appropriately
+            Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+            // Alternative: Close the app or restart main activity
+            requireActivity().finishAffinity();
+        }
     }
 
     private void setupCurrencySpinner(String savedCurrency) {
@@ -211,5 +356,17 @@ public class ProfileFragment extends Fragment {
     public static String getSelectedCurrency(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("user_settings", Context.MODE_PRIVATE);
         return prefs.getString("selected_currency", "PHP");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Clean up dialogs to prevent memory leaks
+        if (logoutDialog != null && logoutDialog.isShowing()) {
+            logoutDialog.dismiss();
+        }
+        if (deactivateAccountDialog != null && deactivateAccountDialog.isShowing()) {
+            deactivateAccountDialog.dismiss();
+        }
     }
 }
