@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,7 +32,6 @@
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionsFragment"
         android:label="fragment_subscriptions"
         tools:layout="@layout/fragment_subscriptions">
-        <!-- Action to navigate to AddSubscription Fragment -->
         <action
             android:id="@+id/action_subscriptionsFragment_to_addSubscriptions"
             app:destination="@id/navigation_addsubscriptions" />
@@ -43,7 +43,6 @@
         android:name="com.example.predictibill.ui.subscriptions.AddSubscriptionFragment"
         android:label="fragment_add_subscriptions"
         tools:layout="@layout/fragments_add_subscriptions" >
-        <!--Action to return to Subscription Fragment-->
         <action
             android:id="@+id/action_addSubscriptions_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
@@ -55,17 +54,12 @@
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsUpcomingFragment"
         android:label="fragment_subscription_details_upcoming"
         tools:layout="@layout/fragment_subscription_details_upcoming" >
-        <!--Action to return to Subscription Fragment-->
         <action
             android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
-
-        <!--Action to navigate to Subscription Details (Paid) Fragment when "Mark As Paid" button is clicked -->
         <action
             android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionDetailsPaid"
             app:destination="@id/navigation_subscription_details_paid" />
-
-        <!--Action to navigate to Subscription Details (Cancelled) Fragment when "Cancel Subscription" button is clicked -->
         <action
             android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionDetailsCancelled"
             app:destination="@id/navigation_subscription_details_cancelled" />
@@ -77,7 +71,6 @@
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsPaidFragment"
         android:label="fragment_subscription_details_paid"
         tools:layout="@layout/fragment_subscription_details_paid" >
-        <!--Action to return to Subscription Fragment-->
         <action
             android:id="@+id/action_subscriptionDetailsPaid_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
@@ -89,12 +82,9 @@
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsOverdueFragment"
         android:label="fragment_subscription_details_overdue"
         tools:layout="@layout/fragment_subscription_details_overdue" >
-        <!--Action to return to Subscription Fragment-->
         <action
             android:id="@+id/action_subscriptionDetailsOverdue_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
-
-        <!--Action to navigate to Subscription Details (Paid) Fragment when "Mark As Paid" button is clicked -->
         <action
             android:id="@+id/action_subscriptionDetailsOverdue_to_subscriptionDetailsPaid"
             app:destination="@id/navigation_subscription_details_paid" />
@@ -106,7 +96,6 @@
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsCancelledFragment"
         android:label="fragment_subscription_details_cancelled"
         tools:layout="@layout/fragment_subscription_details_cancelled" >
-        <!--Action to return to Subscription Fragment-->
         <action
             android:id="@+id/action_subscriptionDetailsCancelled_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />

@@ -11,4 +11,9 @@
     <color name="grey">#808080</color>
     <color name="red">#980B0B</color>
 
+    <color name="upcoming">#4CAF50</color>
+    <color name="overdue">#F44336</color>
+    <color name="paid">#2196F3</color>
+    <color name="cancelled">#9E9E9E</color>
+    <color name="default_status">#000000</color>
 </resources>

@@ -14,36 +14,34 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.predictibill.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.*;
 
-/**
- * Fragment for adding a new subscription.
- * Handles form inputs, image selection, and date picking before navigating back with the result.
- */
 public class AddSubscriptionFragment extends Fragment {
 
-    // UI
+    // UI Elements
     private TextView startDateDisplay, nextBillingDateDisplay;
     private Spinner categorySpinner, statusSpinner, billingSpinner, paymentMethodSpinner;
     private EditText subscriptionNameEditText, subscriptionPriceEditText, noteEditText;
     private ImageView previewImageView;
+    private Button submitBtn;
 
-    // URI to hold the selected image
+    // Firebase
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+
+    // Image URI
     private Uri selectedImageUri;
 
-    public AddSubscriptionFragment() {
-        super(R.layout.fragments_add_subscriptions); // Link fragment to its layout
-    }
-
-    // Register a launcher for image picking from gallery
+    // Image Picker Launcher
     private final ActivityResultLauncher<Intent> imagePickerLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
-                    selectedImageUri = result.getData().getData(); // Store selected image URI
-                    previewImageView.setImageURI(selectedImageUri); // Display selected image
+                    selectedImageUri = result.getData().getData();
+                    previewImageView.setImageURI(selectedImageUri);
                     Toast.makeText(requireContext(), "Image selected!", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -51,18 +49,47 @@ public class AddSubscriptionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragments_add_subscriptions, container, false); // Inflate layout
+        return inflater.inflate(R.layout.fragments_add_subscriptions, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Set up back button to navigate back
+        // Initialize Firebase
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+        // Initialize UI elements
+        initializeViews(view);
+
+        // Set up back button
         ImageButton backButton = view.findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> NavHostFragment.findNavController(this).navigateUp());
 
-        // Link form fields with XML
+        // Set up image upload
+        View imageUploadCard = view.findViewById(R.id.imageUploadCard);
+        imageUploadCard.setOnClickListener(v -> openImagePicker());
+
+        // Populate spinners
+        populateSpinners();
+
+        // Set up date pickers
+        setupDatePicker(view, R.id.start_date_container, startDateDisplay, "Select Start Date");
+        setupDatePicker(view, R.id.next_billing_date_container, nextBillingDateDisplay, "Select Next Billing Date");
+
+        // Set up form submission
+        submitBtn = view.findViewById(R.id.add_sub_button);
+        submitBtn.setOnClickListener(v -> {
+            if (isFormValid()) {
+                saveSubscriptionToFirestore();
+            } else {
+                Toast.makeText(requireContext(), "Please fill in all required fields.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void initializeViews(View view) {
         categorySpinner = view.findViewById(R.id.subscription_category_spinner);
         statusSpinner = view.findViewById(R.id.subscription_status_spinner);
         billingSpinner = view.findViewById(R.id.billing_cycle_spinner);
@@ -73,79 +100,28 @@ public class AddSubscriptionFragment extends Fragment {
         subscriptionPriceEditText = view.findViewById(R.id.price_input);
         previewImageView = view.findViewById(R.id.previewImageView);
         noteEditText = view.findViewById(R.id.subscription_note_input);
-
-        // Image upload card click triggers gallery picker
-        View imageUploadCard = view.findViewById(R.id.imageUploadCard);
-        imageUploadCard.setOnClickListener(v -> openImagePicker());
-
-        // Fill spinners with predefined options (To be changed once may db)
-        populateSpinner(categorySpinner, List.of("Entertainment", "Productivity & Tools", "Cloud Storage", "Membership", "Food & Delivery"));
-        populateSpinner(statusSpinner, List.of("Upcoming", "Overdue", "Paid", "Cancelled"));
-        populateSpinner(billingSpinner, List.of("Monthly", "Quarterly", "Annually"));
-        populateSpinner(paymentMethodSpinner, List.of("E-wallet (Gcash)", "Debit Card"));
-
-        // Setup date pickers for start date and next billing date
-        setupDatePicker(view, R.id.start_date_container, startDateDisplay, "Select Start Date");
-        setupDatePicker(view, R.id.next_billing_date_container, nextBillingDateDisplay, "Select Next Billing Date");
-
-        // for constraint of billing but waley pa siya now:p
-        setNextBillingMinDate(Calendar.getInstance());
-
-        // Handle the submission of the form
-        Button submitBtn = view.findViewById(R.id.add_sub_button);
-        submitBtn.setOnClickListener(v -> {
-            if (isFormValid()) {
-                // Collect input values
-                String name = subscriptionNameEditText.getText().toString();
-                double price = Double.parseDouble(subscriptionPriceEditText.getText().toString());
-                String category = categorySpinner.getSelectedItem().toString();
-                String status = statusSpinner.getSelectedItem().toString();
-                String billingCycle = billingSpinner.getSelectedItem().toString();
-                String startDate = startDateDisplay.getText().toString();
-                String dueDate = nextBillingDateDisplay.getText().toString();
-                String paymentMethod = paymentMethodSpinner.getSelectedItem().toString();
-                String note = noteEditText.getText().toString();
-
-                // Generate a unique ID for the new subscription (to be change rin once may db)
-                String subscriptionId = "#PAY" + System.currentTimeMillis();
-
-                // Create a subscription object to pass to the next fragment
-                SubscriptionsFragment.Subscription newSub = new SubscriptionsFragment.Subscription(
-                        subscriptionId, name, price, category, status, billingCycle, startDate, dueDate, paymentMethod, note
-                );
-
-                // Send the new subscription to the SubscriptionsFragment using a Bundle
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("new_subscription", newSub);
-                Navigation.findNavController(v).navigate(R.id.action_addSubscriptions_to_subscriptionsFragment, bundle);
-            } else {
-                Toast.makeText(requireContext(), "Please fill in all required fields.", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    /**
-     * Launches the image picker for selecting a subscription image.
-     */
+    private void populateSpinners() {
+        populateSpinner(categorySpinner, Arrays.asList("Entertainment", "Productivity & Tools", "Cloud Storage", "Membership", "Food & Delivery"));
+        populateSpinner(statusSpinner, Arrays.asList("Upcoming", "Overdue", "Paid", "Cancelled"));
+        populateSpinner(billingSpinner, Arrays.asList("Monthly", "Quarterly", "Annually"));
+        populateSpinner(paymentMethodSpinner, Arrays.asList("E-wallet (Gcash)", "Debit Card"));
+    }
+
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         imagePickerLauncher.launch(Intent.createChooser(intent, "Select Image"));
     }
 
-    /**
-     * Populates a Spinner with a list of string items.
-     */
     private void populateSpinner(Spinner spinner, List<String> items) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                requireContext(), android.R.layout.simple_spinner_item, new ArrayList<>(items));
+                requireContext(), android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(R.layout.dropdown_items);
         spinner.setAdapter(adapter);
     }
 
-    /**
-     * Sets up a date picker dialog for a date field.
-     */
     private void setupDatePicker(View view, int containerId, TextView display, String title) {
         LinearLayout dateContainer = view.findViewById(containerId);
         dateContainer.setOnClickListener(v -> {
@@ -165,7 +141,6 @@ public class AddSubscriptionFragment extends Fragment {
                         display.setText(formattedDate);
                         display.setTextColor(Color.BLACK);
 
-                        // When start date changes, adjust constraints for billing date
                         if (containerId == R.id.start_date_container) {
                             setNextBillingMinDate(selectedDate);
                         }
@@ -177,16 +152,10 @@ public class AddSubscriptionFragment extends Fragment {
         });
     }
 
-    /**
-     * for constraint of maxBilling date pero waley pa rin siya hehe
-     */
     private void setNextBillingMinDate(Calendar minDate) {
-        // Placeholder for logic that restricts the next billing date based on start date + cycle
+        // Implementation for setting minimum date for next billing date
     }
 
-    /**
-     * Validates if all required fields are filled in.
-     */
     private boolean isFormValid() {
         return !isEmpty(subscriptionNameEditText)
                 && !isEmpty(subscriptionPriceEditText)
@@ -204,5 +173,41 @@ public class AddSubscriptionFragment extends Fragment {
 
     private boolean isSpinnerValid(Spinner spinner) {
         return spinner.getSelectedItem() != null && !spinner.getSelectedItem().toString().trim().isEmpty();
+    }
+
+    private void saveSubscriptionToFirestore() {
+        // Get current user ID
+        String userId = mAuth.getCurrentUser().getUid();
+
+        // Create subscription data
+        Map<String, Object> subscription = new HashMap<>();
+        subscription.put("userId", userId);
+        subscription.put("name", subscriptionNameEditText.getText().toString());
+        subscription.put("price", Double.parseDouble(subscriptionPriceEditText.getText().toString()));
+        subscription.put("category", categorySpinner.getSelectedItem().toString());
+        subscription.put("status", statusSpinner.getSelectedItem().toString());
+        subscription.put("billingCycle", billingSpinner.getSelectedItem().toString());
+        subscription.put("startDate", startDateDisplay.getText().toString());
+        subscription.put("nextBillingDate", nextBillingDateDisplay.getText().toString());
+        subscription.put("paymentMethod", paymentMethodSpinner.getSelectedItem().toString());
+        subscription.put("note", noteEditText.getText().toString());
+        subscription.put("createdAt", new Date());
+
+        // Add loading state
+        submitBtn.setEnabled(false);
+        submitBtn.setText("Saving...");
+
+        // Add to Firestore
+        db.collection("subscriptions")
+                .add(subscription)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(getContext(), "Subscription added!", Toast.LENGTH_SHORT).show();
+                    NavHostFragment.findNavController(this).navigateUp();
+                })
+                .addOnFailureListener(e -> {
+                    submitBtn.setEnabled(true);
+                    submitBtn.setText("Add Subscription");
+                    Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 }
