@@ -49,6 +49,7 @@
     <!-- SUBSCRIPTIONS FRAGMENT TEXT -->
     <string name="track_all_r">Track all recurring payments in one place.</string>
     <string name="subscriptio">Subscriptions</string>
+    <string name="subscription_id">Subscription ID</string>
     <string name="filter_by">Filter By</string>
     <string name="category">Category</string>
     <string name="status">Status</string>
@@ -56,6 +57,17 @@
     <string name="addsubscription">Add a Subscription</string>
     <string name="submit_button">+</string>
 
+    <!--ADD SUBSCRIPTION FRAGMENT TEXTS-->
+    <string name="add_subscription">Add a Subscription</string>
+    <string name="name"> Name </string>
+    <string name="note">Note</string>
+    <string name="startdate">Start Date </string>
+    <string name="nextbillingdate">Next Billing Date </string>
+    <string name="price">Price</string>
+    <string name="payment_method">Payment Method </string>
+    <string name="Add_subscription"> Add Subscription</string>
+    <string name="upload_image"> Upload an Image</string>
+    <string name="subscription_details"> Subscription Details</string>
 
     <!-- SUBSCRIPTION DETAILS (LABELS) FRAGMENT TEXT -->
     <string name="logo">Logo</string>
