@@ -190,14 +190,14 @@
 
     <string name="deactivate_account_lbl">Deactivate Account?</string>
     <string name="deactivate_account_note">Your account will be deactivated and you will no
-        longer be able to use the app. You can reactivate it by logging back in.</string>
+        \nlonger be able to use the app. You can reactivate \nit by logging back in.</string>
 
     <string name="deactivate_btn">Deactivate</string>
     <string name="cancel_btn">Cancel</string>
 
     <!-- CHANGE PASSWORD FRAGMENT BUTTONS (DIALOG BOX) TEXT -->
     <string name="confirm_change_password_lbl">Confirm Change Password?</string>
-    <string name="confirm_change_password_note">You are about to change your password. Make
+    <string name="confirm_change_password_note">You are about to change your password.\nMake
     sure you have saved it somewhere safe.</string>
 
     <string name="change_password_btn">Change Password</string>

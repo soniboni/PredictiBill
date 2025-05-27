@@ -1,27 +1,29 @@
 package com.example.predictibill.ui.profile;
 
+import android.app.Dialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
-import com.example.predictibill.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import android.content.Context;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
+import com.example.predictibill.R;
 
 public class ProfileFragment extends Fragment {
 
@@ -29,13 +31,16 @@ public class ProfileFragment extends Fragment {
     private SwitchMaterial email_alerts_toggle_button;
     private Spinner currency_spinner;
 
+    Dialog dialog;
+    Button cancel_btn, change_password_btn, profile_help_button, profile_privacy_policy_button,
+            logout_button, deactivate_account_button;
 
     // Currency options
     private static final String[] currencies = {"PHP", "USD"};
 
-
     public ProfileFragment() {
         // Required empty public constructor
+        super(R.layout.fragment_profile);
     }
 
     @Override
@@ -50,6 +55,10 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Button Functionality
+        Button changePassword = view.findViewById(R.id.profile_change_password_button);
+        changePassword.setOnClickListener(v -> showChangePasswordDialog());
 
         // Initialize the toggle buttons and spinner
         in_app_reminders_toggle_button = view.findViewById(R.id.in_app_reminders_toggle_button);
@@ -91,6 +100,42 @@ public class ProfileFragment extends Fragment {
             String message = "Email alerts " + (isChecked ? "enabled" : "disabled");
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void showChangePasswordDialog() {
+        if (getContext() == null) return;
+
+        dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.confirm_change_password_dialog_box);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            Drawable dialog_box_bg = ContextCompat.getDrawable(getContext(), R.drawable.dialog_box_bg);
+            dialog.getWindow().setBackgroundDrawable(dialog_box_bg);
+        }
+
+        dialog.setCancelable(false);
+        // Initialize buttons
+        cancel_btn = dialog.findViewById(R.id.cancel_btn);
+        change_password_btn = dialog.findViewById(R.id.change_password_btn);
+
+        if (cancel_btn != null) {
+            //Dismiss the dialog box when the cancel button is clicked
+            cancel_btn.setOnClickListener(v -> dialog.dismiss());
+        }
+
+        if (change_password_btn != null) {
+            change_password_btn.setOnClickListener(v -> {
+                dialog.dismiss();
+                // Navigate to the paid subscription details
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.action_navigationProfile_to_changePasswordFragment);
+            });
+        }
+
+        // Show the dialog
+        dialog.show();
     }
 
     private void setupCurrencySpinner(String savedCurrency) {
@@ -142,7 +187,7 @@ public class ProfileFragment extends Fragment {
                 prefs.edit().putString("selected_currency", selectedCurrency).apply();
 
                 if (!selectedCurrency.equals(previousCurrency)) {
-                        Toast.makeText(requireContext(), "Currency changed to " + selectedCurrency, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Currency changed to " + selectedCurrency, Toast.LENGTH_SHORT).show();
                 }
             }
 
