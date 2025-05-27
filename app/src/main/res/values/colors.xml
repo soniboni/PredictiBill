@@ -4,9 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_blue">#ABBEE5</color>
     <color name="dark_blue">#000564</color>
+    <color name="bill_card">#DCE6FA</color>
     <color name="brown">#383636</color>
+    <color name="light_brown">#494545</color>
+    <color name="dark_brown">#322F2F</color>"
     <color name="grey">#808080</color>
-    <color name="rectangle_color">#DCE6FA</color>"
-    <color name="category_entertainment">#FF9A9A</color>
+    <color name="red">#980B0B</color>
 
 </resources>
