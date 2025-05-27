@@ -50,7 +50,7 @@
         android:id="@+id/navigation_profile"
         android:name="com.example.predictibill.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
+        tools:layout="@layout/fragment_profile"/>
         <!-- Action to navigate to Change Password Fragment when "Change Password" clickable text/button is clicked -->
         <action
             android:id="@+id/action_navigationProfile_to_changePasswordFragment"
@@ -65,7 +65,6 @@
         <action
             android:id="@+id/action_navigationProfile_to_privacyPolicyFragment"
             app:destination="@id/navigation_privacy_policy"/>
-    </fragment>
 
         <!-- Action to navigate to 'login.xml' when "Logout" button is clicked -->
 <!--        <action-->
@@ -83,7 +82,7 @@
         android:id="@+id/navigation_change_password"
         android:name="com.example.predictibill.ui.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" >
+        tools:layout="@layout/fragment_change_password" />
         <!-- Action to return to Profile & Settings (Main Page) Fragment -->
         <action
             android:id="@+id/action_navigationChangePassword_to_profileFragment"
@@ -93,30 +92,29 @@
 
 
         <!-- Action to navigate to - Fragment when the "Change Password" button is clicked -->
-    </fragment>
+
 
     <!-- Help Fragment -->
     <fragment
         android:id="@+id/navigation_help"
         android:name="com.example.predictibill.ui.profile.HelpFragment"
         android:label="fragment_help"
-        tools:layout="@layout/fragment_help" >
+        tools:layout="@layout/fragment_help" />
         <!-- Action to return to Profile & Settings (Main Page) Fragment -->
         <action
             android:id="@+id/action_navigationHelp_to_profileFragment"
             app:destination="@id/navigation_profile"/>
-    </fragment>
+
 
     <!-- Privacy Policy Fragment -->
     <fragment
         android:id="@+id/navigation_privacy_policy"
         android:name="com.example.predictibill.ui.profile.PrivacyPolicyFragment"
         android:label="fragment_privacy_policy"
-        tools:layout="@layout/fragment_privacy_policy" >
+        tools:layout="@layout/fragment_privacy_policy" />
         <!-- Action to return to Profile & Settings (Main Page) Fragment -->
         <action
             android:id="@+id/action_navigationPrivacyPolicy_to_profileFragment"
             app:destination="@id/navigation_profile"/>
-    </fragment>
 
 </navigation>
