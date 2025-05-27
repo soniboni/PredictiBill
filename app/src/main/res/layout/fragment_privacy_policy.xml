@@ -29,11 +29,11 @@
 
         <!-- Heading - Title -->
         <TextView
-            android:id="@+id/profile_privacy_notice_lbl"
+            android:id="@+id/profile_privacy_policy_lbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/profile_privacy_notice_lbl"
+            android:text="@string/profile_privacy_policy_lbl"
             android:textAppearance="@style/headings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
             android:textAppearance="@style/subheadings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_privacy_notice_lbl"/>
+            app:layout_constraintTop_toBottomOf="@id/profile_privacy_policy_lbl"/>
 
         <!-- Heading - 1. Information We Collect -->
         <TextView
@@ -191,6 +191,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="16dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="@string/profile_user_rights_txt"
             android:textAppearance="@style/subheadings"
             app:layout_constraintStart_toStartOf="@id/profile_you_can_txt"

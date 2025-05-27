@@ -69,7 +69,7 @@
 
     <string name="profile_about_lbl">About</string>
     <string name="profile_help_lbl">Help</string>
-    <string name="profile_privacy_notice_lbl">Privacy Policy</string>
+    <string name="profile_privacy_policy_lbl">Privacy Policy</string>
 
     <string name="profile_logout_lbl">Logout</string>
     <string name="profile_deactivate_account_lbl">Deactivate Account</string>
@@ -164,8 +164,8 @@
     <string name="profile_you_can_txt">" "\u2022 You can:</string>
     <string name="profile_user_rights_txt">
          \u2022 View and export your data
-         \n \u2022 Delete your data at any time
-         \n \u2022 Control notification permissions in your \n "   " device or app settings</string>
+         \n\u2022 Delete your data at any time
+         \n\u2022 Control notification permissions in your \n "   " device or app settings</string>
 
 
     <!-- PROFILE AND SETTINGS CONTENT DESCRIPTION TEXT -->
