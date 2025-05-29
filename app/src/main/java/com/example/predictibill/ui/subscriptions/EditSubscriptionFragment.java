@@ -1,7 +1,9 @@
 package com.example.predictibill.ui.subscriptions;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,21 +11,28 @@ import android.view.ViewGroup;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.predictibill.R;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.text.SimpleDateFormat;
+
 import java.util.*;
 
-public class AddSubscriptionFragment extends Fragment {
+public class EditSubscriptionFragment extends Fragment {
 
     // UI Elements
-    private TextView startDateDisplay, nextBillingDateDisplay;
+    private TextView startDateDisplay, nextBillingDateDisplay, subscriptionIdNumber;
     private Spinner categorySpinner, statusSpinner, billingSpinner, paymentMethodSpinner;
     private EditText subscriptionNameEditText, subscriptionPriceEditText, noteEditText;
-    private Button submitBtn;
+    private Button updateBtn;
+    private String subscriptionId;
+
+    // Dialog
+    private Dialog dialog;
+    private Button save_changes_btn, discard_btn;
 
     // Firebase
     private FirebaseFirestore db;
@@ -35,7 +44,7 @@ public class AddSubscriptionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragments_add_subscriptions, container, false);
+        return inflater.inflate(R.layout.fragments_edit_subscription, container, false);
     }
 
     @Override
@@ -45,6 +54,11 @@ public class AddSubscriptionFragment extends Fragment {
         // Initialize Firebase
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+        // Get subscription ID from arguments
+        if (getArguments() != null) {
+            subscriptionId = getArguments().getString("subscriptionId");
+        }
 
         // Initialize UI elements
         initializeViews(view);
@@ -56,19 +70,48 @@ public class AddSubscriptionFragment extends Fragment {
         // Populate spinners
         populateSpinners();
 
+        // Load subscription data
+        loadSubscriptionData();
+
         // Set up date pickers
         setupDatePicker(view, R.id.start_date_container, startDateDisplay, "Select Start Date");
         setupDatePicker(view, R.id.next_billing_date_container, nextBillingDateDisplay, "Select Next Billing Date");
 
         // Set up form submission
-        submitBtn = view.findViewById(R.id.add_sub_button);
-        submitBtn.setOnClickListener(v -> {
+        updateBtn.setOnClickListener(v -> {
             if (isFormValid()) {
-                saveSubscriptionToFirestore();
+                showConfirmationSubsDialog();
             } else {
                 Toast.makeText(requireContext(), "Please fill in all required fields.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showConfirmationSubsDialog() {
+        if (getContext() == null) return;
+
+        dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.edit_information_dialog_box);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            Drawable dialog_box_bg = ContextCompat.getDrawable(getContext(), R.drawable.dialog_box_bg);
+            dialog.getWindow().setBackgroundDrawable(dialog_box_bg);
+        }
+
+        dialog.setCancelable(false);
+
+        save_changes_btn = dialog.findViewById(R.id.save_changes_btn);
+        discard_btn = dialog.findViewById(R.id.discard_btn);
+
+        save_changes_btn.setOnClickListener(v -> {
+            dialog.dismiss();
+            updateSubscriptionInFirestore();
+        });
+
+        discard_btn.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
     }
 
     private void initializeViews(View view) {
@@ -81,13 +124,15 @@ public class AddSubscriptionFragment extends Fragment {
         subscriptionNameEditText = view.findViewById(R.id.subscription_name_input);
         subscriptionPriceEditText = view.findViewById(R.id.price_input);
         noteEditText = view.findViewById(R.id.subscription_note_input);
+        subscriptionIdNumber = view.findViewById(R.id.subscription_id_number);
+        updateBtn = view.findViewById(R.id.update_sub_button);
     }
 
     private void populateSpinners() {
         populateSpinner(categorySpinner, Arrays.asList("Entertainment", "Productivity & Tools", "Cloud Storage", "Membership", "Food & Delivery"));
         populateSpinner(statusSpinner, Arrays.asList("Upcoming", "Overdue", "Paid", "Cancelled"));
         populateSpinner(billingSpinner, Arrays.asList("Monthly", "Quarterly", "Annually"));
-        populateSpinner(paymentMethodSpinner, Arrays.asList("Cash","E-wallet (Gcash)", "Debit Card"));
+        populateSpinner(paymentMethodSpinner, Arrays.asList("E-wallet (Gcash)", "Debit Card"));
     }
 
     private void populateSpinner(Spinner spinner, List<String> items) {
@@ -95,6 +140,54 @@ public class AddSubscriptionFragment extends Fragment {
                 requireContext(), android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(R.layout.dropdown_items);
         spinner.setAdapter(adapter);
+    }
+
+    private void loadSubscriptionData() {
+        if (subscriptionId != null && !subscriptionId.isEmpty()) {
+            subscriptionIdNumber.setText(subscriptionId);
+
+            db.collection("subscriptions").document(subscriptionId)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            subscriptionNameEditText.setText(documentSnapshot.getString("name"));
+
+                            Double price = documentSnapshot.getDouble("price");
+                            if (price != null) {
+                                subscriptionPriceEditText.setText(String.valueOf(price));
+                            }
+
+                            noteEditText.setText(documentSnapshot.getString("note"));
+                            startDateDisplay.setText(documentSnapshot.getString("startDate"));
+                            nextBillingDateDisplay.setText(documentSnapshot.getString("nextBillingDate"));
+
+                            setSpinnerSelection(categorySpinner, documentSnapshot.getString("category"));
+                            setSpinnerSelection(statusSpinner, documentSnapshot.getString("status"));
+                            setSpinnerSelection(billingSpinner, documentSnapshot.getString("billingCycle"));
+                            setSpinnerSelection(paymentMethodSpinner, documentSnapshot.getString("paymentMethod"));
+
+                            String startDateStr = documentSnapshot.getString("startDate");
+                            if (startDateStr != null) {
+                                Calendar startDateCal = parseDateStringToCalendar(startDateStr);
+                                setNextBillingMinDate(startDateCal);
+                            }
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(requireContext(), "Error loading subscription: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    private void setSpinnerSelection(Spinner spinner, String value) {
+        if (value == null) return;
+
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(value)) {
+                spinner.setSelection(i);
+                break;
+            }
+        }
     }
 
     private void setupDatePicker(View view, int containerId, TextView display, String title) {
@@ -118,14 +211,11 @@ public class AddSubscriptionFragment extends Fragment {
 
                         if (containerId == R.id.start_date_container) {
                             setNextBillingMinDate(selectedDate);
-                            // Optionally, reset next billing date when start date changes
-                            nextBillingDateDisplay.setText("");
                         }
                     },
                     year, month, day
             );
 
-            // If nextBillingMinDate is set, limit the minimum date selectable for next billing date
             if (containerId == R.id.next_billing_date_container && nextBillingMinDate != null) {
                 datePickerDialog.getDatePicker().setMinDate(nextBillingMinDate.getTimeInMillis());
             }
@@ -137,7 +227,6 @@ public class AddSubscriptionFragment extends Fragment {
 
     private void setNextBillingMinDate(Calendar minDate) {
         nextBillingMinDate = (Calendar) minDate.clone();
-        // The next billing date must be at least the start date or later
     }
 
     private boolean isFormValid() {
@@ -159,15 +248,18 @@ public class AddSubscriptionFragment extends Fragment {
         return spinner.getSelectedItem() != null && !spinner.getSelectedItem().toString().trim().isEmpty();
     }
 
-    private void saveSubscriptionToFirestore() {
+    private void updateSubscriptionInFirestore() {
+        if (subscriptionId == null || subscriptionId.isEmpty()) {
+            Toast.makeText(requireContext(), "Invalid subscription ID", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String status = statusSpinner.getSelectedItem().toString();
         String startDateStr = startDateDisplay.getText().toString();
         String nextBillingDateStr = nextBillingDateDisplay.getText().toString();
 
-        // Parse startDate string to Calendar
         Calendar startDateCal = parseDateStringToCalendar(startDateStr);
 
-        // Calculate nextBillingDate based on billing cycle and start date if status is "Upcoming"
         if ("Upcoming".equalsIgnoreCase(status)) {
             String billingCycle = billingSpinner.getSelectedItem().toString();
             Calendar calculatedNextBilling = calculateNextBillingDate(startDateCal, billingCycle);
@@ -176,7 +268,14 @@ public class AddSubscriptionFragment extends Fragment {
 
         Map<String, Object> subscription = new HashMap<>();
         subscription.put("name", subscriptionNameEditText.getText().toString());
-        subscription.put("price", Double.parseDouble(subscriptionPriceEditText.getText().toString()));
+
+        try {
+            subscription.put("price", Double.parseDouble(subscriptionPriceEditText.getText().toString()));
+        } catch (NumberFormatException e) {
+            Toast.makeText(requireContext(), "Please enter a valid price", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         subscription.put("category", categorySpinner.getSelectedItem().toString());
         subscription.put("status", status);
         subscription.put("billingCycle", billingSpinner.getSelectedItem().toString());
@@ -184,40 +283,44 @@ public class AddSubscriptionFragment extends Fragment {
         subscription.put("nextBillingDate", nextBillingDateStr);
         subscription.put("paymentMethod", paymentMethodSpinner.getSelectedItem().toString());
         subscription.put("note", noteEditText.getText().toString());
-        subscription.put("createdAt", new Date());
+        subscription.put("updatedAt", Timestamp.now());
 
-        submitBtn.setEnabled(false);
-        submitBtn.setText("Saving...");
+        updateBtn.setEnabled(false);
 
-        db.collection("subscriptions")
-                .add(subscription)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(getContext(), "Subscription added!", Toast.LENGTH_SHORT).show();
-                    NavHostFragment.findNavController(this).navigateUp();
+        db.collection("subscriptions").document(subscriptionId)
+                .update(subscription)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(getContext(), "Subscription updated!", Toast.LENGTH_SHORT).show();
+                    NavHostFragment.findNavController(this).navigate(R.id.action_editSubscriptionFragment_to_subscriptionsFragment);
                 })
                 .addOnFailureListener(e -> {
-                    submitBtn.setEnabled(true);
-                    submitBtn.setText("Add Subscription");
+                    updateBtn.setEnabled(true);
+                    updateBtn.setText("Update Subscription");
                     Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
     private Calendar parseDateStringToCalendar(String dateStr) {
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
-            Date date = sdf.parse(dateStr);
+            String[] parts = dateStr.split("/");
+            int day = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]) - 1; // Calendar months are 0-based
+            int year = Integer.parseInt(parts[2]);
+
             Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
+            cal.set(year, month, day);
             return cal;
         } catch (Exception e) {
-            // If parsing fails, return current date as fallback
             return Calendar.getInstance();
         }
     }
 
     private String formatCalendarToDateString(Calendar cal) {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
-        return sdf.format(cal.getTime());
+        return String.format(Locale.getDefault(),
+                "%d/%d/%d",
+                cal.get(Calendar.DAY_OF_MONTH),
+                cal.get(Calendar.MONTH) + 1,
+                cal.get(Calendar.YEAR));
     }
 
     private Calendar calculateNextBillingDate(Calendar startDate, String billingCycle) {
@@ -233,7 +336,6 @@ public class AddSubscriptionFragment extends Fragment {
                 nextDate.add(Calendar.YEAR, 1);
                 break;
             default:
-                // If unknown billing cycle, just add one month as fallback
                 nextDate.add(Calendar.MONTH, 1);
         }
         return nextDate;

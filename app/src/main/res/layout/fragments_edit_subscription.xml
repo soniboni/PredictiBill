@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="24dp">
+
+        <!--Title Header-->
+        <TextView
+            android:id="@+id/edit_a_subsc"
+            android:layout_width="244dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="40dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/edit_subscription"
+            android:textAppearance="@style/subscriptio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_image" />
+
+        <!-- Logo Image -->
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/logo_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.072" />
+
+        <!-- Image Upload Card -->
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/back_button_bg"
+            android:contentDescription="Back"
+            android:src="@drawable/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_image" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageUploadCard"
+            android:layout_width="330dp"
+            android:layout_height="122dp"
+            android:autofillHints="Upload an Image"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/back_button"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/camera_icon"
+                    android:contentDescription="Upload Icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/upload_image"
+                    android:textAppearance="@style/upload_image"
+                    android:textSize="14sp"
+                    android:paddingTop="8dp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/previewImageView"
+                android:layout_width="330dp"
+                android:layout_height="122dp"
+                android:layout_marginTop="1dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageUploadCard" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Subscription ID Section -->
+        <TextView
+            android:id="@+id/subscription_id"
+            android:layout_width="115dp"
+            android:layout_height="16dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="19sp"
+            android:text="@string/subscription_id"
+            android:textAppearance="@style/subscription_id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageUploadCard"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"/>
+
+        <!-- to be changed when database is connected(this is auto incremented)-->
+        <TextView
+            android:id="@+id/subscription_id_number"
+            android:layout_width="117dp"
+            android:layout_height="18dp"
+            android:gravity="right|center_vertical"
+            android:hint="ID number"
+            android:lineSpacingExtra="16sp"
+            android:textAppearance="@style/subscription_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageUploadCard"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Name Section -->
+        <ImageView
+            android:id="@+id/required_name_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/subscription_name_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.899"
+            app:layout_constraintStart_toEndOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_id_number"
+            app:layout_constraintVertical_bias="0.809" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="64dp"
+            android:layout_height="24dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="@string/name"
+            android:textAppearance="@style/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_id"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"/>
+
+        <EditText
+            android:id="@+id/subscription_name_input"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:inputType="textCapWords"
+            android:paddingStart="12dp"
+            android:textColorHint="#999999"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+
+        <ImageView
+            android:id="@+id/required_note_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/subscription_note_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.895"
+            app:layout_constraintStart_toEndOf="@+id/note"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_name_input"
+            app:layout_constraintVertical_bias="0.804" />
+
+        <!-- Note Section -->
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="64dp"
+            android:layout_height="24dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="@string/note"
+            android:textAppearance="@style/note"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_name_input"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"/>
+
+        <EditText
+            android:id="@+id/subscription_note_input"
+            android:layout_width="0dp"
+            android:layout_height="109dp"
+            android:background="@drawable/sub_rectangle"
+            android:inputType="textCapWords"
+            android:paddingStart="12dp"
+            android:textColorHint="@color/black"
+            android:gravity="top|start"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/note"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Category Section -->
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="74dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="@string/category"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_note_input" />
+
+        <ImageView
+            android:id="@+id/required_category_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/subscription_category_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/status"
+            app:layout_constraintHorizontal_bias="0.775"
+            app:layout_constraintStart_toEndOf="@+id/category"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_note_input"
+            app:layout_constraintVertical_bias="0.47" />
+
+        <!-- Category spinner-->
+        <Spinner
+            android:id="@+id/subscription_category_spinner"
+            android:layout_width="165dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/sub_rectangle"
+            android:padding="10dp"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/status"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Open Category"
+            android:src="@drawable/arrow_down_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/subscription_category_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/subscription_category_spinner"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="@+id/subscription_category_spinner"
+            app:layout_constraintTop_toTopOf="@+id/subscription_category_spinner"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <!--Status Section -->
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="74dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="120dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="@string/status"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_note_input" />
+
+
+        <ImageView
+            android:id="@+id/required_status_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/subscription_status_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.711"
+            app:layout_constraintStart_toEndOf="@+id/status"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_note_input" />
+
+
+        <!-- Status Spinner -->
+
+        <Spinner
+            android:id="@+id/subscription_status_spinner"
+            android:layout_width="177dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:padding="10dp"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/subscription_category_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/status" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Open Status"
+            android:src="@drawable/arrow_down_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/subscription_status_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/subscription_status_spinner"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="@+id/subscription_status_spinner"
+            app:layout_constraintTop_toTopOf="@+id/subscription_status_spinner"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <!-- Billing Cycle Section -->
+        <TextView
+            android:id="@+id/billing_cycle"
+            android:layout_width="129dp"
+            android:layout_height="33dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="@string/billing_cyc"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_category_spinner"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"/>
+
+        <ImageView
+            android:id="@+id/required_billingcycle_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/billing_cycle_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.871"
+            app:layout_constraintStart_toEndOf="@+id/billing_cycle"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_status_spinner"
+            app:layout_constraintVertical_bias="0.634" />
+
+        <!-- Billing Cycle Spinner -->
+        <Spinner
+            android:id="@+id/billing_cycle_spinner"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/billing_cycle" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Open Billing Cycle"
+            android:src="@drawable/arrow_down_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/billing_cycle_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/billing_cycle_spinner"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="@+id/billing_cycle_spinner"
+            app:layout_constraintTop_toTopOf="@+id/billing_cycle_spinner"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <!-- Start Date Section -->
+        <TextView
+            android:id="@+id/start_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/startdate"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/billing_cycle_spinner" />
+
+
+        <ImageView
+            android:id="@+id/required_startdate_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/start_date_container"
+            app:layout_constraintEnd_toStartOf="@+id/next_billing_label"
+            app:layout_constraintHorizontal_bias="0.682"
+            app:layout_constraintStart_toEndOf="@+id/start_date_label"
+            app:layout_constraintTop_toBottomOf="@+id/billing_cycle_spinner"
+            app:layout_constraintVertical_bias="0.864" />
+
+        <!-- Start Date Spinner (linear layout) -->
+        <LinearLayout
+            android:id="@+id/start_date_container"
+            android:layout_width="165dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/sub_rectangle"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/next_billing_date_container"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/start_date_label">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginStart="-1dp"
+                android:contentDescription="Open date picker"
+                android:src="@drawable/date_picker_logo" />
+
+            <TextView
+                android:id="@+id/start_date_display"
+                android:layout_width="125dp"
+                android:layout_height="20dp"
+                android:textColor="#999999"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!--Next Billing Date Section-->
+
+        <TextView
+            android:id="@+id/next_billing_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="204dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/nextbillingdate"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/billing_cycle_spinner" />
+
+
+        <ImageView
+            android:id="@+id/required_nextbillingdate_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/next_billing_date_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.531"
+            app:layout_constraintStart_toEndOf="@+id/next_billing_label"
+            app:layout_constraintTop_toBottomOf="@+id/billing_cycle_spinner"
+            app:layout_constraintVertical_bias="1.3" />
+
+        <!-- Next Billing Date Spinner (linear layout) -->
+        <LinearLayout
+            android:id="@+id/next_billing_date_container"
+            android:layout_width="177dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/next_billing_label">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginStart="-1dp"
+                android:contentDescription="Open date picker"
+                android:src="@drawable/date_picker_logo" />
+
+            <TextView
+                android:id="@+id/next_billing_date_display"
+                android:layout_width="125dp"
+                android:layout_height="20dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Price Section -->
+        <TextView
+            android:id="@+id/price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/payment_method_label"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/start_date_container"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <ImageView
+            android:id="@+id/required_price_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/price_input"
+            app:layout_constraintEnd_toStartOf="@+id/payment_method_label"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toEndOf="@+id/price_label"
+            app:layout_constraintTop_toBottomOf="@+id/start_date_container"
+            app:layout_constraintVertical_bias="0.966" />
+
+        <EditText
+            android:id="@+id/price_input"
+            android:layout_width="165dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:digits="0123456789."
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:paddingStart="12dp"
+            android:singleLine="true"
+            android:textColorHint="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_label"
+            app:layout_constraintVertical_bias="0.07" />
+
+        <!-- Payment Section -->
+        <TextView
+            android:id="@+id/payment_method_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_method"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/next_billing_date_container"
+            app:layout_constraintVertical_bias="0.141" />
+
+
+        <ImageView
+            android:id="@+id/required_payment_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/payment_method_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.525"
+            app:layout_constraintStart_toEndOf="@+id/payment_method_label"
+            app:layout_constraintTop_toBottomOf="@+id/next_billing_date_container"
+            app:layout_constraintVertical_bias="0.76" />
+
+        <!-- Payment Method Spinner -->
+        <Spinner
+            android:id="@+id/payment_method_spinner"
+            android:layout_width="177dp"
+            android:layout_height="41dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:padding="10dp"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/price_input"
+            app:layout_constraintTop_toBottomOf="@+id/payment_method_label"
+            app:layout_constraintVertical_bias="0.071" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="34dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Open Payment Method"
+            android:src="@drawable/arrow_down_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/payment_method_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/payment_method_spinner"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="@+id/payment_method_spinner"
+            app:layout_constraintTop_toTopOf="@+id/payment_method_spinner"
+            app:layout_constraintVertical_bias="0.428" />
+
+
+        <!-- Update Subscription Button-->
+        <Button
+            android:id="@+id/update_sub_button"
+            android:layout_width="361dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/sub_rectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.657"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_input" />
+
+
+        <TextView
+            android:layout_width="166dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="104dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/update_subscription"
+            android:textAppearance="@style/add_sub_button"
+            app:layout_constraintBottom_toBottomOf="@+id/update_sub_button"
+            app:layout_constraintStart_toStartOf="@+id/update_sub_button"
+            app:layout_constraintTop_toTopOf="@+id/update_sub_button"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

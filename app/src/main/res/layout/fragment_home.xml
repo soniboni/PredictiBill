@@ -75,17 +75,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="29dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="120dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/home_date_txt"
             android:textColor="@color/brown"
             android:textSize="13.4sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.003"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.132" />
+            app:layout_constraintVertical_bias="0.169" />
 
         <TextView
             android:id="@+id/home_rectangle_2"
@@ -318,7 +318,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="@string/home_spentmoney_txt"
             android:textColor="@color/dark_blue"
-            android:textSize="24.6sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -335,7 +335,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="@string/home_expectedmoney_txt"
             android:textColor="@color/dark_blue"
-            android:textSize="24.6sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

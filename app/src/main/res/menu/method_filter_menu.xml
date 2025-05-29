@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/method_all"
+        android:title="All Methods" />
+    <item
+        android:id="@+id/method_cash"
+        android:title="Cash" />
+    <item
+        android:id="@+id/method_gcash"
+        android:title="E-Wallet (GCash)" />
+    <item
+        android:id="@+id/method_debit_card"
+        android:title="Debit Card" />
+
+</menu>

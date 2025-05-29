@@ -1,62 +1,52 @@
 package com.example.predictibill.models;
 
+import java.util.Date;
+import com.google.firebase.Timestamp;
+
 public class Subscription {
-
+    private String id;
+    private String userId;
     private String name;
-    private String billingCycle;
-    private String category;
-    private String subscriptionId;
     private double price;
+    private String category;
+    private String status;
+    private String billingCycle;
+    private String startDate;
+    private String nextBillingDate;
+    private String paymentMethod;
+    private String note;
+    private Date createdAt;
     private String dueDate;
-    private String status;  // Example extra field (e.g., "paid", "unpaid")
+    private String subscriptionId;
 
-    // No-argument constructor required for Firestore deserialization
-    public Subscription() {
+    private Timestamp updatedAt;
+
+    private String lastPaidDue;
+
+    public Subscription() {}
+
+    public String getId() {
+        return id;
     }
 
-    // Full constructor
-    public Subscription(String name, String billingCycle, String category,
-                        String subscriptionId, double price, String dueDate, String status) {
-        this.name = name;
-        this.billingCycle = billingCycle;
-        this.category = category;
-        this.subscriptionId = subscriptionId;
-        this.price = price;
-        this.dueDate = dueDate;
-        this.status = status;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    // Getters and Setters
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getBillingCycle() {
-        return billingCycle;
-    }
-
-    public void setBillingCycle(String billingCycle) {
-        this.billingCycle = billingCycle;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getSubscriptionId() {
-        return subscriptionId;
-    }
-
-    public void setSubscriptionId(String subscriptionId) {
-        this.subscriptionId = subscriptionId;
     }
 
     public double getPrice() {
@@ -67,12 +57,12 @@ public class Subscription {
         this.price = price;
     }
 
-    public String getDueDate() {
-        return dueDate;
+    public String getCategory() {
+        return category;
     }
 
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getStatus() {
@@ -81,5 +71,82 @@ public class Subscription {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getBillingCycle() {
+        return billingCycle;
+    }
+
+    public void setBillingCycle(String billingCycle) {
+        this.billingCycle = billingCycle;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getNextBillingDate() {
+        return nextBillingDate;
+    }
+
+    public void setNextBillingDate(String nextBillingDate) {
+        this.nextBillingDate = nextBillingDate;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getSubscriptionId() {
+        return subscriptionId;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setSubscriptionId(String subscriptionId) {
+        this.subscriptionId = subscriptionId;
+    }
+
+    public String getLastPaidDue() {
+        return lastPaidDue;
+    }
+
+    public void setLastPaidDue(String lastPaidDue) {
+        this.lastPaidDue = lastPaidDue;
+    }
+
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

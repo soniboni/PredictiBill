@@ -15,15 +15,15 @@
     <string name="analytics_txt">Analytics</string>
 
     <!-- HOME FRAGMENT TEXT -->
-    <string name="home_hi_lbl">Hi, Charles</string>
+    <string name="home_hi_lbl">Hi, User!</string>
     <string name="home_welcome_lbl">Welcome Back!"</string>
     <string name="home_subsspending_txt">Monthly Subscription Spending</string>
     <string name="home_date_txt">As of May 2, 2025</string>
     <string name="home_percent_txt">9% of this month’s subscription charges billed.</string>
     <string name="home_youvespent_txt">You\'ve spent</string>
     <string name="home_outof_txt">out of the expected</string>
-    <string name="home_spentmoney_txt">₱ 2,500.00</string>
-    <string name="home_expectedmoney_txt">₱ 21,232.00</string>
+    <string name="home_spentmoney_txt">₱ 0.00</string>
+    <string name="home_expectedmoney_txt">₱ 0.00</string>
     <string name="home_upcoming_bill_txt">Next Upcoming Bill</string>
     <string name="home_upcoming_billing_note">Your bills in the next 7 days.</string>
     <string name="home_upcomingsubsname1_txt">Netflix</string>
@@ -160,7 +160,21 @@
 <!-- PAYMENT FRAGMENT TEXT -->
     <string name="payments">Payments</string>
     <string name="browse_your_payments">Browse your payments by date or categories.</string>
+    <string name="category_icon">Category Icon</string>
 
+
+    <string name="subscription_entertainment">Entertainment</string>
+    <string name="subscription_productivity_tools">Productivity and Tools</string>
+    <string name="subscription_cloud_storage">Cloud Storage</string>
+    <string name="subscription_membership">Membership</string>
+    <string name="subscription_fooddelivery">Food Delivery</string>
+
+    <string name="smart_insights_message">Your most expensive subscription is: Netflix</string>
+
+    <string name="edit_subscription">Edit Subscription</string>
+    <string name="update_subscription">Update Subscription</string>
+    <string name="subscription_updated">Subscription updated!</string>
+    <string name="error_loading_subscription">Error loading subscription</string>
 
 
 </resources>

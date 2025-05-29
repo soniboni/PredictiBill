@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,35 +19,43 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.predictibill.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SubscriptionDetailsUpcomingFragment extends Fragment {
 
-    Dialog dialog;
-    Button mark_as_paid_cancel_btn, confirm_btn,
+    private Dialog dialog;
+    private Button mark_as_paid_cancel_btn, confirm_btn,
             cancel_subs_btn, keep_tracking_btn,
             delete_permanently_btn, delete_subs_cancel_btn;
+    private FirebaseFirestore db;
+    private String subscriptionId;
 
     public SubscriptionDetailsUpcomingFragment() {
-        // Required empty public constructor
         super(R.layout.fragment_subscription_details_upcoming);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        db = FirebaseFirestore.getInstance();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_subscription_details_upcoming, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Get subscription data from arguments
+        Bundle args = getArguments();
+        if (args != null) {
+            subscriptionId = args.getString("subscriptionId");
+            populateViews(view, args);
+        }
 
         ImageButton backButton = view.findViewById(R.id.sub_detail_upcoming_backBtn);
         backButton.setOnClickListener(v -> NavHostFragment.findNavController(this).navigateUp());
@@ -55,14 +66,74 @@ public class SubscriptionDetailsUpcomingFragment extends Fragment {
         Button cancelSubs = view.findViewById(R.id.upcomingsubs_details_cancel_subs_btn);
         cancelSubs.setOnClickListener(v -> showCancelSubsDialog());
 
-        // lagay pa here yung for edit info
-
         Button deleteSubs = view.findViewById(R.id.upcomingsubs_details_delete_subs_btn);
         deleteSubs.setOnClickListener(v -> showDeleteSubsDialog());
+
+        // Edit Info Button
+        Button editInfoBtn = view.findViewById(R.id.upcomingsubs_details_edit_info_btn);
+        editInfoBtn.setOnClickListener(v -> {
+            if (args != null) {
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.action_subscriptionDetailsUpcoming_to_editSubscriptionFragment, args);
+            }
+        });
     }
 
+    private void populateViews(View view, Bundle args) {
+        // TextViews
+        TextView nameTv = view.findViewById(R.id.upcomingsubs_details_name);
+        TextView subsIdTv = view.findViewById(R.id.upcomingsubs_details_subsID);
+        TextView noteTv = view.findViewById(R.id.upcomingsubs_details_note);
+        TextView startDateTv = view.findViewById(R.id.upcomingsubs_details_startdate);
+        TextView nextBillDateTv = view.findViewById(R.id.upcomingsubs_details_nextbilldate);
+        TextView billingCycleTv = view.findViewById(R.id.upcomingsubs_details_billingcycle);
+        TextView priceTv = view.findViewById(R.id.upcomingsubs_details_price);
+        TextView paymentMethodTv = view.findViewById(R.id.upcomingsubs_details_paymentmethod);
+        TextView lastPaidDueTv = view.findViewById(R.id.upcomingsubs_details_lastpaiddue);
 
-    // ---------- TO SHOW MARK AS PAID DIALOG BOX
+        // Set values from arguments
+        nameTv.setText(args.getString("name", ""));
+        subsIdTv.setText(args.getString("subscriptionId", ""));
+        noteTv.setText(args.getString("note", ""));
+        startDateTv.setText(args.getString("startDate", ""));
+        nextBillDateTv.setText(args.getString("nextBillingDate", ""));
+        billingCycleTv.setText(args.getString("billingCycle", ""));
+        priceTv.setText(String.format("₱%.2f", args.getDouble("price", 0.0)));
+        paymentMethodTv.setText(args.getString("paymentMethod", ""));
+        lastPaidDueTv.setText(args.getString("lastPaidDue", ""));
+
+        // Set category image
+        ImageView categoryIv = view.findViewById(R.id.upcoming_category_name);
+        String category = args.getString("category", "");
+        int categoryRes = getCategoryImageRes(category);
+        if (categoryRes != 0) {
+            categoryIv.setImageResource(categoryRes);
+        }
+
+        // Set status image
+        ImageView statusIv = view.findViewById(R.id.upcoming_status);
+        String status = args.getString("status", "");
+        int statusRes = getStatusImageRes(status);
+        if (statusRes != 0) {
+            statusIv.setImageResource(statusRes);
+        }
+    }
+
+    private int getCategoryImageRes(String category) {
+        if (category == null) return 0;
+        String formatted = category.toLowerCase()
+                .replace("&", "and")
+                .replaceAll("[^a-z0-9]", "");
+        String resourceName = "category_name_" + formatted;
+        return getResources().getIdentifier(resourceName, "drawable", requireContext().getPackageName());
+    }
+
+    private int getStatusImageRes(String status) {
+        if (status == null) return 0;
+        String formatted = "status_" + status.toLowerCase().trim();
+        return getResources().getIdentifier(formatted, "drawable", requireContext().getPackageName());
+    }
+
     private void showMarkAsPaidDialog() {
         if (getContext() == null) return;
 
@@ -71,36 +142,25 @@ public class SubscriptionDetailsUpcomingFragment extends Fragment {
 
         if (dialog.getWindow() != null) {
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
             Drawable dialog_box_bg = ContextCompat.getDrawable(getContext(), R.drawable.dialog_box_bg);
             dialog.getWindow().setBackgroundDrawable(dialog_box_bg);
         }
 
         dialog.setCancelable(false);
 
-        // Initialize buttons
         mark_as_paid_cancel_btn = dialog.findViewById(R.id.mark_as_paid_cancel_btn);
         confirm_btn = dialog.findViewById(R.id.confirm_btn);
 
-        if (mark_as_paid_cancel_btn != null) {
-            //Dismiss the dialog box when the cancel button is clicked
-            mark_as_paid_cancel_btn.setOnClickListener(v -> dialog.dismiss());
-        }
+        mark_as_paid_cancel_btn.setOnClickListener(v -> dialog.dismiss());
 
-        if (confirm_btn != null) {
-            confirm_btn.setOnClickListener(v -> { dialog.dismiss();
-                // Navigate to the paid subscription details
-                NavHostFragment.findNavController(this)
-                        .navigate(R.id.action_subscriptionDetailsUpcoming_to_subscriptionDetailsPaid);
-            });
-        }
+        confirm_btn.setOnClickListener(v -> {
+            dialog.dismiss();
+            updateSubscriptionStatus("Paid", R.id.action_subscriptionDetailsUpcoming_to_subscriptionDetailsPaid);
+        });
 
-        // Show the dialog
         dialog.show();
     }
 
-
-    // ---------- TO SHOW CANCEL SUBSCRIPTION DIALOG BOX
     private void showCancelSubsDialog() {
         if (getContext() == null) return;
 
@@ -109,36 +169,25 @@ public class SubscriptionDetailsUpcomingFragment extends Fragment {
 
         if (dialog.getWindow() != null) {
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
             Drawable dialog_box_bg = ContextCompat.getDrawable(getContext(), R.drawable.dialog_box_bg);
             dialog.getWindow().setBackgroundDrawable(dialog_box_bg);
         }
 
         dialog.setCancelable(false);
 
-        // Initialize buttons
         cancel_subs_btn = dialog.findViewById(R.id.cancel_subs_btn);
         keep_tracking_btn = dialog.findViewById(R.id.keep_tracking_btn);
 
-        if (cancel_subs_btn != null) {
-            cancel_subs_btn.setOnClickListener(v -> { dialog.dismiss();
-                // Navigate to cancelled subscription details
-                NavHostFragment.findNavController(this)
-                        .navigate(R.id.action_subscriptionDetailsUpcoming_to_subscriptionDetailsCancelled);
-            });
-        }
+        cancel_subs_btn.setOnClickListener(v -> {
+            dialog.dismiss();
+            updateSubscriptionStatus("Cancelled", R.id.action_subscriptionDetailsUpcoming_to_subscriptionsFragment);
+        });
 
-        if (keep_tracking_btn != null) {
-            //Dismiss the dialog box when the keep tracking button is clicked
-            keep_tracking_btn.setOnClickListener(v -> dialog.dismiss());
-        }
+        keep_tracking_btn.setOnClickListener(v -> dialog.dismiss());
 
-        // Show the dialog
         dialog.show();
     }
 
-
-    // ---------- TO SHOW DELETE SUBSCRIPTION DIALOG BOX
     private void showDeleteSubsDialog() {
         if (getContext() == null) return;
 
@@ -147,37 +196,67 @@ public class SubscriptionDetailsUpcomingFragment extends Fragment {
 
         if (dialog.getWindow() != null) {
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
             Drawable dialog_box_bg = ContextCompat.getDrawable(getContext(), R.drawable.dialog_box_bg);
             dialog.getWindow().setBackgroundDrawable(dialog_box_bg);
         }
 
         dialog.setCancelable(false);
 
-        // Initialize buttons
         delete_permanently_btn = dialog.findViewById(R.id.delete_permanently_btn);
         delete_subs_cancel_btn = dialog.findViewById(R.id.delete_subs_cancel_btn);
 
-        if (delete_permanently_btn != null) {
-            delete_permanently_btn.setOnClickListener(v -> { dialog.dismiss();
+        delete_permanently_btn.setOnClickListener(v -> {
+            dialog.dismiss();
+            deleteSubscription();
+        });
 
-                // insert here the logic for deletion of subscription/s
-            });
-        }
+        delete_subs_cancel_btn.setOnClickListener(v -> dialog.dismiss());
 
-        if (delete_subs_cancel_btn != null) {
-            //Dismiss the dialog box when the cancel button is clicked
-            delete_subs_cancel_btn.setOnClickListener(v -> dialog.dismiss());
-        }
-
-        // Show the dialog
         dialog.show();
+    }
+
+    private void updateSubscriptionStatus(String newStatus, int navigationAction) {
+        if (subscriptionId == null) return;
+
+        db.collection("subscriptions")
+                .document(subscriptionId)
+                .update("status", newStatus)
+                .addOnSuccessListener(aVoid -> {
+                    // Update the arguments with new status
+                    Bundle args = new Bundle();
+                    if (getArguments() != null) {
+                        args.putAll(getArguments());
+                    }
+                    args.putString("status", newStatus);
+
+                    // Navigate to the new fragment
+                    NavHostFragment.findNavController(this)
+                            .navigate(navigationAction, args);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Failed to update subscription", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void deleteSubscription() {
+        if (subscriptionId == null) return;
+
+        db.collection("subscriptions")
+                .document(subscriptionId)
+                .delete()
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(getContext(), "Subscription deleted", Toast.LENGTH_SHORT).show();
+                    NavHostFragment.findNavController(this)
+                            .navigate(R.id.action_subscriptionDetailsUpcoming_to_subscriptionsFragment);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Failed to delete subscription", Toast.LENGTH_SHORT).show();
+                });
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Clean up dialog to prevent memory leaks
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }

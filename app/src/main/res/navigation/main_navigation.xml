@@ -35,6 +35,25 @@
         <action
             android:id="@+id/action_subscriptionsFragment_to_addSubscriptions"
             app:destination="@id/navigation_addsubscriptions" />
+        <action
+            android:id="@+id/action_subscriptionsFragment_to_subscriptionDetailsUpcoming"
+            app:destination="@id/navigation_subscription_details_upcoming" />
+        <action
+            android:id="@+id/action_subscriptionsFragment_to_subscriptionDetailsPaid"
+            app:destination="@id/navigation_subscription_details_paid" />
+        <action
+            android:id="@+id/action_subscriptionsFragment_to_subscriptionDetailsOverdue"
+            app:destination="@id/navigation_subscription_details_overdue" />
+        <action
+            android:id="@+id/action_subscriptionsFragment_to_subscriptionDetailsCancelled"
+            app:destination="@id/navigation_subscription_details_cancelled" />
+        <action
+            android:id="@+id/action_subscriptionsFragment_to_editSubscriptionFragment"
+            app:destination="@id/navigation_edit_subscription">
+            <argument
+                android:name="subscriptionId"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <!-- Add Subscription Fragment -->
@@ -42,10 +61,25 @@
         android:id="@+id/navigation_addsubscriptions"
         android:name="com.example.predictibill.ui.subscriptions.AddSubscriptionFragment"
         android:label="fragment_add_subscriptions"
-        tools:layout="@layout/fragments_add_subscriptions" >
+        tools:layout="@layout/fragments_add_subscriptions">
         <action
             android:id="@+id/action_addSubscriptions_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
+    </fragment>
+
+    <!-- Edit Subscription Fragment -->
+    <fragment
+        android:id="@+id/navigation_edit_subscription"
+        android:name="com.example.predictibill.ui.subscriptions.EditSubscriptionFragment"
+        android:label="Edit Subscription"
+        tools:layout="@layout/fragments_edit_subscription">
+        <argument
+            android:name="subscriptionId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_editSubscriptionFragment_to_subscriptionsFragment"
+            app:destination="@id/navigation_subscriptions"
+            app:popUpTo="@id/navigation_subscriptions" />
     </fragment>
 
     <!-- Subscription Details (Upcoming) Fragment -->
@@ -53,7 +87,7 @@
         android:id="@+id/navigation_subscription_details_upcoming"
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsUpcomingFragment"
         android:label="fragment_subscription_details_upcoming"
-        tools:layout="@layout/fragment_subscription_details_upcoming" >
+        tools:layout="@layout/fragment_subscription_details_upcoming">
         <action
             android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
@@ -63,6 +97,13 @@
         <action
             android:id="@+id/action_subscriptionDetailsUpcoming_to_subscriptionDetailsCancelled"
             app:destination="@id/navigation_subscription_details_cancelled" />
+        <action
+            android:id="@+id/action_subscriptionDetailsUpcoming_to_editSubscriptionFragment"
+            app:destination="@id/navigation_edit_subscription">
+            <argument
+                android:name="subscriptionId"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <!-- Subscription Details (Paid) Fragment -->
@@ -70,10 +111,20 @@
         android:id="@+id/navigation_subscription_details_paid"
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsPaidFragment"
         android:label="fragment_subscription_details_paid"
-        tools:layout="@layout/fragment_subscription_details_paid" >
+        tools:layout="@layout/fragment_subscription_details_paid">
         <action
             android:id="@+id/action_subscriptionDetailsPaid_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
+        <action
+            android:id="@+id/action_subscriptionDetailsPaid_to_subscriptionDetailsCancelled"
+            app:destination="@id/navigation_subscription_details_cancelled" />
+        <action
+            android:id="@+id/action_subscriptionDetailsPaid_to_editSubscriptionFragment"
+            app:destination="@id/navigation_edit_subscription">
+            <argument
+                android:name="subscriptionId"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <!-- Subscription Details (Overdue) Fragment -->
@@ -81,13 +132,23 @@
         android:id="@+id/navigation_subscription_details_overdue"
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsOverdueFragment"
         android:label="fragment_subscription_details_overdue"
-        tools:layout="@layout/fragment_subscription_details_overdue" >
+        tools:layout="@layout/fragment_subscription_details_overdue">
         <action
             android:id="@+id/action_subscriptionDetailsOverdue_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
         <action
             android:id="@+id/action_subscriptionDetailsOverdue_to_subscriptionDetailsPaid"
             app:destination="@id/navigation_subscription_details_paid" />
+        <action
+            android:id="@+id/action_subscriptionDetailsOverdue_to_subscriptionDetailsCancelled"
+            app:destination="@id/navigation_subscription_details_cancelled" />
+        <action
+            android:id="@+id/action_subscriptionDetailsOverdue_to_editSubscriptionFragment"
+            app:destination="@id/navigation_edit_subscription">
+            <argument
+                android:name="subscriptionId"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <!-- Subscription Details (Cancelled) Fragment -->
@@ -95,10 +156,20 @@
         android:id="@+id/navigation_subscription_details_cancelled"
         android:name="com.example.predictibill.ui.subscriptions.SubscriptionDetailsCancelledFragment"
         android:label="fragment_subscription_details_cancelled"
-        tools:layout="@layout/fragment_subscription_details_cancelled" >
+        tools:layout="@layout/fragment_subscription_details_cancelled">
         <action
             android:id="@+id/action_subscriptionDetailsCancelled_to_subscriptionsFragment"
             app:destination="@id/navigation_subscriptions" />
+        <action
+            android:id="@+id/action_subscriptionDetailsCancelled_to_subscriptionDetailsUpcoming"
+            app:destination="@id/navigation_subscription_details_upcoming" />
+        <action
+            android:id="@+id/action_subscriptionDetailsCancelled_to_editSubscriptionFragment"
+            app:destination="@id/navigation_edit_subscription">
+            <argument
+                android:name="subscriptionId"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <!-- Profile Fragment -->
@@ -107,5 +178,4 @@
         android:name="com.example.predictibill.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-
 </navigation>
