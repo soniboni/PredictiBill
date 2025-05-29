@@ -4,11 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,8 +22,12 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class SubscriptionsFragment extends Fragment implements SubscriptionAdapter.OnSubscriptionClickListener {
 
@@ -43,6 +44,9 @@ public class SubscriptionsFragment extends Fragment implements SubscriptionAdapt
 
     // Dummy user ID for development
     private final String dummyUserId = "dummy_user_123";
+
+    private final SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private final SimpleDateFormat outputDateFormat = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault());
 
     @Nullable
     @Override
@@ -77,17 +81,9 @@ public class SubscriptionsFragment extends Fragment implements SubscriptionAdapt
     }
 
     private void setupFilterChips() {
-        categoryChip.setOnClickListener(v -> {
-            showCategoryDropdownMenu(v);
-        });
-
-        statusChip.setOnClickListener(v -> {
-            showStatusDropdownMenu(v);
-        });
-
-        billingCycleChip.setOnClickListener(v -> {
-            showBillingCycleDropdownMenu(v);
-        });
+        categoryChip.setOnClickListener(v -> showCategoryDropdownMenu(v));
+        statusChip.setOnClickListener(v -> showStatusDropdownMenu(v));
+        billingCycleChip.setOnClickListener(v -> showBillingCycleDropdownMenu(v));
     }
 
     private void showCategoryDropdownMenu(View anchor) {
@@ -272,6 +268,19 @@ public class SubscriptionsFragment extends Fragment implements SubscriptionAdapt
         navigateToDetailsFragment(subscription);
     }
 
+    private String formatDateString(String dateStr) {
+        if (dateStr == null || dateStr.isEmpty()) return "";
+        try {
+            Date date = inputDateFormat.parse(dateStr);
+            if (date != null) {
+                return outputDateFormat.format(date);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateStr; // fallback to original if parsing fails
+    }
+
     private void navigateToDetailsFragment(Subscription subscription) {
         int destinationId;
 
@@ -292,6 +301,10 @@ public class SubscriptionsFragment extends Fragment implements SubscriptionAdapt
                 destinationId = R.id.navigation_subscription_details_upcoming;
         }
 
+        // Format the dates before passing
+        String formattedStartDate = formatDateString(subscription.getStartDate());
+        String formattedNextBillingDate = formatDateString(subscription.getNextBillingDate());
+
         // Create bundle with subscription data
         Bundle args = new Bundle();
         args.putString("subscriptionId", subscription.getId());
@@ -299,8 +312,8 @@ public class SubscriptionsFragment extends Fragment implements SubscriptionAdapt
         args.putString("note", subscription.getNote());
         args.putString("category", subscription.getCategory());
         args.putString("status", subscription.getStatus());
-        args.putString("startDate", subscription.getStartDate());
-        args.putString("nextBillingDate", subscription.getNextBillingDate());
+        args.putString("startDate", formattedStartDate);
+        args.putString("nextBillingDate", formattedNextBillingDate);
         args.putString("billingCycle", subscription.getBillingCycle());
         args.putDouble("price", subscription.getPrice());
         args.putString("paymentMethod", subscription.getPaymentMethod());

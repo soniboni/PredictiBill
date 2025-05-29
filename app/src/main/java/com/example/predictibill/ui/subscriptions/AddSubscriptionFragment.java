@@ -111,8 +111,10 @@ public class AddSubscriptionFragment extends Fragment {
                         Calendar selectedDate = Calendar.getInstance();
                         selectedDate.set(selectedYear, selectedMonth, selectedDay);
 
-                        String formattedDate = String.format(Locale.getDefault(),
-                                "%d/%d/%d", selectedDay, selectedMonth + 1, selectedYear);
+                        // Format date as "March 29, 2025"
+                        SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
+                        String formattedDate = sdf.format(selectedDate.getTime());
+
                         display.setText(formattedDate);
                         display.setTextColor(Color.BLACK);
 

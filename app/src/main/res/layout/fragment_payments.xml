@@ -8,14 +8,14 @@
 
 
     <ImageView
-        android:id="@+id/logo_image"
-        android:layout_width="35dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="56dp"
-        android:src="@drawable/logo_blue"
+        android:id="@+id/Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_blue" />
 
     <TextView
         android:id="@+id/payments_txtlbl"
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo_image" />
+        app:layout_constraintTop_toBottomOf="@id/Logo" />
 
     <TextView
         android:id="@+id/browse_your_payments"

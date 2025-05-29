@@ -93,7 +93,7 @@ public class PaymentsFragment extends Fragment {
             } else if (itemId == R.id.method_debit_card) {
                 selectedMethod = "Debit Card";
             } else if (itemId == R.id.method_gcash) {
-                selectedMethod = "GCash";
+                selectedMethod = "E-wallet (Gcash)";
             }
 
             filterPayments("paymentMethod", selectedMethod);

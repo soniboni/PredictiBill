@@ -13,13 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.predictibill.R;
 import com.example.predictibill.models.Subscription;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapter.SubscriptionViewHolder> {
 
     private List<Subscription> subscriptionList;
     private Context context;
     private OnSubscriptionClickListener listener;
+
+    private final SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private final SimpleDateFormat outputDateFormat = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault());
 
     public interface OnSubscriptionClickListener {
         void onSubscriptionClick(Subscription subscription);
@@ -72,7 +79,9 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         holder.nameTextView.setText(current.getName());
         holder.billingCycleTextView.setText(current.getBillingCycle());
         holder.priceTextView.setText(String.format("₱%.2f", current.getPrice()));
-        holder.dueDateTextView.setText(String.format("Due: %s", current.getNextBillingDate()));
+
+        String formattedDueDate = formatDateString(current.getNextBillingDate());
+        holder.dueDateTextView.setText(String.format("Due: %s", formattedDueDate));
 
         // Category image logic
         String category = current.getCategory();
@@ -128,5 +137,19 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
         String formatted = "status_" + status.toLowerCase().trim();
         return context.getResources().getIdentifier(formatted, "drawable", context.getPackageName());
+    }
+
+    private String formatDateString(String dateStr) {
+        if (dateStr == null || dateStr.isEmpty()) return "";
+
+        try {
+            Date date = inputDateFormat.parse(dateStr);
+            if (date != null) {
+                return outputDateFormat.format(date);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateStr; // fallback if parsing fails
     }
 }

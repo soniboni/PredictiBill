@@ -19,6 +19,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class EditSubscriptionFragment extends Fragment {
@@ -132,7 +133,7 @@ public class EditSubscriptionFragment extends Fragment {
         populateSpinner(categorySpinner, Arrays.asList("Entertainment", "Productivity & Tools", "Cloud Storage", "Membership", "Food & Delivery"));
         populateSpinner(statusSpinner, Arrays.asList("Upcoming", "Overdue", "Paid", "Cancelled"));
         populateSpinner(billingSpinner, Arrays.asList("Monthly", "Quarterly", "Annually"));
-        populateSpinner(paymentMethodSpinner, Arrays.asList("E-wallet (Gcash)", "Debit Card"));
+        populateSpinner(paymentMethodSpinner, Arrays.asList("Cash","E-wallet (Gcash)", "Debit Card"));
     }
 
     private void populateSpinner(Spinner spinner, List<String> items) {
@@ -158,19 +159,24 @@ public class EditSubscriptionFragment extends Fragment {
                             }
 
                             noteEditText.setText(documentSnapshot.getString("note"));
-                            startDateDisplay.setText(documentSnapshot.getString("startDate"));
-                            nextBillingDateDisplay.setText(documentSnapshot.getString("nextBillingDate"));
+
+                            String startDateStr = documentSnapshot.getString("startDate");
+                            if (startDateStr != null) {
+                                Calendar startDateCal = parseDateStringToCalendar(startDateStr);
+                                startDateDisplay.setText(formatCalendarToDateString(startDateCal));
+                                setNextBillingMinDate(startDateCal);
+                            }
+
+                            String nextBillingStr = documentSnapshot.getString("nextBillingDate");
+                            if (nextBillingStr != null) {
+                                Calendar nextBillingCal = parseDateStringToCalendar(nextBillingStr);
+                                nextBillingDateDisplay.setText(formatCalendarToDateString(nextBillingCal));
+                            }
 
                             setSpinnerSelection(categorySpinner, documentSnapshot.getString("category"));
                             setSpinnerSelection(statusSpinner, documentSnapshot.getString("status"));
                             setSpinnerSelection(billingSpinner, documentSnapshot.getString("billingCycle"));
                             setSpinnerSelection(paymentMethodSpinner, documentSnapshot.getString("paymentMethod"));
-
-                            String startDateStr = documentSnapshot.getString("startDate");
-                            if (startDateStr != null) {
-                                Calendar startDateCal = parseDateStringToCalendar(startDateStr);
-                                setNextBillingMinDate(startDateCal);
-                            }
                         }
                     })
                     .addOnFailureListener(e -> {
@@ -204,8 +210,8 @@ public class EditSubscriptionFragment extends Fragment {
                         Calendar selectedDate = Calendar.getInstance();
                         selectedDate.set(selectedYear, selectedMonth, selectedDay);
 
-                        String formattedDate = String.format(Locale.getDefault(),
-                                "%d/%d/%d", selectedDay, selectedMonth + 1, selectedYear);
+                        // Format date to "MMMM d, yyyy"
+                        String formattedDate = formatCalendarToDateString(selectedDate);
                         display.setText(formattedDate);
                         display.setTextColor(Color.BLACK);
 
@@ -302,13 +308,10 @@ public class EditSubscriptionFragment extends Fragment {
 
     private Calendar parseDateStringToCalendar(String dateStr) {
         try {
-            String[] parts = dateStr.split("/");
-            int day = Integer.parseInt(parts[0]);
-            int month = Integer.parseInt(parts[1]) - 1; // Calendar months are 0-based
-            int year = Integer.parseInt(parts[2]);
-
+            SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
+            Date date = sdf.parse(dateStr);
             Calendar cal = Calendar.getInstance();
-            cal.set(year, month, day);
+            cal.setTime(date);
             return cal;
         } catch (Exception e) {
             return Calendar.getInstance();
@@ -316,28 +319,28 @@ public class EditSubscriptionFragment extends Fragment {
     }
 
     private String formatCalendarToDateString(Calendar cal) {
-        return String.format(Locale.getDefault(),
-                "%d/%d/%d",
-                cal.get(Calendar.DAY_OF_MONTH),
-                cal.get(Calendar.MONTH) + 1,
-                cal.get(Calendar.YEAR));
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
+        return sdf.format(cal.getTime());
     }
 
     private Calendar calculateNextBillingDate(Calendar startDate, String billingCycle) {
-        Calendar nextDate = (Calendar) startDate.clone();
-        switch (billingCycle.toLowerCase()) {
+        Calendar nextBillingDate = (Calendar) startDate.clone();
+
+        switch (billingCycle.toLowerCase(Locale.ROOT)) {
             case "monthly":
-                nextDate.add(Calendar.MONTH, 1);
+                nextBillingDate.add(Calendar.MONTH, 1);
                 break;
             case "quarterly":
-                nextDate.add(Calendar.MONTH, 3);
+                nextBillingDate.add(Calendar.MONTH, 3);
                 break;
             case "annually":
-                nextDate.add(Calendar.YEAR, 1);
+                nextBillingDate.add(Calendar.YEAR, 1);
                 break;
             default:
-                nextDate.add(Calendar.MONTH, 1);
+                nextBillingDate.add(Calendar.MONTH, 1);
+                break;
         }
-        return nextDate;
+
+        return nextBillingDate;
     }
 }

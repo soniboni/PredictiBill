@@ -8,7 +8,7 @@
         android:title="Cash" />
     <item
         android:id="@+id/method_gcash"
-        android:title="E-Wallet (GCash)" />
+        android:title="E-Wallet (Gcash)" />
     <item
         android:id="@+id/method_debit_card"
         android:title="Debit Card" />

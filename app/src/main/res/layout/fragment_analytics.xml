@@ -8,14 +8,14 @@
     tools:context=".ui.analytics.AnalyticsFragment">
 
     <ImageView
-        android:id="@+id/logo_image"
-        android:layout_width="35dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="183dp"
+        android:id="@+id/Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="58dp"
-        android:src="@drawable/logo_blue"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_blue" />
 
     <TextView
         android:id="@+id/analytics_txtlbl"

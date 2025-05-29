@@ -10,14 +10,14 @@
 
     <!-- Logo Image -->
     <ImageView
-        android:id="@+id/logo_image"
-        android:layout_width="35dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="56dp"
-        android:src="@drawable/logo_blue"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_blue" />
 
     <!-- New TextView for empty state message -->
 
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo_image" />
+        app:layout_constraintTop_toBottomOf="@id/Logo" />
 
     <TextView
         android:id="@+id/track_all_r"
