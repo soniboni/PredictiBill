@@ -100,7 +100,7 @@ public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.Paymen
                 return R.drawable.category_name_cloudstorage;
             case "membership":
                 return R.drawable.category_name_membership;
-            case "food delivery":
+            case "food & delivery":
                 return R.drawable.category_name_foodanddelivery;
             default:
                 return 0;
