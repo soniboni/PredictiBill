@@ -56,7 +56,10 @@
     <string name="payment_method">Payment Method </string>
     <string name="Add_subscription"> Add Subscription</string>
     <string name="upload_image"> Upload an Image</string>
-    <string name="subscription_details"> Subscription Details</string>
+
+    <!-- EDIT INFORMATION FRAGMENT-->
+    <string name="edit_info">Edit Information</string>
+    <string name="update_info">Update Information</string>
 
 
     <!-- PAYMENT FRAGMENT TEXT -->

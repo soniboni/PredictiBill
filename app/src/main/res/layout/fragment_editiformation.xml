@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="24dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <!-- Logo Image -->
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:src="@drawable/logo_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.07" />
+
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/back_button_bg"
+            android:contentDescription="Back"
+            android:src="@drawable/back_button"
+            app:layout_constraintTop_toBottomOf="@id/logo_image"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Title Text -->
+        <TextView
+            android:id="@+id/edit_info"
+            android:layout_width="298dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:text="@string/edit_info"
+            android:textAppearance="@style/subscription_details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/back_button"
+            app:layout_constraintTop_toBottomOf="@id/logo_image" />
+
+        <!-- Image Upload Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageUploadCard"
+            android:layout_width="0dp"
+            android:layout_height="122dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:layout_constraintTop_toBottomOf="@id/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="Upload Icon"
+                    android:src="@drawable/camera_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:text="@string/upload_image"
+                    android:textAppearance="@style/upload_image"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Subscription ID Label -->
+        <TextView
+            android:id="@+id/subscription_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/subscription_id"
+            android:textAppearance="@style/subscription_id"
+            app:layout_constraintTop_toBottomOf="@id/imageUploadCard"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Subscription ID Number -->
+        <TextView
+            android:id="@+id/subscription_id_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="ID number"
+            android:gravity="end"
+            android:textAppearance="@style/subscription_id"
+            app:layout_constraintTop_toBottomOf="@id/imageUploadCard"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/required_name_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/detail_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.899"
+            app:layout_constraintStart_toEndOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_id_number"
+            app:layout_constraintVertical_bias="0.809" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="64dp"
+            android:layout_height="24dp"
+            android:text="Name"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:textAppearance="@style/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscription_id"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"/>
+
+        <EditText
+            android:id="@+id/detail_name"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:paddingStart="12dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Note -->
+        <ImageView
+            android:id="@+id/required_note_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/detail_note"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.895"
+            app:layout_constraintStart_toEndOf="@+id/note"
+            app:layout_constraintTop_toBottomOf="@+id/detail_name"
+            app:layout_constraintVertical_bias="0.804" />
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="64dp"
+            android:layout_height="24dp"
+            android:text="Note"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:textAppearance="@style/note"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_name"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"/>
+
+        <EditText
+            android:id="@+id/detail_note"
+            android:layout_width="0dp"
+            android:layout_height="109dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:gravity="top|start"
+            android:paddingStart="12dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/note"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="74dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="@string/category"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_note" />
+
+        <ImageView
+            android:id="@+id/required_category_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/detail_category"
+            app:layout_constraintEnd_toStartOf="@+id/status"
+            app:layout_constraintHorizontal_bias="0.775"
+            app:layout_constraintStart_toEndOf="@+id/category"
+            app:layout_constraintTop_toBottomOf="@+id/detail_note"
+            app:layout_constraintVertical_bias="0.47" />
+
+        <Spinner
+            android:id="@+id/detail_category"
+            android:layout_width="165dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/sub_rectangle"
+            android:padding="10dp"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/status"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Open Category"
+            android:src="@drawable/arrow_down_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_category"
+            app:layout_constraintEnd_toEndOf="@+id/detail_category"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="@+id/detail_category"
+            app:layout_constraintTop_toTopOf="@+id/detail_category"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="74dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="120dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="@string/status"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_note" />
+
+        <!-- Category spinner-->
+
+        <ImageView
+            android:id="@+id/required_status_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/detail_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.711"
+            app:layout_constraintStart_toEndOf="@+id/status"
+            app:layout_constraintTop_toBottomOf="@+id/detail_note" />
+
+        <Spinner
+            android:id="@+id/detail_status"
+            android:layout_width="177dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:padding="10dp"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/detail_category"
+            app:layout_constraintTop_toBottomOf="@+id/status" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Open Status"
+            android:src="@drawable/arrow_down_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_status"
+            app:layout_constraintEnd_toEndOf="@+id/detail_status"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="@+id/detail_status"
+            app:layout_constraintTop_toTopOf="@+id/detail_status"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <TextView
+            android:id="@+id/billing_cycle"
+            android:layout_width="129dp"
+            android:layout_height="33dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="@string/billing_cyc"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_category"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <!-- Billing Cycle Spinner -->
+
+        <ImageView
+            android:id="@+id/required_billingcycle_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/detail_billing_cycle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.871"
+            app:layout_constraintStart_toEndOf="@+id/billing_cycle"
+            app:layout_constraintTop_toBottomOf="@+id/detail_status"
+            app:layout_constraintVertical_bias="0.634" />
+
+        <Spinner
+            android:id="@+id/detail_billing_cycle"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/billing_cycle" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Open Billing Cycle"
+            android:src="@drawable/arrow_down_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_billing_cycle"
+            app:layout_constraintEnd_toEndOf="@+id/detail_billing_cycle"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="@+id/detail_billing_cycle"
+            app:layout_constraintTop_toTopOf="@+id/detail_billing_cycle"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <TextView
+            android:id="@+id/start_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/startdate"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_billing_cycle" />
+
+        <!-- Start Date Spinner (linear layout) -->
+
+        <ImageView
+            android:id="@+id/required_startdate_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/detail_start_date"
+            app:layout_constraintEnd_toStartOf="@+id/next_billing_label"
+            app:layout_constraintHorizontal_bias="0.682"
+            app:layout_constraintStart_toEndOf="@+id/start_date_label"
+            app:layout_constraintTop_toBottomOf="@+id/detail_billing_cycle"
+            app:layout_constraintVertical_bias="0.864" />
+
+        <LinearLayout
+            android:id="@+id/detail_start_date"
+            android:layout_width="165dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/sub_rectangle"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/detail_next_billing_date"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/start_date_label">
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginStart="8dp"
+                android:contentDescription="Open date picker"
+                android:src="@drawable/date_picker_logo" />
+
+            <TextView
+                android:id="@+id/start_date_display"
+                android:layout_width="125dp"
+                android:layout_height="20dp"
+                android:textColor="#999999"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/next_billing_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="204dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/nextbillingdate"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_billing_cycle" />
+
+
+        <ImageView
+            android:id="@+id/required_nextbillingdate_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/detail_next_billing_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.531"
+            app:layout_constraintStart_toEndOf="@+id/next_billing_label"
+            app:layout_constraintTop_toBottomOf="@+id/detail_billing_cycle"
+            app:layout_constraintVertical_bias="1.3" />
+
+        <LinearLayout
+            android:id="@+id/detail_next_billing_date"
+            android:layout_width="177dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/next_billing_label">
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginStart="8dp"
+                android:contentDescription="Open date picker"
+                android:src="@drawable/date_picker_logo" />
+
+            <TextView
+                android:id="@+id/next_billing_date_display"
+                android:layout_width="125dp"
+                android:layout_height="20dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/payment_method_label"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_start_date"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <ImageView
+            android:id="@+id/required_price_logo"
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/red_asterisk_icon"
+            app:layout_constraintBottom_toTopOf="@+id/detail_price"
+            app:layout_constraintEnd_toStartOf="@+id/payment_method_label"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toEndOf="@+id/price_label"
+            app:layout_constraintTop_toBottomOf="@+id/detail_start_date"
+            app:layout_constraintVertical_bias="0.966" />
+        <EditText
+            android:id="@+id/detail_price"
+            android:layout_width="165dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:digits="0123456789."
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:paddingStart="12dp"
+            android:singleLine="true"
+            android:textColorHint="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_label"
+            app:layout_constraintVertical_bias="0.07" />
+
+        <TextView
+            android:id="@+id/payment_method_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_method"
+            android:textAppearance="@style/category_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_next_billing_date"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <Spinner
+            android:id="@+id/detail_payment"
+            android:layout_width="177dp"
+            android:layout_height="41dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sub_rectangle"
+            android:padding="10dp"
+            android:popupBackground="@drawable/dropdown_popup_bg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/detail_price"
+            app:layout_constraintTop_toBottomOf="@+id/payment_method_label"
+            app:layout_constraintVertical_bias="0.071" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="34dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Open Payment Method"
+            android:src="@drawable/arrow_down_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_payment"
+            app:layout_constraintEnd_toEndOf="@+id/detail_payment"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="@+id/detail_payment"
+            app:layout_constraintTop_toTopOf="@+id/detail_payment"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <Button
+            android:id="@+id/update_sub_button"
+            android:layout_width="361dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/sub_rectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.657"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_price" />
+
+
+        <TextView
+            android:layout_width="166dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="104dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/update_info"
+            android:textAppearance="@style/add_sub_button"
+            app:layout_constraintBottom_toBottomOf="@+id/update_sub_button"
+            app:layout_constraintStart_toStartOf="@+id/update_sub_button"
+            app:layout_constraintTop_toTopOf="@+id/update_sub_button"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
