@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="UnderlinedTextFieldStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#494545</item>
+        <item name="boxBackgroundMode">none</item>
+        <item name="android:textColorHint">#8A8585</item>
+        <item name="hintTextColor">#8A8585</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
+</resources>

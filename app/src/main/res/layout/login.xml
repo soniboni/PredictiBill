@@ -48,7 +48,7 @@
         android:fontFamily="@font/poppins"
         android:gravity="center"
         android:paddingStart="14dp"
-        android:text="Error Message goes here"
+        android:text=""
         android:textColor="#F92121"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -132,6 +132,7 @@
         app:strokeWidth="3dp"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/forgotPassword_txt"
         android:layout_width="167dp"
@@ -145,11 +146,10 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.159"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.371" />
-
+        app:layout_constraintVertical_bias="0.39" />
 
     <EditText
         android:id="@+id/email_text"
@@ -172,9 +172,8 @@
         android:id="@+id/password_layout"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="Enter your Password"
-        android:paddingBottom="4dp"
-        app:boxBackgroundMode="none"
+        android:hint="Password"
+        app:boxBackgroundMode="outline"
         app:endIconMode="password_toggle"
         app:endIconTint="#383636"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -187,14 +186,14 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_text"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/password_underline"
-            android:ems="10"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:inputType="textPassword"
-            android:paddingStart="14dp"
-            android:textSize="14sp" />
+            android:textColor="#383636"
+            android:textSize="14sp"
+            android:paddingStart="14dp"/>
     </com.google.android.material.textfield.TextInputLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
