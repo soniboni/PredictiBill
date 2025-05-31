@@ -13,7 +13,7 @@
         android:theme="@style/Theme.PredictiBill"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.auth.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,14 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OnboardingTwo" />
-        <activity android:name=".OnboardingThree" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".AccountCreated" />
-        <activity android:name=".Login" />
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".PasswordRecovery"/>
-        <activity android:name=".PasswordReset"/>
+        <activity android:name=".ui.auth.OnboardingTwo" />
+        <activity android:name=".ui.auth.OnboardingThree" />
+        <activity android:name="com.example.predictibill.ui.auth.SignUp" />
+        <activity android:name=".ui.auth.AccountCreated" />
+        <activity android:name=".ui.auth.Login" />
+        <activity android:name=".ui.auth.ForgotPassword" />
+        <activity android:name=".ui.auth.PasswordRecovery"/>
+        <activity android:name=".ui.auth.PasswordReset"/>
+        <activity android:name=".ui.home.HomeActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

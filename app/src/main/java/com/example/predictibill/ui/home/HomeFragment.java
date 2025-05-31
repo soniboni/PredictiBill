@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import com.example.predictibill.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -17,14 +19,15 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-    private FirebaseFirestore db;
-    private TextView expectedMoneyTxt, spentMoneyTxt, percentTxt;
-    private double totalExpected = 0.0;
-    private double totalPaid = 0.0;
     private static final String TAG = "HomeFragment";
 
-    // Rectangle TextViews
+    private FirebaseFirestore db;
+
+    private TextView expectedMoneyTxt, spentMoneyTxt, percentTxt;
     private TextView[] rectangleViews;
+
+    private double totalExpected = 0.0;
+    private double totalPaid = 0.0;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -41,8 +44,8 @@ public class HomeFragment extends Fragment {
         spentMoneyTxt = view.findViewById(R.id.home_spentmoney_txt);
         percentTxt = view.findViewById(R.id.home_percent_txt);
 
-        // Initialize rectangle array
         rectangleViews = new TextView[]{
+                view.findViewById(R.id.home_rectangle_1),
                 view.findViewById(R.id.home_rectangle_2),
                 view.findViewById(R.id.home_rectangle_3),
                 view.findViewById(R.id.home_rectangle_4),
@@ -50,66 +53,50 @@ public class HomeFragment extends Fragment {
                 view.findViewById(R.id.home_rectangle_6),
                 view.findViewById(R.id.home_rectangle_7),
                 view.findViewById(R.id.home_rectangle_8),
-                view.findViewById(R.id.home_rectangle_9),
-                view.findViewById(R.id.home_rectangle_10),
-                view.findViewById(R.id.home_rectangle_11)
         };
 
-        fetchBillingData();
+        fetchAndDisplaySubscriptions();
 
         return view;
     }
 
-    private void fetchBillingData() {
-        totalExpected = 0.0;
-        totalPaid = 0.0;
-
+    private void fetchAndDisplaySubscriptions() {
         db.collection("subscriptions")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Double price = document.getDouble("price");
-                            String status = document.getString("status");
+                        int i = 0;
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                            String name = doc.getString("name");
+                            Double expected = doc.getDouble("expected");
+                            Double paid = doc.getDouble("paid");
 
-                            if (price != null) {
-                                totalExpected += price;
-                                if ("Paid".equalsIgnoreCase(status)) {
-                                    totalPaid += price;
-                                }
+                            if (expected == null) expected = 0.0;
+                            if (paid == null) paid = 0.0;
+
+                            totalExpected += expected;
+                            totalPaid += paid;
+
+                            if (i < rectangleViews.length) {
+                                rectangleViews[i].setText(name);
                             }
+                            i++;
                         }
                         updateUI();
                     } else {
-                        Log.e(TAG, "Error getting documents: ", task.getException());
+                        Log.e(TAG, "Error getting subscriptions: ", task.getException());
                     }
-                })
-                .addOnFailureListener(e -> Log.e(TAG, "Firestore query failed: ", e));
+                });
     }
 
     private void updateUI() {
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("en", "PH"));
-        currencyFormat.setMaximumFractionDigits(2);
+        Locale locale = Locale.getDefault();
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(locale);
 
         expectedMoneyTxt.setText(currencyFormat.format(totalExpected));
         spentMoneyTxt.setText(currencyFormat.format(totalPaid));
 
-        double percentage = totalExpected > 0 ? (totalPaid / totalExpected) * 100 : 0;
-        percentTxt.setText(String.format(Locale.getDefault(), "%.1f%% of total", percentage));
-
-        shadeRectanglesByPercentage(percentage);
-    }
-
-    private void shadeRectanglesByPercentage(double percentage) {
-        int totalRectangles = rectangleViews.length;
-        int shadedCount = (int) Math.round((percentage / 100) * totalRectangles);
-
-        for (int i = 0; i < totalRectangles; i++) {
-            if (i < shadedCount) {
-                rectangleViews[i].setBackgroundResource(R.drawable.home_rectangle_2); // shaded
-            } else {
-                rectangleViews[i].setBackgroundResource(R.drawable.home_rectangle_3); // unshaded
-            }
-        }
+        double percent = (totalExpected == 0) ? 0 : (totalPaid / totalExpected) * 100;
+        percentTxt.setText(String.format(Locale.getDefault(), "%.2f%%", percent));
     }
 }

@@ -1,10 +1,12 @@
-package com.example.predictibill;
+package com.example.predictibill.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.predictibill.R;
 
 public class AccountCreated extends AppCompatActivity {
 

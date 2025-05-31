@@ -1,4 +1,4 @@
-package com.example.predictibill;
+package com.example.predictibill.ui.auth;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +11,11 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.predictibill.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -49,10 +48,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -60,7 +57,6 @@ public class Login extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        // Initialize views
         emailText = findViewById(R.id.email_text);
         passwordText = findViewById(R.id.password_text);
         subheadingText = findViewById(R.id.subheading_txt);
@@ -69,17 +65,11 @@ public class Login extends AppCompatActivity {
         createHereText = findViewById(R.id.signUpFooter_txt);
         forgotPasswordText = findViewById(R.id.forgotPassword_txt);
 
-        // Set click listeners
         loginButton.setOnClickListener(v -> attemptLogin());
         googleLoginButton.setOnClickListener(v -> signInWithGoogle());
 
-        createHereText.setOnClickListener(v -> {
-            startActivity(new Intent(Login.this, SignUp.class));
-        });
-
-        forgotPasswordText.setOnClickListener(v -> {
-            startActivity(new Intent(Login.this, ForgotPassword.class));
-        });
+        createHereText.setOnClickListener(v -> startActivity(new Intent(Login.this, SignUp.class)));
+        forgotPasswordText.setOnClickListener(v -> startActivity(new Intent(Login.this, ForgotPassword.class)));
     }
 
     @Override
@@ -91,12 +81,11 @@ public class Login extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            // For email/password users, check verification
             if (user.getProviderData().size() == 1 && !user.isEmailVerified()) {
                 Log.d(TAG, "Email user not verified");
                 return;
             }
-            navigateToMainActivity();
+            navigateToHomeActivity();
         }
     }
 
@@ -105,7 +94,6 @@ public class Login extends AppCompatActivity {
             showSnackbar("No internet connection");
             return;
         }
-
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -117,11 +105,9 @@ public class Login extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
-                // Google Sign In failed
                 Log.w(TAG, "Google sign in failed", e);
                 showSnackbar("Google sign in failed: " + e.getMessage());
             }
@@ -137,12 +123,10 @@ public class Login extends AppCompatActivity {
                     showProgress(false);
 
                     if (task.isSuccessful()) {
-                        // Sign in success
                         Log.d(TAG, "signInWithCredential:success");
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUI(user);
                     } else {
-                        // If sign in fails
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
                         showSnackbar("Authentication failed: " + task.getException().getMessage());
                     }
@@ -168,7 +152,7 @@ public class Login extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user != null && user.isEmailVerified()) {
-                            navigateToMainActivity();
+                            navigateToHomeActivity();
                         } else {
                             showError("Please verify your email first");
                             sendEmailVerification(user);
@@ -184,8 +168,7 @@ public class Login extends AppCompatActivity {
             user.sendEmailVerification()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(this, "Verification email sent to " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
+                            showSnackbar("Verification email sent to " + user.getEmail());
                         }
                     });
         }
@@ -223,9 +206,10 @@ public class Login extends AppCompatActivity {
         showError(errorMessage);
     }
 
-    private void navigateToMainActivity() {
-        startActivity(new Intent(this, MainActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+    private void navigateToHomeActivity() {
+        Intent intent = new Intent(this, com.example.predictibill.ui.home.HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         finish();
     }
 
