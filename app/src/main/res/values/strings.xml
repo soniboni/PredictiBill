@@ -1,3 +1,180 @@
 <resources>
     <string name="app_name">PredictiBill</string>
+
+    <!-- NAVIGATION BAR ICONS TEXT -->
+    <string name="analytics_icon">Analytics</string>
+    <string name="subscriptions_icon">Subscriptions</string>
+    <string name="home_icon">Home</string>
+    <string name="payments_icon">Payments</string>
+    <string name="profile_icon">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="subscriptions_txt">Subscriptions</string>
+    <string name="payments_txt">Payments</string>
+    <string name="profile_txt">Profile</string>
+    <string name="analytics_txt">Analytics</string>
+
+    <!-- HOME FRAGMENT TEXT -->
+    <string name="home_hi_lbl">Hi, User!</string>
+    <string name="home_welcome_lbl">Welcome Back!"</string>
+    <string name="home_subsspending_txt">Monthly Subscription Spending</string>
+    <string name="home_date_txt">As of May 2, 2025</string>
+    <string name="home_percent_txt">9% of this month’s subscription charges billed.</string>
+    <string name="home_youvespent_txt">You\'ve spent</string>
+    <string name="home_outof_txt">out of the expected</string>
+    <string name="home_spentmoney_txt">₱ 0.00</string>
+    <string name="home_expectedmoney_txt">₱ 0.00</string>
+    <string name="home_upcoming_bill_txt">Next Upcoming Bill</string>
+    <string name="home_upcoming_billing_note">Your bills in the next 7 days.</string>
+    <string name="home_upcomingsubsname1_txt">Netflix</string>
+    <string name="home_upcomingbillingcycle1_txt">Monthly</string>
+    <string name="home_upcomingduedate1_txt">Due on April 23, 2025</string>
+    <string name="home_upcomingcategory1_txt">Entertainment</string>
+    <string name="home_upcomingprice1_txt">₱549.00</string>
+    <string name="home_upcomingsubsname2_txt">Netflix</string>
+    <string name="home_upcomingbillingcycle2_txt">Monthly</string>
+    <string name="home_upcomingduedate2_txt">Due on April 23, 2025</string>
+    <string name="home_upcomingcategory2_txt">Entertainment</string>
+    <string name="home_upcomingprice2_txt">₱549.00</string>
+    <string name="home_overdue_bills_txt">Overdue Bills</string>
+    <string name="home_overdue_bills_note">Your bills that are overdue.</string>
+
+    <!-- HOME FRAGMENT (BILL CARD) TEXT -->
+    <string name="bill_name">Netflix</string>
+    <string name="billing_cycle">Monthly</string>
+    <string name="bill_dueon">Due on</string>
+    <string name="bill_duedate">April 23, 2025</string>
+    <string name="bill_price">₱549.00</string>
+
+    <!-- SUBSCRIPTIONS FRAGMENT TEXT -->
+    <string name="track_all_r">Track all recurring payments in one place.</string>
+    <string name="subscriptio">Subscriptions</string>
+    <string name="subscription_id">Subscription ID</string>
+    <string name="filter_by">Filter By</string>
+    <string name="category">Category</string>
+    <string name="status">Status</string>
+    <string name="billing_cyc">Billing Cycle</string>
+    <string name="addsubscription">Add a Subscription</string>
+    <string name="submit_button">+</string>
+
+    <!--ADD SUBSCRIPTION FRAGMENT TEXTS-->
+    <string name="add_subscription">Add a Subscription</string>
+    <string name="name"> Name </string>
+    <string name="note">Note</string>
+    <string name="startdate">Start Date </string>
+    <string name="nextbillingdate">Next Billing Date </string>
+    <string name="price">Price</string>
+    <string name="payment_method">Payment Method </string>
+    <string name="Add_subscription"> Add Subscription</string>
+    <string name="upload_image"> Upload an Image</string>
+    <string name="subscription_details"> Subscription Details</string>
+
+    <!-- SUBSCRIPTION DETAILS (LABELS) FRAGMENT TEXT -->
+    <string name="logo">Logo</string>
+    <string name="back_button">Back button</string>
+    <string name="upcoming_subscription_image_card">Subscription Image</string>
+    <string name="subs_details_lbl">Subscription Details</string>
+    <string name="subs_details_name_lbl">Name</string>
+    <string name="subs_details_subsID_lbl">Subscription ID</string>
+    <string name="subs_details_note_lbl">Note</string>
+    <string name="subs_details_category_lbl">Category</string>
+    <string name="subs_details_status_lbl">Status</string>
+    <string name="subs_details_startdate_lbl">Start Date</string>
+    <string name="subs_details_nextbilldate_lbl">Next Billing Date</string>
+    <string name="subs_details_billingcycle_lbl">Billing Cycle</string>
+    <string name="subs_details_price_lbl">Price</string>
+    <string name="subs_details_paymentmethod_lbl">Payment Method</string>
+    <string name="subs_details_lastpaiddue_lbl">Last Paid Due</string>
+    <string name="mark_as_paid_btn">Mark as Paid</string>
+    <string name="cancel_subs_btn">Cancel Subscription</string>
+    <string name="edit_info_btn">Edit Information</string>
+    <string name="delete_subs_btn">Delete Subscription</string>
+    <string name="restore_subs_btn">Restore Subscription</string>
+
+    <!-- SUBSCRIPTION DETAILS UPCOMING (VALUES) FRAGMENT TEXT -->
+    <string name="upcomingsubs_details_name">Netflix</string>
+    <string name="upcomingsubs_details_subsID">SUB01</string>
+    <string name="upcomingsubs_details_note">For the whole family subscription.</string>
+    <string name="upcomingsubs_details_startdate">April 23, 2023</string>
+    <string name="upcomingsubs_details_nextbilldate">June 23, 2025</string>
+    <string name="upcomingsubs_details_billingcycle">Monthly</string>
+    <string name="upcomingsubs_details_price">₱549.00</string>
+    <string name="upcomingsubs_details_paymentmethod">E-Wallet (Gcash)</string>
+    <string name="upcomingsubs_details_lastpaiddue">May 23, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS PAID (VALUES) FRAGMENT TEXT -->
+    <string name="paidsubs_details_name">Notion Plus</string>
+    <string name="paidsubs_details_subsID">SUB01</string>
+    <string name="paidsubs_details_note">Productivity at its finest.</string>
+    <string name="paidsubs_details_startdate">January 12, 2024</string>
+    <string name="paidsubs_details_nextbilldate">May 12, 2025</string>
+    <string name="paidsubs_details_billingcycle">Monthly</string>
+    <string name="paidsubs_details_price">₱800.00</string>
+    <string name="paidsubs_details_paymentmethod">Debit Card</string>
+    <string name="paidsubs_details_lastpaiddue">April 12, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS OVERDUE (VALUES) FRAGMENT TEXT -->
+    <string name="overduesubs_details_name">iCloud</string>
+    <string name="overduesubs_details_subsID">SUB01</string>
+    <string name="overduesubs_details_note">For photo, video, and file dumps.</string>
+    <string name="overduesubs_details_startdate">September 25, 2020</string>
+    <string name="overduesubs_details_nextbilldate">March 2, 2025</string>
+    <string name="overduesubs_details_billingcycle">Weekly</string>
+    <string name="overduesubs_details_price">₱1100.00</string>
+    <string name="overduesubs_details_paymentmethod">Debit Card</string>
+    <string name="overduesubs_details_lastpaiddue">February 23, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS CANCELLED (VALUES) FRAGMENT TEXT -->
+    <string name="cancelledsubs_details_name">Lazada VIP</string>
+    <string name="cancelledsubs_details_subsID">SUB01</string>
+    <string name="cancelledsubs_details_note">Shopping Galore</string>
+    <string name="cancelledsubs_details_startdate">March 25, 2022</string>
+    <string name="cancelledsubs_details_nextbilldate">February 25, 2025</string>
+    <string name="cancelledsubs_details_price">₱450.00</string>
+    <string name="cancelledsubs_details_billingcycle">Monthly</string>
+    <string name="cancelledsubs_details_paymentmethod">E-Wallet (Gcash)</string>
+    <string name="cancelledsubs_details_lastpaiddue">January 25, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS FRAGMENTS BUTTONS (DIALOG BOX) TEXT -->
+    <string name="image_view_question_mark">Question Mark</string>
+    <string name="image_view_exclamation_mark">Exclamation Mark</string>
+    <string name="mark_subs_as_paid_lbl">Mark Subscription as Paid?</string>
+    <string name="mark_subs_as_paid_note">This will update your subscription status\nto “Paid” for this billing cycle.</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="confirm_btn">Confirm</string>
+    <string name="save_changes_lbl">Save Changes?</string>
+    <string name="save_changes_note">You’ve made changes to this subscription.\nWould you like to save them?</string>
+    <string name="discard_btn">Discard</string>
+    <string name="save_changes_btn">Save Changes</string>
+    <string name="restore_subs_lbl">Restore Subscription?</string>
+    <string name="restore_subs_note">This will re-activate the canceled subscription\nand resume tracking.</string>
+    <string name="restore_btn">Restore</string>
+    <string name="cancel_subs_lbl">Cancel Subscription?</string>
+    <string name="cancel_subs_note">This will stop tracking this subscription and mark it\nas canceled. You can restore it anytime.</string>
+    <string name="keep_tracking_btn">Keep Tracking</string>
+    <string name="delete_subs_lbl">Delete Subscription?</string>
+    <string name="delete_subs_note">This will permanently remove this subscription\nfrom your tracker. This action can’t be undone.</string>
+    <string name="delete_permanently_btn">Delete Permanently</string>
+
+
+<!-- PAYMENT FRAGMENT TEXT -->
+    <string name="payments">Payments</string>
+    <string name="browse_your_payments">Browse your payments by date or categories.</string>
+    <string name="category_icon">Category Icon</string>
+
+
+    <string name="subscription_entertainment">Entertainment</string>
+    <string name="subscription_productivity_tools">Productivity and Tools</string>
+    <string name="subscription_cloud_storage">Cloud Storage</string>
+    <string name="subscription_membership">Membership</string>
+    <string name="subscription_fooddelivery">Food Delivery</string>
+
+    <string name="smart_insights_message">Your most expensive subscription is: Netflix</string>
+
+    <string name="edit_subscription">Edit Subscription</string>
+    <string name="update_subscription">Update Subscription</string>
+    <string name="subscription_updated">Subscription updated!</string>
+    <string name="error_loading_subscription">Error loading subscription</string>
+
+
 </resources>

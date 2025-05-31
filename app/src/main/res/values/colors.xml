@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="gray">#888888</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#888888</color>
+
     <color name="outline_blue">#ABBEE5</color>
     <color name="outline_grey">#494545</color>
+
+    <color name="light_blue">#ABBEE5</color>
+    <color name="dark_blue">#000564</color>
+    <color name="bill_card">#DCE6FA</color>
+    <color name="brown">#383636</color>
+    <color name="light_brown">#494545</color>
+    <color name="dark_brown">#322F2F</color>"
+    <color name="grey">#808080</color>
+    <color name="red">#980B0B</color>
+
+    <color name="upcoming">#4CAF50</color>
+    <color name="overdue">#F44336</color>
+    <color name="paid">#2196F3</color>
+    <color name="cancelled">#9E9E9E</color>
+    <color name="default_status">#000000</color>
 </resources>

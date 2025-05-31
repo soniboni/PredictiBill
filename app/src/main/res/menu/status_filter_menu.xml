@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/status_all" android:title="All Statuses"/>
+    <item android:id="@+id/status_upcoming" android:title="Upcoming"/>
+    <item android:id="@+id/status_overdue" android:title="Overdue"/>
+    <item android:id="@+id/status_paid" android:title="Paid"/>
+    <item android:id="@+id/status_cancelled" android:title="Cancelled"/>
+</menu>

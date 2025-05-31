@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- White background fills entire container -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+
+    <!-- Top border line -->
+    <item android:height="1dp" android:gravity="top">
+        <shape android:shape="rectangle">
+            <solid android:color="#8A8585" />
+        </shape>
+    </item>
+
+    <!-- Bottom border line -->
+    <item android:height="1dp" android:gravity="bottom">
+        <shape android:shape="rectangle">
+            <solid android:color="#8A8585" />
+        </shape>
+    </item>
+
+</layer-list>
