@@ -297,9 +297,8 @@
     <string name="logo_content_description">PredictiBill logo</string>
     <string name="account_image_content_description">User Account Image Icon</string>
     <string name="check_icon_content_description">Password Validation Check Icon</string>
-
     <string name="open_category_content_description">Open Category</string>
-
+    <string name="close_button_icon_content_description">Close Button Icon</string>
 
 
     <!-- PROFILE & SETTINGS (MAIN PAGE) FRAGMENT BUTTONS (DIALOG BOX) TEXT -->

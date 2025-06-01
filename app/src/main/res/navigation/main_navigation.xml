@@ -172,12 +172,6 @@
         </action>
     </fragment>
 
-    <!-- Profile Fragment -->
-    <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.example.predictibill.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
 
     <!-- Profile (Profile & Settings Main Page) Fragment -->
     <fragment
@@ -199,13 +193,12 @@
         <action
             android:id="@+id/action_navigationProfile_to_privacyPolicyFragment"
             app:destination="@id/navigation_privacy_policy"/>
+        <!-- Action to navigate to Login Page when "Logout" button is clicked -->
+<!--        <action-->
+<!--            android:id="@+id/action_navigationProfile_to_loginFragment"-->
+<!--            app:destination="login" />-->
+
     </fragment>
-
-
-    <!-- Action to navigate to 'login.xml' when "Logout" button is clicked -->
-    <!--        <action-->
-    <!--            android:id="@+id/action_navigationProfile_to_login"-->
-    <!--            app:destination="@id/navigation_login"/>-->
 
     <!-- Action to navigate to 'sign_up.xml' when "Deactivate Account" button is clicked -->
     <!--        <action-->
@@ -224,12 +217,6 @@
             android:id="@+id/action_navigationChangePassword_to_profileFragment"
             app:destination="@id/navigation_profile"/>
     </fragment>
-
-    <!-- Action to navigate to Profile & Settings (Main Page) Fragment when the "Continue" button is clicked -->
-
-
-    <!-- Action to navigate to Change Password Fragment when the "Cancel" button is clicked -->
-
 
 
     <!-- Help Fragment -->

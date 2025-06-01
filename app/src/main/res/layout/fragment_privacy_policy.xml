@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="160dp"
+        android:paddingBottom="60dp"
         tools:context=".ui.profile.ProfileFragment">
 
         <!-- Logo Image -->
@@ -50,6 +50,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_privacy_policy_lbl"/>
+
+        <!-- Close Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/close_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="335dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/close_icon"
+            app:backgroundTint="@null"
+            app:cornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/profile_privacy_policy_lbl"
+            android:clickable="true"/>
 
         <!-- Heading - 1. Information We Collect -->
         <TextView

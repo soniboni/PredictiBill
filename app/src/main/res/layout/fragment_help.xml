@@ -34,6 +34,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Logo"/>
 
+    <!-- Image Close Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/close_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="335dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/close_icon"
+        app:backgroundTint="@null"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profile_help_lbl"
+        android:clickable="true"/>
+
     <!-- Heading - Welcome Title -->
     <TextView
         android:id="@+id/profile_welcome_to_lbl"

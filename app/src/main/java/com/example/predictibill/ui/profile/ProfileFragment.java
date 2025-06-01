@@ -2,7 +2,6 @@ package com.example.predictibill.ui.profile;
 
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import android.content.Context;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -184,7 +182,7 @@ public class ProfileFragment extends Fragment {
             // Close the dialog
             logoutDialog.dismiss();
 
-            // Navigate to login screen or main activity
+            // Navigate to Login Page
             navigateToLogin();
 
             Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
@@ -220,7 +218,7 @@ public class ProfileFragment extends Fragment {
             // Close the dialog
             deactivateAccountDialog.dismiss();
 
-            // Navigate to login screen or main activity
+            // Navigate to Sign Up Page
             navigateToLogin();
 
             Toast.makeText(requireContext(), "Account deactivated", Toast.LENGTH_SHORT).show();
@@ -239,46 +237,23 @@ public class ProfileFragment extends Fragment {
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
         editor.apply();
-
-        // You can also clear other app-specific data here
-        // For example: clear database, clear cached data, etc.
     }
 
     private void deactivateAccount() {
         // Clear user session data
         clearUserSession();
-
-        // Add additional deactivation logic here:
-        // - Call API to deactivate account on server
-        // - Clear local database
-        // - Clear any cached user data
-
-        // Example API call (uncomment and modify as needed):
-        // ApiService.deactivateAccount(userId, new ApiCallback() {
-        //     @Override
-        //     public void onSuccess() {
-        //         // Handle successful deactivation
-        //     }
-        //
-        //     @Override
-        //     public void onError(String error) {
-        //         // Handle deactivation error
-        //     }
-        // });
     }
 
     private void navigateToLogin() {
         try {
-            // Navigate to login screen
-            // Replace with your actual login destination
+            // Navigate to Login Page
             NavHostFragment.findNavController(this)
                     .navigate(R.id.navigation_profile);
         } catch (Exception e) {
-            // If navigation fails, you might want to restart the app
-            // or handle the error appropriately
+            // If navigation fails, restart the app or handle the error appropriately
             Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
-            // Alternative: Close the app or restart main activity
+            // Close the app or restart main activity
             requireActivity().finishAffinity();
         }
     }
