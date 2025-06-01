@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="160dp"
+        tools:context=".ui.profile.ProfileFragment">
+
+        <!-- Logo Image -->
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_icontext_blue"
+            android:contentDescription="@string/logo_content_description"/>
+
+        <!-- Heading - Title -->
+        <TextView
+            android:id="@+id/profile_privacy_policy_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/profile_privacy_policy_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Logo"/>
+
+        <!-- Subheading - Last Update -->
+        <TextView
+            android:id="@+id/profile_last_updated_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_last_updated_lbl"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_privacy_policy_lbl"/>
+
+        <!-- Heading - 1. Information We Collect -->
+        <TextView
+            android:id="@+id/profile_information_we_collect_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/profile_information_we_collect_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_last_updated_lbl"/>
+
+        <!-- Subheading -->
+        <TextView
+            android:id="@+id/profile_we_only_collect_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_we_only_collect_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_information_we_collect_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_information_we_collect_lbl"/>
+
+        <TextView
+            android:id="@+id/profile_information_to_collect_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_information_to_collect_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_we_only_collect_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_we_only_collect_txt"/>
+
+        <!-- Heading - 2. How We Use Your Information -->
+        <TextView
+            android:id="@+id/profile_how_we_use_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/profile_how_we_use_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintStart_toStartOf="@id/profile_information_to_collect_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_information_to_collect_txt"/>
+
+        <!-- Subheading -->
+        <TextView
+            android:id="@+id/profile_we_use_your_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/profile_we_use_your_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_how_we_use_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_how_we_use_lbl"/>
+
+        <TextView
+            android:id="@+id/profile_use_data_to_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_use_data_to_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_we_use_your_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_we_use_your_txt"/>
+
+        <!-- Heading - 3. Data Storage & Security -->
+        <TextView
+            android:id="@+id/profile_data_storage_security_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/profile_data_storage_security_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintStart_toStartOf="@id/profile_use_data_to_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_use_data_to_txt"/>
+
+        <!-- Subheading -->
+        <TextView
+            android:id="@+id/profile_all_data_is_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_all_data_is_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_data_storage_security_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_data_storage_security_lbl"/>
+
+        <!-- Heading - 4. Sharing Your Data -->
+        <TextView
+            android:id="@+id/profile_sharing_your_data_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/profile_sharing_your_data_lbl"
+            android:textAppearance="@style/headings"
+
+            app:layout_constraintStart_toStartOf="@id/profile_all_data_is_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_all_data_is_txt"/>
+
+        <!-- Subheading -->
+        <TextView
+            android:id="@+id/profile_we_do_not_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_we_do_not_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_sharing_your_data_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_sharing_your_data_lbl"/>
+
+        <!-- Heading - 5. Your Rights -->
+        <TextView
+            android:id="@+id/profile_your_rights_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/profile_your_rights_lbl"
+            android:textAppearance="@style/headings"
+            app:layout_constraintStart_toStartOf="@id/profile_we_do_not_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_we_do_not_txt"/>
+
+        <!-- Subheading -->
+        <TextView
+            android:id="@+id/profile_you_can_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/profile_you_can_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_your_rights_lbl"
+            app:layout_constraintTop_toBottomOf="@id/profile_your_rights_lbl"/>
+
+        <TextView
+            android:id="@+id/profile_user_rights_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="16dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/profile_user_rights_txt"
+            android:textAppearance="@style/subheadings"
+            app:layout_constraintStart_toStartOf="@id/profile_you_can_txt"
+            app:layout_constraintTop_toBottomOf="@id/profile_you_can_txt"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
