@@ -479,14 +479,14 @@
 
 
     <!-- Profile & Settings (Main Page) & Change Password Fragments Buttons (Dialog Box) -->
-    <style name="dialog_box_headings">
+    <style name="dialog_box_headings_profile">
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">@color/dark_blue</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
 
-    <style name="dialog_box_subheadings">
+    <style name="dialog_box_subheadings_profile">
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">@color/light_brown</item>
