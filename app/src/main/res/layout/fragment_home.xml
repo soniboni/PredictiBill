@@ -53,14 +53,14 @@
             android:id="@+id/home_rectangle_1"
             android:layout_width="367dp"
             android:layout_height="180dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="18dp"
             android:layout_marginTop="190dp"
             android:layout_marginEnd="18dp"
             android:layout_marginBottom="200dp"
             android:background="@drawable/home_rectangle_1"
             android:fontFamily="@font/poppins_semibold"
             android:padding="12dp"
-            android:text="@string/home_subsspending_txt"
+            android:text="Monthly Subscription Spending"
             android:textColor="@color/dark_blue"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -82,10 +82,10 @@
             android:textSize="13.4sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.003"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.169" />
+            app:layout_constraintVertical_bias="0.164" />
 
         <TextView
             android:id="@+id/home_rectangle_2"
@@ -369,25 +369,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/home_upcoming_billing_txt" />
 
-        <LinearLayout
+        <!-- Overdue Bills Section -->
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/upcoming_bill_container"
-            android:layout_width="367dp"
-            android:layout_height="64dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_marginStart="17dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="17dp"
-            android:background="@drawable/home_rectangle_4"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_upcoming_billing_note"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_upcoming_billing_note">
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
-        </LinearLayout>
-
-        <!-- Overdue Bills Section -->
         <TextView
             android:id="@+id/home_overdue_bills_txt"
             android:layout_width="wrap_content"
@@ -413,23 +408,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/home_overdue_bills_txt" />
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/overdue_bills_container"
-            android:layout_width="367dp"
-            android:layout_height="64dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_marginStart="17dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="17dp"
-            android:background="@drawable/home_rectangle_4"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_overdue_bills_note"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_overdue_bills_note">
-
-        </LinearLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

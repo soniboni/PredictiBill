@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.predictibill.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -127,9 +128,13 @@ public class AddSubscriptionFragment extends Fragment {
                     year, month, day
             );
 
-            // If nextBillingMinDate is set, limit the minimum date selectable for next billing date
+            // Conditionally restrict minimum date on next billing date picker
             if (containerId == R.id.next_billing_date_container && nextBillingMinDate != null) {
-                datePickerDialog.getDatePicker().setMinDate(nextBillingMinDate.getTimeInMillis());
+                String selectedStatus = (String) statusSpinner.getSelectedItem();
+                if (selectedStatus == null || !selectedStatus.equalsIgnoreCase("Overdue")) {
+                    datePickerDialog.getDatePicker().setMinDate(nextBillingMinDate.getTimeInMillis());
+                }
+                // No restriction if status is "Overdue"
             }
 
             datePickerDialog.setTitle(title);
@@ -162,6 +167,13 @@ public class AddSubscriptionFragment extends Fragment {
     }
 
     private void saveSubscriptionToFirestore() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null) {
+            Toast.makeText(getContext(), "User not authenticated", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String userId = currentUser.getUid();
         String status = statusSpinner.getSelectedItem().toString();
         String startDateStr = startDateDisplay.getText().toString();
         String nextBillingDateStr = nextBillingDateDisplay.getText().toString();
@@ -177,6 +189,7 @@ public class AddSubscriptionFragment extends Fragment {
         }
 
         Map<String, Object> subscription = new HashMap<>();
+        subscription.put("userId", userId); // Add user ID to document
         subscription.put("name", subscriptionNameEditText.getText().toString());
         subscription.put("price", Double.parseDouble(subscriptionPriceEditText.getText().toString()));
         subscription.put("category", categorySpinner.getSelectedItem().toString());

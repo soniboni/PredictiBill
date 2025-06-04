@@ -18,15 +18,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.HashMap;
 
 public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapter.SubscriptionViewHolder> {
 
     private List<Subscription> subscriptionList;
+    private final OnSubscriptionClickListener listener;
     private Context context;
-    private OnSubscriptionClickListener listener;
 
     private final SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-    private final SimpleDateFormat outputDateFormat = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault());
+    private final SimpleDateFormat outputDateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
 
     public interface OnSubscriptionClickListener {
         void onSubscriptionClick(Subscription subscription);
@@ -42,27 +44,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         notifyDataSetChanged();
     }
 
-    public static class SubscriptionViewHolder extends RecyclerView.ViewHolder {
-        public TextView nameTextView;
-        public TextView billingCycleTextView;
-        public ImageView categoryImageView;
-        public TextView categoryTextView;
-        public ImageView statusImageView;
-        public TextView priceTextView;
-        public TextView dueDateTextView;
-
-        public SubscriptionViewHolder(@NonNull View itemView) {
-            super(itemView);
-            nameTextView = itemView.findViewById(R.id.subscription_name);
-            billingCycleTextView = itemView.findViewById(R.id.subscription_billing_cycle);
-            categoryImageView = itemView.findViewById(R.id.subscription_category_image);
-            categoryTextView = itemView.findViewById(R.id.subscription_category_text);
-            statusImageView = itemView.findViewById(R.id.subscription_status);
-            priceTextView = itemView.findViewById(R.id.subscription_price_value);
-            dueDateTextView = itemView.findViewById(R.id.subscription_due_date);
-        }
-    }
-
     @NonNull
     @Override
     public SubscriptionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -76,41 +57,61 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
     public void onBindViewHolder(@NonNull SubscriptionViewHolder holder, int position) {
         Subscription current = subscriptionList.get(position);
 
-        holder.nameTextView.setText(current.getName());
-        holder.billingCycleTextView.setText(current.getBillingCycle());
-        holder.priceTextView.setText(String.format("₱%.2f", current.getPrice()));
-
-        String formattedDueDate = formatDateString(current.getNextBillingDate());
-        holder.dueDateTextView.setText(String.format("Due: %s", formattedDueDate));
-
-        // Category image logic
-        String category = current.getCategory();
-        int categoryRes = getCategoryImageRes(category);
-
-        if (categoryRes != 0) {
-            holder.categoryImageView.setVisibility(View.VISIBLE);
-            holder.categoryImageView.setImageResource(categoryRes);
-            holder.categoryTextView.setVisibility(View.GONE);
-        } else {
-            holder.categoryImageView.setVisibility(View.GONE);
-            holder.categoryTextView.setVisibility(View.VISIBLE);
-            holder.categoryTextView.setText(category);
+        // Safe null checks for setting text
+        if (holder.nameTextView != null && current.getName() != null) {
+            holder.nameTextView.setText(current.getName());
+        }
+        if (holder.billingCycleTextView != null && current.getBillingCycle() != null) {
+            holder.billingCycleTextView.setText(current.getBillingCycle());
+        }
+        if (holder.priceTextView != null) {
+            holder.priceTextView.setText(String.format("$%.2f", current.getPrice()));
         }
 
-        // Status icon logic
-        String status = current.getStatus();
-        int statusRes = getStatusImageRes(status);
-
-        if (statusRes != 0) {
-            holder.statusImageView.setVisibility(View.VISIBLE);
-            holder.statusImageView.setImageResource(statusRes);
-        } else {
-            holder.statusImageView.setVisibility(View.GONE);
+        if (holder.dueDateTextView != null) {
+            String formattedDueDate = formatDateString(current.getNextBillingDate());
+            holder.dueDateTextView.setText(String.format("Due: %s", formattedDueDate));
         }
 
-        // Set click listener
+        // Category image or fallback text
+        if (holder.categoryImageView != null && holder.categoryTextView != null) {
+            String category = current.getCategory();
+            if (category != null) {
+                Integer categoryRes = categoryImageMap.get(category);
+                if (categoryRes != null) {
+                    holder.categoryImageView.setVisibility(View.VISIBLE);
+                    holder.categoryImageView.setImageResource(categoryRes);
+                    holder.categoryTextView.setVisibility(View.GONE);
+                } else {
+                    holder.categoryImageView.setVisibility(View.GONE);
+                    holder.categoryTextView.setVisibility(View.VISIBLE);
+                    holder.categoryTextView.setText(category);
+                }
+            } else {
+                holder.categoryImageView.setVisibility(View.GONE);
+                holder.categoryTextView.setVisibility(View.GONE);
+            }
+        }
+
+        // Status icon
+        if (holder.statusImageView != null) {
+            String status = current.getStatus();
+            if (status != null) {
+                int statusRes = getStatusImageRes(status);
+                if (statusRes != 0) {
+                    holder.statusImageView.setVisibility(View.VISIBLE);
+                    holder.statusImageView.setImageResource(statusRes);
+                } else {
+                    holder.statusImageView.setVisibility(View.GONE);
+                }
+            } else {
+                holder.statusImageView.setVisibility(View.GONE);
+            }
+        }
+
+        // Click listener
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
+            if (listener != null && position != RecyclerView.NO_POSITION) {
                 listener.onSubscriptionClick(current);
             }
         });
@@ -121,20 +122,39 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         return subscriptionList.size();
     }
 
-    private int getCategoryImageRes(String category) {
-        if (category == null) return 0;
+    static class SubscriptionViewHolder extends RecyclerView.ViewHolder {
+        TextView nameTextView;
+        TextView billingCycleTextView;
+        ImageView categoryImageView;
+        TextView categoryTextView;
+        ImageView statusImageView;
+        TextView priceTextView;
+        TextView dueDateTextView;
 
-        String formatted = category.toLowerCase()
-                .replace("&", "and")
-                .replaceAll("[^a-z0-9]", "");
+        public SubscriptionViewHolder(@NonNull View itemView) {
+            super(itemView);
+            nameTextView = itemView.findViewById(R.id.subscription_name);
+            billingCycleTextView = itemView.findViewById(R.id.subscription_billing_cycle);
+            categoryImageView = itemView.findViewById(R.id.subscription_category_image);
+            categoryTextView = itemView.findViewById(R.id.subscription_category_text);
+            statusImageView = itemView.findViewById(R.id.subscription_status);
+            priceTextView = itemView.findViewById(R.id.subscription_price_value);
+            dueDateTextView = itemView.findViewById(R.id.subscription_due_date);
+        }
+    }
 
-        String resourceName = "category_name_" + formatted;
-        return context.getResources().getIdentifier(resourceName, "drawable", context.getPackageName());
+    // Exact category names mapped to drawable resource IDs
+    private static final Map<String, Integer> categoryImageMap = new HashMap<>();
+    static {
+        categoryImageMap.put("Cloud Storage", R.drawable.category_name_cloudstorage);
+        categoryImageMap.put("Entertainment", R.drawable.category_name_entertainment);
+        categoryImageMap.put("Food And Delivery", R.drawable.category_name_foodanddelivery);
+        categoryImageMap.put("Membership", R.drawable.category_name_membership);
+        categoryImageMap.put("Productivity And Tools", R.drawable.category_name_productivityandtools);
     }
 
     private int getStatusImageRes(String status) {
         if (status == null) return 0;
-
         String formatted = "status_" + status.toLowerCase().trim();
         return context.getResources().getIdentifier(formatted, "drawable", context.getPackageName());
     }
