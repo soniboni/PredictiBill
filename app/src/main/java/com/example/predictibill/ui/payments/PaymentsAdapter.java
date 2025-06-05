@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.predictibill.models.Subscription;
 
 import com.example.predictibill.R;
-import com.example.predictibill.models.Subscription;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
