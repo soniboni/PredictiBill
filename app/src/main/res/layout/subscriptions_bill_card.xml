@@ -45,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
             android:text="@string/billing_cycle"
             android:textAppearance="@style/billing_cycle"
             app:layout_constraintBottom_toBottomOf="parent"

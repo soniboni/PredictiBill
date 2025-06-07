@@ -149,4 +149,5 @@ public class Subscription {
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 }

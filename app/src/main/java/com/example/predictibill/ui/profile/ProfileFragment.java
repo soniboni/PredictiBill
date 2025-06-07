@@ -1,6 +1,7 @@
 package com.example.predictibill.ui.profile;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +21,11 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.predictibill.ui.auth.Login;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.example.predictibill.R;
 
@@ -34,18 +39,29 @@ public class ProfileFragment extends Fragment {
     private Dialog logoutDialog;
     private Dialog deactivateAccountDialog;
 
+    // Firebase instances
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private FirebaseUser currentUser;
+
     // Currency options
     private static final String[] currencies = {"PHP", "USD"};
 
     public ProfileFragment() {
-        // Required empty public constructor
         super(R.layout.fragment_profile);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        currentUser = mAuth.getCurrentUser();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -53,55 +69,44 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize modal dialogs
         setupLogoutDialog();
         setupDeactivateAccountDialog();
+        setupButtonListeners(view);
+        initializeUIComponents(view);
+        loadUserPreferences();
+    }
 
-        // 2. Button Functionality (ID from fragment)
-
-        // Change Password Button - Direct Navigation to Change Password Fragment
+    private void setupButtonListeners(View view) {
         Button changePassword = view.findViewById(R.id.profile_change_password_button);
         changePassword.setOnClickListener(v -> {
             try {
-                // Navigate directly to the Change Password Fragment
                 NavHostFragment.findNavController(this)
                         .navigate(R.id.action_navigationProfile_to_changePasswordFragment);
             } catch (Exception e) {
-                // Fallback error handling
-                Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
+                showToast("Navigation error: " + e.getMessage());
             }
         });
 
-        // Help Button - Direct Navigation to Help Fragment
         Button help = view.findViewById(R.id.profile_help_button);
         help.setOnClickListener(v -> {
             try {
-                // Navigate directly to the Help Fragment
                 NavHostFragment.findNavController(this)
                         .navigate(R.id.action_navigationProfile_to_helpFragment);
             } catch (Exception e) {
-                // Fallback error handling
-                Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
+                showToast("Navigation error: " + e.getMessage());
             }
         });
 
-        // Privacy Policy Button - Direct Navigation to Privacy Policy Fragment
         Button privacyPolicy = view.findViewById(R.id.profile_privacy_policy_button);
         privacyPolicy.setOnClickListener(v -> {
             try {
-                // Navigate directly to the Privacy Policy Fragment
                 NavHostFragment.findNavController(this)
                         .navigate(R.id.action_navigationProfile_to_privacyPolicyFragment);
             } catch (Exception e) {
-                // Fallback error handling
-                Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
+                showToast("Navigation error: " + e.getMessage());
             }
         });
 
-        // Logout Button - Show Logout Modal
         Button logoutButton = view.findViewById(R.id.profile_logout_button);
         logoutButton.setOnClickListener(v -> {
             if (logoutDialog != null) {
@@ -109,89 +114,159 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        // Deactivate Account Button - Show Deactivate Modal
         Button deactivateButton = view.findViewById(R.id.profile_deactivate_account_button);
         deactivateButton.setOnClickListener(v -> {
             if (deactivateAccountDialog != null) {
                 deactivateAccountDialog.show();
             }
         });
+    }
 
-        // Initialize the toggle buttons and spinner
+    private void initializeUIComponents(View view) {
         in_app_reminders_toggle_button = view.findViewById(R.id.in_app_reminders_toggle_button);
         email_alerts_toggle_button = view.findViewById(R.id.email_alerts_toggle_button);
         currency_spinner = view.findViewById(R.id.currency_spinner);
+    }
 
-        // Load saved preferences
+    private void loadUserPreferences() {
+        if (currentUser == null) return;
+
+        // First try to load from Firestore
+        db.collection("users").document(currentUser.getUid())
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        // Load from Firestore
+                        Boolean inAppReminders = documentSnapshot.getBoolean("inAppReminders");
+                        Boolean emailAlerts = documentSnapshot.getBoolean("emailAlerts");
+                        String currency = documentSnapshot.getString("currency");
+
+                        // Update local preferences
+                        SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+
+                        if (inAppReminders != null) {
+                            editor.putBoolean("in_app_reminders", inAppReminders);
+                            in_app_reminders_toggle_button.setChecked(inAppReminders);
+                        }
+
+                        if (emailAlerts != null) {
+                            editor.putBoolean("email_alerts", emailAlerts);
+                            email_alerts_toggle_button.setChecked(emailAlerts);
+                        }
+
+                        if (currency != null) {
+                            editor.putString("selected_currency", currency);
+                            setupCurrencySpinner(currency);
+                        } else {
+                            setupCurrencySpinner("PHP");
+                        }
+
+                        editor.apply();
+                    } else {
+                        // Fallback to local preferences if Firestore doesn't have data
+                        loadFromLocalPreferences();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    showToast("Failed to load preferences");
+                    loadFromLocalPreferences();
+                });
+
+        // Set up toggle listeners after loading
+        setupToggleListeners();
+    }
+
+    private void loadFromLocalPreferences() {
         SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
         boolean inAppReminders = prefs.getBoolean("in_app_reminders", false);
         boolean emailAlerts = prefs.getBoolean("email_alerts", false);
+        String currency = prefs.getString("selected_currency", "PHP");
 
-        // Set PHP as default currency only if it doesn't already exist
-        if (!prefs.contains("selected_currency")) {
-            editor.putString("selected_currency", "PHP");
-            editor.apply();
-        }
-
-        String savedCurrency = prefs.getString("selected_currency", "PHP");
-
-        // Set toggle states from preferences
         in_app_reminders_toggle_button.setChecked(inAppReminders);
         email_alerts_toggle_button.setChecked(emailAlerts);
+        setupCurrencySpinner(currency);
+    }
 
-        // Setup currency spinner
-        setupCurrencySpinner(savedCurrency);
-
-        // Set listeners to save preferences when toggles change and
-        // display toast messages to confirm that the toggle buttons work
+    private void setupToggleListeners() {
         in_app_reminders_toggle_button.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefs.edit().putBoolean("in_app_reminders", isChecked).apply();
-            String message = "In-app reminders " + (isChecked ? "enabled" : "disabled");
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+            savePreferenceToFirestore("inAppReminders", isChecked);
+
+            // Implement in-app reminder logic
+            if (isChecked) {
+                // Enable in-app reminders
+                // You would typically schedule notifications here
+                showToast("In-app reminders enabled");
+            } else {
+                // Disable in-app reminders
+                // Cancel scheduled notifications
+                showToast("In-app reminders disabled");
+            }
         });
 
         email_alerts_toggle_button.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefs.edit().putBoolean("email_alerts", isChecked).apply();
-            String message = "Email alerts " + (isChecked ? "enabled" : "disabled");
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+            savePreferenceToFirestore("emailAlerts", isChecked);
+
+            // Implement email alert logic
+            if (isChecked) {
+                // Enable email alerts
+                showToast("Email alerts enabled");
+            } else {
+                // Disable email alerts
+                showToast("Email alerts disabled");
+            }
         });
+    }
+
+    private void savePreferenceToFirestore(String key, Object value) {
+        if (currentUser == null) return;
+
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // Update local preferences
+        if (value instanceof Boolean) {
+            editor.putBoolean(key.equals("inAppReminders") ? "in_app_reminders" : "email_alerts", (Boolean) value);
+        } else if (value instanceof String) {
+            editor.putString("selected_currency", (String) value);
+        }
+        editor.apply();
+
+        // Update Firestore
+        db.collection("users").document(currentUser.getUid())
+                .update(key, value)
+                .addOnSuccessListener(aVoid -> {
+                    // Successfully updated
+                })
+                .addOnFailureListener(e -> {
+                    showToast("Failed to save preference");
+                });
     }
 
     private void setupLogoutDialog() {
         logoutDialog = new Dialog(requireContext());
         logoutDialog.setContentView(R.layout.logout_dialog_box);
 
-        // Make background transparent
         if (logoutDialog.getWindow() != null) {
             logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
 
         logoutDialog.setCancelable(false);
 
-        // Get buttons from the logout dialog layout
         Button logoutBtn = logoutDialog.findViewById(R.id.logout_btn);
         Button stayLoggedInBtn = logoutDialog.findViewById(R.id.stay_logged_in_btn);
 
-        // Logout button functionality
         logoutBtn.setOnClickListener(v -> {
-            // Clear user session/preferences
+            mAuth.signOut();
             clearUserSession();
-
-            // Close the dialog
             logoutDialog.dismiss();
-
-            // Navigate to Login Page
             navigateToLogin();
-
-            Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
+            showToast("Logged out successfully");
         });
 
-        // Stay logged in button functionality
         stayLoggedInBtn.setOnClickListener(v -> {
             logoutDialog.dismiss();
-            Toast.makeText(requireContext(), "You're still logged in", Toast.LENGTH_SHORT).show();
+            showToast("You're still logged in");
         });
     }
 
@@ -199,67 +274,70 @@ public class ProfileFragment extends Fragment {
         deactivateAccountDialog = new Dialog(requireContext());
         deactivateAccountDialog.setContentView(R.layout.deactivate_account_dialog_box);
 
-        // Make background transparent
         if (deactivateAccountDialog.getWindow() != null) {
             deactivateAccountDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
 
         deactivateAccountDialog.setCancelable(false);
 
-        // Get buttons from the deactivate dialog layout
         Button deactivate_btn = deactivateAccountDialog.findViewById(R.id.deactivate_btn);
         Button cancel_btn = deactivateAccountDialog.findViewById(R.id.cancel_btn);
 
-        // Deactivate button functionality
         deactivate_btn.setOnClickListener(v -> {
-            // Perform account deactivation logic
             deactivateAccount();
-
-            // Close the dialog
             deactivateAccountDialog.dismiss();
-
-            // Navigate to Sign Up Page
-            navigateToLogin();
-
-            Toast.makeText(requireContext(), "Account deactivated", Toast.LENGTH_SHORT).show();
         });
 
-        // Cancel button functionality
         cancel_btn.setOnClickListener(v -> {
             deactivateAccountDialog.dismiss();
-            Toast.makeText(requireContext(), "Account deactivation cancelled", Toast.LENGTH_SHORT).show();
+            showToast("Account deactivation cancelled");
         });
     }
 
     private void clearUserSession() {
-        // Clear all user preferences/session data
         SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.clear();
-        editor.apply();
+        prefs.edit().clear().apply();
     }
 
     private void deactivateAccount() {
-        // Clear user session data
-        clearUserSession();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            db.collection("users").document(userId)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        currentUser.delete()
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        clearUserSession();
+                                        navigateToLogin();
+                                        showToast("Account deactivated successfully");
+                                    } else {
+                                        showToast("Failed to deactivate account: " + task.getException().getMessage());
+                                    }
+                                });
+                    })
+                    .addOnFailureListener(e -> {
+                        showToast("Failed to delete user data: " + e.getMessage());
+                    });
+        } else {
+            showToast("No user logged in");
+        }
     }
 
     private void navigateToLogin() {
         try {
-            // Navigate to Login Page
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.navigation_profile);
+            Intent intent = new Intent(requireActivity(), Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            requireActivity().finish();
         } catch (Exception e) {
-            // If navigation fails, restart the app or handle the error appropriately
-            Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
-            // Close the app or restart main activity
+            showToast("Error: " + e.getMessage());
             requireActivity().finishAffinity();
         }
     }
 
     private void setupCurrencySpinner(String savedCurrency) {
-        // Custom adapter to apply gray text color
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 requireContext(),
                 android.R.layout.simple_spinner_item,
@@ -268,14 +346,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
-                ((TextView) view).setTextColor(getResources().getColor(R.color.brown, null)); // Main spinner text
+                ((TextView) view).setTextColor(getResources().getColor(R.color.brown, null));
                 return view;
             }
 
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
-                ((TextView) view).setTextColor(getResources().getColor(R.color.brown, null)); // Dropdown items
+                ((TextView) view).setTextColor(getResources().getColor(R.color.brown, null));
                 return view;
             }
         };
@@ -283,12 +361,8 @@ public class ProfileFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         currency_spinner.setAdapter(adapter);
 
-        // Set default selection
         int savedPosition = getCurrencyPosition(savedCurrency);
-        if (savedPosition == -1) savedPosition = 0; // fallback to PHP if invalid
-        currency_spinner.setSelection(savedPosition, false); // false = avoid triggering listener
-
-        SharedPreferences prefs = requireActivity().getSharedPreferences("user_settings", Context.MODE_PRIVATE);
+        currency_spinner.setSelection(savedPosition, false);
 
         currency_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             private boolean isFirstSelection = true;
@@ -297,24 +371,16 @@ public class ProfileFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (isFirstSelection) {
                     isFirstSelection = false;
-                    return; // skip first call on setup
+                    return;
                 }
 
                 String selectedCurrency = currencies[position];
-                String previousCurrency = prefs.getString("selected_currency", "PHP");
-
-                // Save new selection
-                prefs.edit().putString("selected_currency", selectedCurrency).apply();
-
-                if (!selectedCurrency.equals(previousCurrency)) {
-                    Toast.makeText(requireContext(), "Currency changed to " + selectedCurrency, Toast.LENGTH_SHORT).show();
-                }
+                savePreferenceToFirestore("currency", selectedCurrency);
+                showToast("Currency changed to " + selectedCurrency);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
@@ -324,10 +390,13 @@ public class ProfileFragment extends Fragment {
                 return i;
             }
         }
-        return 0; // Default to PHP
+        return 0;
     }
 
-    // Utility method to get the currently selected currency from anywhere in your app
+    private void showToast(String message) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
     public static String getSelectedCurrency(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("user_settings", Context.MODE_PRIVATE);
         return prefs.getString("selected_currency", "PHP");
@@ -336,7 +405,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Clean up dialogs to prevent memory leaks
         if (logoutDialog != null && logoutDialog.isShowing()) {
             logoutDialog.dismiss();
         }

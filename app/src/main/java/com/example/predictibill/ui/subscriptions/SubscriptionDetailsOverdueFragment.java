@@ -19,7 +19,12 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.predictibill.R;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class SubscriptionDetailsOverdueFragment extends Fragment {
 
@@ -217,20 +222,40 @@ public class SubscriptionDetailsOverdueFragment extends Fragment {
     private void updateSubscriptionStatus(String newStatus, int navigationAction) {
         if (subscriptionId == null) return;
 
+        // Update both status and updatedAt
         db.collection("subscriptions")
                 .document(subscriptionId)
-                .update("status", newStatus)
+                .update(
+                        "status", newStatus,
+                        "updatedAt", FieldValue.serverTimestamp()
+                )
                 .addOnSuccessListener(aVoid -> {
-                    // Update the arguments with new status
-                    Bundle args = new Bundle();
-                    if (getArguments() != null) {
-                        args.putAll(getArguments());
-                    }
-                    args.putString("status", newStatus);
+                    // After updating, fetch the document to get the updatedAt timestamp
+                    db.collection("subscriptions")
+                            .document(subscriptionId)
+                            .get()
+                            .addOnSuccessListener(documentSnapshot -> {
+                                if (documentSnapshot.exists()) {
+                                    Timestamp updatedAtTimestamp = documentSnapshot.getTimestamp("updatedAt");
+                                    String updatedAtStr = "";
+                                    if (updatedAtTimestamp != null) {
+                                        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy hh:mm a", Locale.getDefault());
+                                        updatedAtStr = sdf.format(updatedAtTimestamp.toDate());
+                                    }
 
-                    // Navigate to the new fragment
-                    NavHostFragment.findNavController(this)
-                            .navigate(navigationAction, args);
+                                    // Update the arguments with new status and updatedAt string
+                                    Bundle args = new Bundle();
+                                    if (getArguments() != null) {
+                                        args.putAll(getArguments());
+                                    }
+                                    args.putString("status", newStatus);
+                                    args.putString("updatedAt", updatedAtStr);
+
+                                    // Navigate to the new fragment with updated data
+                                    NavHostFragment.findNavController(this)
+                                            .navigate(navigationAction, args);
+                                }
+                            });
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Failed to update subscription", Toast.LENGTH_SHORT).show();

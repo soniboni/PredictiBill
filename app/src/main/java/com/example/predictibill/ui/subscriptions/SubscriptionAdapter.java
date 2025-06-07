@@ -57,7 +57,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
     public void onBindViewHolder(@NonNull SubscriptionViewHolder holder, int position) {
         Subscription current = subscriptionList.get(position);
 
-        // Safe null checks for setting text
         if (holder.nameTextView != null && current.getName() != null) {
             holder.nameTextView.setText(current.getName());
         }
@@ -65,7 +64,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
             holder.billingCycleTextView.setText(current.getBillingCycle());
         }
         if (holder.priceTextView != null) {
-            holder.priceTextView.setText(String.format("$%.2f", current.getPrice()));
+            holder.priceTextView.setText(String.format("₱%.2f", current.getPrice()));
         }
 
         if (holder.dueDateTextView != null) {
@@ -73,7 +72,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
             holder.dueDateTextView.setText(String.format("Due: %s", formattedDueDate));
         }
 
-        // Category image or fallback text
         if (holder.categoryImageView != null && holder.categoryTextView != null) {
             String category = current.getCategory();
             if (category != null) {
@@ -93,7 +91,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
             }
         }
 
-        // Status icon
         if (holder.statusImageView != null) {
             String status = current.getStatus();
             if (status != null) {
@@ -109,7 +106,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
             }
         }
 
-        // Click listener
         holder.itemView.setOnClickListener(v -> {
             if (listener != null && position != RecyclerView.NO_POSITION) {
                 listener.onSubscriptionClick(current);
@@ -143,14 +139,14 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         }
     }
 
-    // Exact category names mapped to drawable resource IDs
+    // Fixed category names to exactly match filtering keys
     private static final Map<String, Integer> categoryImageMap = new HashMap<>();
     static {
         categoryImageMap.put("Cloud Storage", R.drawable.category_name_cloudstorage);
         categoryImageMap.put("Entertainment", R.drawable.category_name_entertainment);
-        categoryImageMap.put("Food And Delivery", R.drawable.category_name_foodanddelivery);
+        categoryImageMap.put("Food & Delivery", R.drawable.category_name_foodanddelivery); // Changed key to "Food Delivery"
         categoryImageMap.put("Membership", R.drawable.category_name_membership);
-        categoryImageMap.put("Productivity And Tools", R.drawable.category_name_productivityandtools);
+        categoryImageMap.put("Productivity & Tools", R.drawable.category_name_productivityandtools); // Changed key to "Productivity & Tools"
     }
 
     private int getStatusImageRes(String status) {
@@ -170,6 +166,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return dateStr; // fallback if parsing fails
+        return dateStr;
     }
 }

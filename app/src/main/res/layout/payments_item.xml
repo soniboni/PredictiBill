@@ -75,6 +75,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"
             android:text="Due Date April 23, 2025"
-            android:textAppearance="@style/subscription_due_date" />
+            android:textAppearance="@style/subscription_due_date"
+            android:visibility="visible" />
     </LinearLayout>
 </LinearLayout>

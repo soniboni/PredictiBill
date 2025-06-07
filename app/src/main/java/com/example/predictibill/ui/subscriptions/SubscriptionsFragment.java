@@ -154,13 +154,13 @@ public class SubscriptionsFragment extends Fragment implements SubscriptionAdapt
             } else if (itemId == R.id.category_entertainment) {
                 selectedCategory = "Entertainment";
             } else if (itemId == R.id.category_productivity) {
-                selectedCategory = "Productivity & Tools";
+                selectedCategory = "Productivity & Tools"; // fixed to match adapter map key
             } else if (itemId == R.id.category_cloud) {
                 selectedCategory = "Cloud Storage";
             } else if (itemId == R.id.category_membership) {
                 selectedCategory = "Membership";
             } else if (itemId == R.id.category_food) {
-                selectedCategory = "Food Delivery";
+                selectedCategory = "Food & Delivery"; // fixed to match adapter map key
             }
 
             filterSubscriptions("category", selectedCategory);

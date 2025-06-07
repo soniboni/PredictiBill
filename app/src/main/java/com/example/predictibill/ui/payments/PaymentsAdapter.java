@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.predictibill.models.Subscription;
 
 import com.example.predictibill.R;
+import com.example.predictibill.models.Subscription;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,32 +20,38 @@ import java.util.Locale;
 public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.PaymentsViewHolder> {
 
     private List<Subscription> subscriptionList;
+    private final OnPaymentClickListener listener;
 
-    public PaymentsAdapter(List<Subscription> subscriptionList) {
+    public interface OnPaymentClickListener {
+        void onPaymentClick(Subscription subscription);
+    }
+
+    public PaymentsAdapter(List<Subscription> subscriptionList, OnPaymentClickListener listener) {
         this.subscriptionList = subscriptionList;
+        this.listener = listener;
     }
 
     public void updateList(List<Subscription> newList) {
-        subscriptionList = newList;
+        this.subscriptionList = newList;
         notifyDataSetChanged();
     }
 
     public static class PaymentsViewHolder extends RecyclerView.ViewHolder {
         public TextView nameTextView;
         public TextView billingCycleTextView;
-        public ImageView categoryImageView;  // Changed from TextView to ImageView
-        public TextView subscriptionIdTextView;
+        public ImageView categoryImageView;
         public TextView priceTextView;
         public TextView dueDateTextView;
+        public TextView paymentIdTextView; // 👈 Added this
 
         public PaymentsViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.subscription_name);
             billingCycleTextView = itemView.findViewById(R.id.subscription_billing_cycle);
-            categoryImageView = itemView.findViewById(R.id.subscription_category_image);  // Use ImageView id
-            subscriptionIdTextView = itemView.findViewById(R.id.subscription_id);
+            categoryImageView = itemView.findViewById(R.id.subscription_category_image);
             priceTextView = itemView.findViewById(R.id.subscription_price_value);
             dueDateTextView = itemView.findViewById(R.id.subscription_due_date);
+            paymentIdTextView = itemView.findViewById(R.id.subscription_id); // 👈 Add this in your layout
         }
     }
 
@@ -65,21 +71,30 @@ public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.Paymen
 
         holder.nameTextView.setText(current.getName());
         holder.billingCycleTextView.setText(current.getBillingCycle());
-        holder.subscriptionIdTextView.setText(current.getSubscriptionId());
         holder.priceTextView.setText(String.format("₱%.2f", current.getPrice()));
 
-        if (current.getUpdatedAt() != null) {
-            Date updatedAtDate = current.getUpdatedAt().toDate();
-            SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault());
-            String formattedDate = sdf.format(updatedAtDate);
-            holder.dueDateTextView.setText("Paid on: " + formattedDate);
+        // ✅ Set actual subscription ID
+        holder.paymentIdTextView.setText("#" + current.getId());
+
+        // Format the payment date
+        if (current.getLastPaidDue() != null && !current.getLastPaidDue().isEmpty()) {
+            holder.dueDateTextView.setText("Paid on: " + formatPaymentDate(current.getLastPaidDue()));
         } else {
             holder.dueDateTextView.setText("Paid on: N/A");
         }
 
         // Set category image based on category name
         int categoryImageRes = getCategoryImageResource(current.getCategory());
-        holder.categoryImageView.setImageResource(categoryImageRes);
+        if (categoryImageRes != 0) {
+            holder.categoryImageView.setImageResource(categoryImageRes);
+        }
+
+        // Click listener
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null && position != RecyclerView.NO_POSITION) {
+                listener.onPaymentClick(current);
+            }
+        });
     }
 
     @Override
@@ -87,7 +102,20 @@ public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.Paymen
         return subscriptionList == null ? 0 : subscriptionList.size();
     }
 
-    // Helper method to return image resource id based on category name
+    private String formatPaymentDate(String dateStr) {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            SimpleDateFormat outputFormat = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault());
+            Date date = inputFormat.parse(dateStr);
+            if (date != null) {
+                return outputFormat.format(date);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dateStr;
+    }
+
     private int getCategoryImageResource(String category) {
         if (category == null) return 0;
 
@@ -95,12 +123,14 @@ public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.Paymen
             case "entertainment":
                 return R.drawable.category_name_entertainment;
             case "productivity & tools":
+            case "productivity and tools":
                 return R.drawable.category_name_productivityandtools;
             case "cloud storage":
                 return R.drawable.category_name_cloudstorage;
             case "membership":
                 return R.drawable.category_name_membership;
             case "food & delivery":
+            case "food and delivery":
                 return R.drawable.category_name_foodanddelivery;
             default:
                 return 0;

@@ -1,38 +1,43 @@
 package com.example.predictibill.ui.profile;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
+import com.example.predictibill.ui.auth.Login;
 import com.example.predictibill.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ChangePasswordFragment extends Fragment {
 
-    private EditText currentPasswordEditText;
-    private EditText newPasswordEditText;
-    private EditText confirmPasswordEditText;
-    private Button continueButton;
-    private Button cancelButton;
+    private TextInputEditText currentPasswordEditText,
+            newPasswordEditText, confirmPasswordEditText;
+    private MaterialButton continueButton, cancelButton;
 
-    public ChangePasswordFragment() {
-    }
+    private View checkIcon1, checkIcon2, checkIcon3;
+
+    public ChangePasswordFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_change_password, container, false);
     }
 
@@ -40,7 +45,6 @@ public class ChangePasswordFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize views with try-catch for debugging
         try {
             currentPasswordEditText = view.findViewById(R.id.enter_your_current_password_text);
             newPasswordEditText = view.findViewById(R.id.enter_your_new_password_text);
@@ -48,138 +52,121 @@ public class ChangePasswordFragment extends Fragment {
             continueButton = view.findViewById(R.id.profile_continue_button);
             cancelButton = view.findViewById(R.id.profile_cancel_button);
 
-            // Verify views are found
-            if (currentPasswordEditText == null || newPasswordEditText == null ||
-                    confirmPasswordEditText == null || continueButton == null || cancelButton == null) {
-                throw new IllegalStateException("One or more views not found in layout");
-            }
+            checkIcon1 = view.findViewById(R.id.check_Icon_1);
+            checkIcon2 = view.findViewById(R.id.check_Icon_2);
+            checkIcon3 = view.findViewById(R.id.check_Icon_3);
 
-            // Set click listeners
+            resetChecklistIcons();
+
             continueButton.setOnClickListener(v -> showConfirmPasswordChangeModal());
             cancelButton.setOnClickListener(v -> showDiscardPasswordChangeModal());
 
+            newPasswordEditText.addTextChangedListener(passwordWatcher);
+            confirmPasswordEditText.addTextChangedListener(passwordWatcher);
+
         } catch (Exception e) {
             e.printStackTrace();
-            // Log the error or handle gracefully
             Toast.makeText(requireContext(), "Error initializing views: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
-    // Add error handling to modal methods
-    private void showConfirmPasswordChangeModal() {
-        try {
-            // First validate inputs before showing confirmation modal
-            String currentPassword = currentPasswordEditText.getText().toString().trim();
-            String newPassword = newPasswordEditText.getText().toString().trim();
-            String confirmPassword = confirmPasswordEditText.getText().toString().trim();
+    private void resetChecklistIcons() {
+        checkIcon1.setBackgroundResource(R.drawable.uncheck_icon);
+        checkIcon2.setBackgroundResource(R.drawable.uncheck_icon);
+        checkIcon3.setBackgroundResource(R.drawable.uncheck_icon);
+    }
 
-            // Validate inputs first
-            if (!validatePasswordInputs(currentPassword, newPassword, confirmPassword)) {
-                return; // Stop if validation fails
-            }
-
-            // Create and configure the confirmation dialog
-            Dialog confirmDialog = new Dialog(requireContext());
-            confirmDialog.setContentView(R.layout.confirm_change_password_dialog_box);
-
-            // Make background transparent
-            if (confirmDialog.getWindow() != null) {
-                confirmDialog.getWindow().setBackgroundDrawable(
-                        new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            }
-
-            confirmDialog.setCancelable(false);
-
-            // Initialize modal buttons with null checks
-            Button cancelModalButton = confirmDialog.findViewById(R.id.cancel_btn);
-            Button confirmModalButton = confirmDialog.findViewById(R.id.confirm_btn);
-
-            if (cancelModalButton == null || confirmModalButton == null) {
-                Toast.makeText(requireContext(), "Error: Modal buttons not found", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Confirm button in modal - proceed with password change
-            confirmModalButton.setOnClickListener(v -> {
-                confirmDialog.dismiss();
-                handlePasswordChange(); // Execute the actual password change logic
-            });
-
-            // Cancel button in modal - just close the modal
-            cancelModalButton.setOnClickListener(v -> {
-                confirmDialog.dismiss();
-            });
-
-            confirmDialog.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(requireContext(), "Error showing confirmation dialog: " + e.getMessage(), Toast.LENGTH_LONG).show();
+    private final TextWatcher passwordWatcher = new TextWatcher() {
+        @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+            updatePasswordChecklist();
         }
+        @Override public void afterTextChanged(Editable s) {}
+    };
+
+    private void updatePasswordChecklist() {
+        String newPassword = newPasswordEditText.getText().toString().trim();
+
+        if (newPassword.length() >= 6) {
+            checkIcon1.setBackgroundResource(R.drawable.check_icon);
+        } else {
+            checkIcon1.setBackgroundResource(R.drawable.uncheck_icon);
+        }
+
+        if (newPassword.matches(".*\\d.*")) {
+            checkIcon2.setBackgroundResource(R.drawable.check_icon);
+        } else {
+            checkIcon2.setBackgroundResource(R.drawable.uncheck_icon);
+        }
+
+        if (newPassword.matches(".*[a-z].*") && newPassword.matches(".*[A-Z].*")) {
+            checkIcon3.setBackgroundResource(R.drawable.check_icon);
+        } else {
+            checkIcon3.setBackgroundResource(R.drawable.uncheck_icon);
+        }
+    }
+
+    private void showConfirmPasswordChangeModal() {
+        String currentPassword = currentPasswordEditText.getText().toString().trim();
+        String newPassword = newPasswordEditText.getText().toString().trim();
+        String confirmPassword = confirmPasswordEditText.getText().toString().trim();
+
+        if (!validatePasswordInputs(currentPassword, newPassword, confirmPassword)) return;
+
+        // Create custom dialog
+        Dialog confirmDialog = new Dialog(requireContext());
+        confirmDialog.setContentView(R.layout.confirm_change_password_dialog_box);
+        if (confirmDialog.getWindow() != null) {
+            confirmDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        }
+        confirmDialog.setCancelable(false);
+
+        // Find custom buttons by ID
+        MaterialButton cancelModalButton = confirmDialog.findViewById(R.id.cancel_btn);
+        MaterialButton confirmModalButton = confirmDialog.findViewById(R.id.change_password_btn);
+
+        if (cancelModalButton == null || confirmModalButton == null) {
+            Toast.makeText(requireContext(), "Dialog button(s) not found in layout!", Toast.LENGTH_SHORT).show();
+            confirmDialog.dismiss();
+            return;
+        }
+
+        cancelModalButton.setOnClickListener(v -> confirmDialog.dismiss());
+
+        confirmModalButton.setOnClickListener(v -> {
+            confirmDialog.dismiss();
+            handlePasswordChange();
+        });
+
+        confirmDialog.show();
     }
 
     private void showDiscardPasswordChangeModal() {
-        try {
-            // Create and configure the discard confirmation dialog
-            Dialog discardDialog = new Dialog(requireContext());
-            discardDialog.setContentView(R.layout.discard_password_change_dialog_box);
-
-            // Make background transparent
-            if (discardDialog.getWindow() != null) {
-                discardDialog.getWindow().setBackgroundDrawable(
-                        new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            }
-
-            discardDialog.setCancelable(false);
-
-            // Initialize modal buttons with null checks
-            Button discardButton = discardDialog.findViewById(R.id.discard_change_btn);
-            Button stayButton = discardDialog.findViewById(R.id.go_back_btn);
-
-            if (discardButton == null || stayButton == null) {
-                Toast.makeText(requireContext(), "Error: Modal buttons not found", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Discard button - navigate back and lose changes
-            discardButton.setOnClickListener(v -> {
-                discardDialog.dismiss();
-                navigateBackToProfile(); // Navigate away, discarding changes
-            });
-
-            // Stay button - just close the modal and remain on the page
-            stayButton.setOnClickListener(v -> {
-                discardDialog.dismiss();
-            });
-
-            discardDialog.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(requireContext(), "Error showing discard dialog: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        Dialog discardDialog = new Dialog(requireContext());
+        discardDialog.setContentView(R.layout.discard_password_change_dialog_box);
+        if (discardDialog.getWindow() != null) {
+            discardDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
+
+        discardDialog.setCancelable(false);
+
+        MaterialButton discardButton = discardDialog.findViewById(R.id.discard_change_btn);
+        MaterialButton stayButton = discardDialog.findViewById(R.id.go_back_btn);
+
+        discardButton.setOnClickListener(v -> {
+            discardDialog.dismiss();
+            navigateBackToProfile();
+        });
+
+        stayButton.setOnClickListener(v -> discardDialog.dismiss());
+
+        discardDialog.show();
     }
 
-    //  Navigation with error handling
     private void navigateBackToProfile() {
         try {
-            // Check if NavController is available
-            if (NavHostFragment.findNavController(this) != null) {
-                // Try specific navigation action first
-                NavHostFragment.findNavController(this)
-                        .navigate(R.id.action_navigationChangePassword_to_profileFragment);
-            }
-        } catch (IllegalArgumentException e) {
-            // Action doesn't exist, try alternative navigation
-            try {
-                NavHostFragment.findNavController(this).popBackStack();
-            } catch (Exception ex) {
-                // Last resort - finish activity or handle gracefully
-                Toast.makeText(requireContext(), "Navigation error", Toast.LENGTH_SHORT).show();
-                if (getActivity() != null) {
-                    getActivity().onBackPressed();
-                }
-            }
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_navigationChangePassword_to_profileFragment);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -187,38 +174,28 @@ public class ChangePasswordFragment extends Fragment {
     }
 
     private boolean validatePasswordInputs(String currentPassword, String newPassword, String confirmPassword) {
-        // Validate current password
         if (currentPassword.isEmpty()) {
             currentPasswordEditText.setError("Current password is required");
-            currentPasswordEditText.requestFocus();
             return false;
         }
 
-        // Validate new password
-        if (newPassword.isEmpty()) {
-            newPasswordEditText.setError("New password is required");
-            newPasswordEditText.requestFocus();
-            return false;
-        }
-
-        // Validate confirm password
-        if (confirmPassword.isEmpty()) {
-            confirmPasswordEditText.setError("Please confirm your password");
-            confirmPasswordEditText.requestFocus();
-            return false;
-        }
-
-        // Check if passwords match
-        if (!newPassword.equals(confirmPassword)) {
-            confirmPasswordEditText.setError("Passwords do not match");
-            confirmPasswordEditText.requestFocus();
-            return false;
-        }
-
-        // Check password length
         if (newPassword.length() < 6) {
             newPasswordEditText.setError("Password must be at least 6 characters");
-            newPasswordEditText.requestFocus();
+            return false;
+        }
+
+        if (!newPassword.matches(".*\\d.*")) {
+            newPasswordEditText.setError("Password must contain at least one number");
+            return false;
+        }
+
+        if (!(newPassword.matches(".*[a-z].*") && newPassword.matches(".*[A-Z].*"))) {
+            newPasswordEditText.setError("Password must contain uppercase and lowercase letters");
+            return false;
+        }
+
+        if (!newPassword.equals(confirmPassword)) {
+            confirmPasswordEditText.setError("Passwords do not match");
             return false;
         }
 
@@ -226,33 +203,36 @@ public class ChangePasswordFragment extends Fragment {
     }
 
     private void handlePasswordChange() {
-        // Get input values
         String currentPassword = currentPasswordEditText.getText().toString().trim();
         String newPassword = newPasswordEditText.getText().toString().trim();
 
-        // Verify current password with backend/database
-        if (validateCurrentPassword(currentPassword)) {
-            // Update password in backend/database
-            updatePassword(newPassword);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-            // Navigate back to Profile & Settings
-            navigateBackToProfile();
+        if (user != null && user.getEmail() != null) {
+            AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), currentPassword);
 
-            // Show success toast
-            Toast.makeText(requireContext(), "Password Changed Successfully", Toast.LENGTH_LONG).show();
+            user.reauthenticate(credential)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            user.updatePassword(newPassword)
+                                    .addOnCompleteListener(updateTask -> {
+                                        if (updateTask.isSuccessful()) {
+                                            FirebaseAuth.getInstance().signOut();
+                                            Toast.makeText(requireContext(), "Password changed. Please log in again.", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(requireContext(), Login.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(requireContext(), "Failed to update password: " + updateTask.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                        } else {
+                            currentPasswordEditText.setError("Current password is incorrect");
+                            currentPasswordEditText.requestFocus();
+                        }
+                    });
         } else {
-            currentPasswordEditText.setError("Current password is incorrect");
-            currentPasswordEditText.requestFocus();
+            Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_LONG).show();
         }
-    }
-
-    private boolean validateCurrentPassword(String currentPassword) {
-        // TODO: Implement password validation logic
-        return true; // Placeholder
-    }
-
-    private void updatePassword(String newPassword) {
-        // TODO: Implement password update logic
-        System.out.println("Password updated successfully");
     }
 }

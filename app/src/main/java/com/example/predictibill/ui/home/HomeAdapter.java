@@ -1,6 +1,7 @@
 package com.example.predictibill.ui.home;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.BillViewHolder
         // Set basic information
         holder.billName.setText(current.getName());
         holder.billingCycle.setText(current.getBillingCycle());
-        holder.billPrice.setText(String.format("$%.2f", current.getPrice()));
+        holder.billPrice.setText(String.format("₱%.2f", current.getPrice()));
 
         // Format and set due date
         String formattedDueDate = formatDateString(current.getNextBillingDate());
@@ -55,10 +56,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.BillViewHolder
         // Set category image
         String category = current.getCategory();
         if (category != null) {
+            category = category.trim();
             int categoryRes = getCategoryImageRes(category);
             if (categoryRes != 0) {
                 holder.categoryName.setImageResource(categoryRes);
+            } else {
+                // Fallback image if no match found
+                holder.categoryName.setVisibility(View.GONE);
             }
+        } else {
+            // Fallback if category is null
+            holder.categoryName.setVisibility(View.GONE);
         }
     }
 
@@ -97,7 +105,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.BillViewHolder
                 .replaceAll("[^a-z0-9]", "");
 
         String resourceName = "category_" + formatted;
-        return context.getResources().getIdentifier(resourceName, "drawable", context.getPackageName());
+        int resId = context.getResources().getIdentifier(resourceName, "drawable", context.getPackageName());
+
+        if (resId == 0) {
+            Log.w("HomeAdapter", "Drawable resource not found for category: '" + category + "' (searched for '" + resourceName + "')");
+        }
+
+        return resId;
     }
 
     private String formatDateString(String dateStr) {

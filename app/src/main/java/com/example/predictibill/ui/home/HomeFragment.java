@@ -209,13 +209,28 @@ public class HomeFragment extends Fragment {
     }
 
     private void updateUI() {
-        Locale locale = Locale.getDefault();
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(locale);
+        // Use the Philippines locale explicitly
+        Locale philippineLocale = new Locale("en", "PH");
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(philippineLocale);
 
         expectedMoneyTxt.setText(currencyFormat.format(totalExpected));
         spentMoneyTxt.setText(currencyFormat.format(totalPaid));
 
         double percent = (totalExpected == 0) ? 0 : (totalPaid / totalExpected) * 100;
         percentTxt.setText(String.format(Locale.getDefault(), "%.2f%%", percent));
+
+        // Calculate how many rectangles to shade based on percent
+        int shadedCount = (int) Math.round((percent / 100) * rectangleViews.length);
+
+        for (int i = 0; i < rectangleViews.length; i++) {
+            if (i < shadedCount) {
+                // Set shaded background (e.g., green or any indicator)
+                rectangleViews[i].setBackgroundResource(R.drawable.home_rectangle_2); // You'll create this
+            } else {
+                // Set unshaded background (e.g., gray)
+                rectangleViews[i].setBackgroundResource(R.drawable.home_rectangle_3); // You'll create this
+            }
+        }
     }
+
 }

@@ -383,6 +383,10 @@ public class AnalyticsFragment extends Fragment {
 
         switch (category.toLowerCase()) {
             case "entertainment": return Color.parseColor("#FF7F7F");
+            case "food & delivery": return Color.parseColor("#FFBB33"); // orange
+            case "cloud storage": return Color.parseColor("#33B5E5"); // blue
+            case "membership": return Color.parseColor("#AA66CC"); // purple
+            case "productivity & tools": return Color.parseColor("#99CC00"); // green
             default: return Color.LTGRAY;
         }
     }

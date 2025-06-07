@@ -172,39 +172,28 @@
         </action>
     </fragment>
 
-
-    <!-- Profile (Profile & Settings Main Page) Fragment -->
+    <!-- Profile Fragment -->
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.predictibill.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
-        <!-- Action to navigate to Change Password Fragment when "Change Password" button is clicked -->
         <action
             android:id="@+id/action_navigationProfile_to_changePasswordFragment"
-            app:destination="@id/navigation_change_password"/>
-
-        <!-- Action to navigate to Help Fragment when "Help" button is clicked -->
+            app:destination="@id/navigation_change_password" />
         <action
             android:id="@+id/action_navigationProfile_to_helpFragment"
-            app:destination="@id/navigation_help"/>
-
-        <!-- Action to navigate to Privacy Policy Fragment when "Privacy Policy" button is clicked -->
+            app:destination="@id/navigation_help" />
         <action
             android:id="@+id/action_navigationProfile_to_privacyPolicyFragment"
-            app:destination="@id/navigation_privacy_policy"/>
-        <!-- Action to navigate to Login Page when "Logout" button is clicked -->
-<!--        <action-->
-<!--            android:id="@+id/action_navigationProfile_to_loginFragment"-->
-<!--            app:destination="login" />-->
-
+            app:destination="@id/navigation_privacy_policy" />
+        <!-- ✅ Logout Action -->
+        <action
+            android:id="@+id/action_navigationProfile_to_loginFragment"
+            app:destination="@id/navigation_login"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
-
-    <!-- Action to navigate to 'sign_up.xml' when "Deactivate Account" button is clicked -->
-    <!--        <action-->
-    <!--            android:id="@+id/action_navigationProfile_to_deactivateAccount"-->
-    <!--            app:destination="@id/navigation_deactivate_account"/>-->
-
 
     <!-- Change Password Fragment -->
     <fragment
@@ -212,12 +201,10 @@
         android:name="com.example.predictibill.ui.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password">
-        <!-- Action to return to Profile & Settings (Main Page) Fragment -->
         <action
             android:id="@+id/action_navigationChangePassword_to_profileFragment"
             app:destination="@id/navigation_profile"/>
     </fragment>
-
 
     <!-- Help Fragment -->
     <fragment
@@ -225,12 +212,10 @@
         android:name="com.example.predictibill.ui.profile.HelpFragment"
         android:label="fragment_help"
         tools:layout="@layout/fragment_help">
-        <!-- Action to return to Profile & Settings (Main Page) Fragment -->
         <action
             android:id="@+id/action_navigationHelp_to_profileFragment"
             app:destination="@id/navigation_profile"/>
     </fragment>
-
 
     <!-- Privacy Policy Fragment -->
     <fragment
@@ -238,9 +223,16 @@
         android:name="com.example.predictibill.ui.profile.PrivacyPolicyFragment"
         android:label="fragment_privacy_policy"
         tools:layout="@layout/fragment_privacy_policy">
-        <!-- Action to return to Profile & Settings (Main Page) Fragment -->
         <action
             android:id="@+id/action_navigationPrivacyPolicy_to_profileFragment"
             app:destination="@id/navigation_profile"/>
     </fragment>
+
+    <!-- ✅ Login Fragment (Destination after Logout) -->
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.example.predictibill.ui.auth.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/login" />
+
 </navigation>
