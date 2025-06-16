@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="320dp"
+    android:layout_height="230dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Question Mark Icon Image -->
+        <ImageView
+            android:id="@+id/image_view_question_mark"
+            android:layout_width="28dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="25dp"
+            android:contentDescription="@string/image_view_question_mark"
+            android:src="@drawable/dialog_box_question_mark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Heading/Title -->
+        <TextView
+            android:id="@+id/restore_subs_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/restore_subs_lbl"
+            android:textAppearance="@style/dialog_box_headings"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_question_mark"
+            app:layout_constraintStart_toStartOf="@+id/image_view_question_mark"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_question_mark" />
+
+        <!-- Subheading/Note -->
+        <TextView
+            android:id="@+id/restore_subs_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/restore_subs_note"
+            android:textAlignment="center"
+            android:textAppearance="@style/dialog_box_subheadings"
+            app:layout_constraintEnd_toEndOf="@+id/restore_subs_lbl"
+            app:layout_constraintStart_toStartOf="@+id/restore_subs_lbl"
+            app:layout_constraintTop_toBottomOf="@+id/restore_subs_lbl" />
+
+        <!-- Buttons -->
+        <!-- Cancel Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/restore_subs_cancel_btn"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="175dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="-0.04"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/cancel_btn"
+            android:textColor="@color/light_brown"
+            android:textSize="12sp"
+            app:cornerRadius="4dp"
+            app:strokeColor="@color/light_brown"
+            app:strokeWidth="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/restore_subs_note"
+            app:layout_constraintStart_toStartOf="@+id/restore_subs_note"
+            app:layout_constraintTop_toBottomOf="@+id/restore_subs_note" />
+
+        <!-- Restore Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/restore_btn"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="-0.04"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/restore_btn"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:cornerRadius="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/restore_subs_note"
+            app:layout_constraintStart_toStartOf="@+id/restore_subs_note"
+            app:layout_constraintTop_toBottomOf="@+id/restore_subs_note" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

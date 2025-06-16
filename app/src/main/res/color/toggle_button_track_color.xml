@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Toggle on = Dark Blue -->
+    <item android:color="@color/dark_blue" android:state_checked="true"/>
+    <!-- Toggle off = Dark Gray -->
+    <item android:color="@color/light_brown" android:state_checked="false"/>
+</selector>

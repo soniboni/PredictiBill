@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/category_all" android:title="All Categories"/>
+    <item android:id="@+id/category_entertainment" android:title="Entertainment"/>
+    <item android:id="@+id/category_productivity" android:title="Productivity and Tools"/>
+    <item android:id="@+id/category_cloud" android:title="Cloud Storage"/>
+    <item android:id="@+id/category_membership" android:title="Membership"/>
+    <item android:id="@+id/category_food" android:title="Food Delivery"/>
+</menu>

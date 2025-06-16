@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:layout_margin="3dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/home_rectangle_1">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/subscription_name"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="3dp"
+            android:gravity="center_vertical"
+            android:text="Name"
+            android:textAppearance="@style/subscription_name" />
+
+        <TextView
+            android:id="@+id/subscription_billing_cycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-7dp"
+            android:gravity="center_vertical"
+            android:text="Billing Cycle"
+            android:textAppearance="@style/subscription_billing_cycle" />
+
+        <!-- Replace category TextView with horizontal layout holding image + text -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-3dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/subscription_category_image"
+                android:layout_width="80dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="4dp"
+                android:contentDescription="@string/category_icon"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/subscription_category_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textAppearance="@style/subscription_category"
+                android:layout_marginStart="8dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/subscription_status"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp"
+            android:contentDescription="Subscription status" />
+
+        <TextView
+            android:id="@+id/subscription_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:text="$549.00"
+            android:textAppearance="@style/subscription_price" />
+
+        <TextView
+            android:id="@+id/subscription_due_date"
+            android:text="Due Date April 23, 2025"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/subscription_due_date"/>
+    </LinearLayout>
+</LinearLayout>

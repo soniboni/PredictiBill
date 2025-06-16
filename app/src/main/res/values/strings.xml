@@ -1,3 +1,337 @@
 <resources>
     <string name="app_name">PredictiBill</string>
+
+    <!-- NAVIGATION BAR ICONS TEXT -->
+    <string name="analytics_icon">Analytics</string>
+    <string name="subscriptions_icon">Subscriptions</string>
+    <string name="home_icon">Home</string>
+    <string name="payments_icon">Payments</string>
+    <string name="profile_icon">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="subscriptions_txt">Subscriptions</string>
+    <string name="payments_txt">Payments</string>
+    <string name="profile_txt">Profile</string>
+    <string name="analytics_txt">Analytics</string>
+
+    <!-- HOME FRAGMENT TEXT -->
+    <string name="home_hi_lbl">Hi, User!</string>
+    <string name="home_welcome_lbl">Welcome Back!"</string>
+    <string name="home_subsspending_txt">Monthly Subscription Spending</string>
+    <string name="home_date_txt">As of May 2, 2025</string>
+    <string name="home_percent_txt">9% of this month’s subscription charges billed.</string>
+    <string name="home_youvespent_txt">You\'ve spent</string>
+    <string name="home_outof_txt">out of the expected</string>
+    <string name="home_spentmoney_txt">₱ 0.00</string>
+    <string name="home_expectedmoney_txt">₱ 0.00</string>
+    <string name="home_upcoming_bill_txt">Next Upcoming Bill</string>
+    <string name="home_upcoming_billing_note">Your bills in the next 7 days.</string>
+    <string name="home_upcomingsubsname1_txt">Netflix</string>
+    <string name="home_upcomingbillingcycle1_txt">Monthly</string>
+    <string name="home_upcomingduedate1_txt">Due on April 23, 2025</string>
+    <string name="home_upcomingcategory1_txt">Entertainment</string>
+    <string name="home_upcomingprice1_txt">₱549.00</string>
+    <string name="home_upcomingsubsname2_txt">Netflix</string>
+    <string name="home_upcomingbillingcycle2_txt">Monthly</string>
+    <string name="home_upcomingduedate2_txt">Due on April 23, 2025</string>
+    <string name="home_upcomingcategory2_txt">Entertainment</string>
+    <string name="home_upcomingprice2_txt">₱549.00</string>
+    <string name="home_overdue_bills_txt">Overdue Bills</string>
+    <string name="home_overdue_bills_note">Your bills that are overdue.</string>
+
+    <!-- HOME FRAGMENT (BILL CARD) TEXT -->
+    <string name="bill_name">Netflix</string>
+    <string name="billing_cycle">Monthly</string>
+    <string name="bill_dueon">Due on</string>
+    <string name="bill_duedate">April 23, 2025</string>
+    <string name="bill_price">₱549.00</string>
+
+    <!-- SUBSCRIPTIONS FRAGMENT TEXT -->
+    <string name="track_all_r">Track all recurring payments in one place.</string>
+    <string name="subscriptio">Subscriptions</string>
+    <string name="subscription_id">Subscription ID</string>
+    <string name="filter_by">Filter By</string>
+    <string name="category">Category</string>
+    <string name="status">Status</string>
+    <string name="billing_cyc">Billing Cycle</string>
+    <string name="addsubscription">Add a Subscription</string>
+    <string name="submit_button">+</string>
+
+    <!--ADD SUBSCRIPTION FRAGMENT TEXTS-->
+    <string name="add_subscription">Add a Subscription</string>
+    <string name="name"> Name </string>
+    <string name="note">Note</string>
+    <string name="startdate">Start Date </string>
+    <string name="nextbillingdate">Next Billing Date </string>
+    <string name="price">Price</string>
+    <string name="payment_method">Payment Method </string>
+    <string name="Add_subscription"> Add Subscription</string>
+    <string name="upload_image"> Upload an Image</string>
+    <string name="subscription_details"> Subscription Details</string>
+
+    <!-- SUBSCRIPTION DETAILS (LABELS) FRAGMENT TEXT -->
+    <string name="logo">Logo</string>
+    <string name="back_button">Back button</string>
+    <string name="upcoming_subscription_image_card">Subscription Image</string>
+    <string name="subs_details_lbl">Subscription Details</string>
+    <string name="subs_details_name_lbl">Name</string>
+    <string name="subs_details_subsID_lbl">Subscription ID</string>
+    <string name="subs_details_note_lbl">Note</string>
+    <string name="subs_details_category_lbl">Category</string>
+    <string name="subs_details_status_lbl">Status</string>
+    <string name="subs_details_startdate_lbl">Start Date</string>
+    <string name="subs_details_nextbilldate_lbl">Next Billing Date</string>
+    <string name="subs_details_billingcycle_lbl">Billing Cycle</string>
+    <string name="subs_details_price_lbl">Price</string>
+    <string name="subs_details_paymentmethod_lbl">Payment Method</string>
+    <string name="subs_details_lastpaiddue_lbl">Last Paid Due</string>
+    <string name="mark_as_paid_btn">Mark as Paid</string>
+    <string name="cancel_subs_btn">Cancel Subscription</string>
+    <string name="edit_info_btn">Edit Information</string>
+    <string name="delete_subs_btn">Delete Subscription</string>
+    <string name="restore_subs_btn">Restore Subscription</string>
+
+    <!-- SUBSCRIPTION DETAILS UPCOMING (VALUES) FRAGMENT TEXT -->
+    <string name="upcomingsubs_details_name">Netflix</string>
+    <string name="upcomingsubs_details_subsID">SUB01</string>
+    <string name="upcomingsubs_details_note">For the whole family subscription.</string>
+    <string name="upcomingsubs_details_startdate">April 23, 2023</string>
+    <string name="upcomingsubs_details_nextbilldate">June 23, 2025</string>
+    <string name="upcomingsubs_details_billingcycle">Monthly</string>
+    <string name="upcomingsubs_details_price">₱549.00</string>
+    <string name="upcomingsubs_details_paymentmethod">E-Wallet (Gcash)</string>
+    <string name="upcomingsubs_details_lastpaiddue">May 23, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS PAID (VALUES) FRAGMENT TEXT -->
+    <string name="paidsubs_details_name">Notion Plus</string>
+    <string name="paidsubs_details_subsID">SUB01</string>
+    <string name="paidsubs_details_note">Productivity at its finest.</string>
+    <string name="paidsubs_details_startdate">January 12, 2024</string>
+    <string name="paidsubs_details_nextbilldate">May 12, 2025</string>
+    <string name="paidsubs_details_billingcycle">Monthly</string>
+    <string name="paidsubs_details_price">₱800.00</string>
+    <string name="paidsubs_details_paymentmethod">Debit Card</string>
+    <string name="paidsubs_details_lastpaiddue">April 12, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS OVERDUE (VALUES) FRAGMENT TEXT -->
+    <string name="overduesubs_details_name">iCloud</string>
+    <string name="overduesubs_details_subsID">SUB01</string>
+    <string name="overduesubs_details_note">For photo, video, and file dumps.</string>
+    <string name="overduesubs_details_startdate">September 25, 2020</string>
+    <string name="overduesubs_details_nextbilldate">March 2, 2025</string>
+    <string name="overduesubs_details_billingcycle">Weekly</string>
+    <string name="overduesubs_details_price">₱1100.00</string>
+    <string name="overduesubs_details_paymentmethod">Debit Card</string>
+    <string name="overduesubs_details_lastpaiddue">February 23, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS CANCELLED (VALUES) FRAGMENT TEXT -->
+    <string name="cancelledsubs_details_name">Lazada VIP</string>
+    <string name="cancelledsubs_details_subsID">SUB01</string>
+    <string name="cancelledsubs_details_note">Shopping Galore</string>
+    <string name="cancelledsubs_details_startdate">March 25, 2022</string>
+    <string name="cancelledsubs_details_nextbilldate">February 25, 2025</string>
+    <string name="cancelledsubs_details_price">₱450.00</string>
+    <string name="cancelledsubs_details_billingcycle">Monthly</string>
+    <string name="cancelledsubs_details_paymentmethod">E-Wallet (Gcash)</string>
+    <string name="cancelledsubs_details_lastpaiddue">January 25, 2025. #PAY0001</string>
+
+    <!-- SUBSCRIPTION DETAILS FRAGMENTS BUTTONS (DIALOG BOX) TEXT -->
+    <string name="mark_subs_as_paid_lbl">Mark Subscription as Paid?</string>
+    <string name="mark_subs_as_paid_note">This will update your subscription status\nto “Paid” for this billing cycle.</string>
+    <string name="confirm_btn">Confirm</string>
+    <string name="save_changes_lbl">Save Changes?</string>
+    <string name="save_changes_note">You’ve made changes to this subscription.\nWould you like to save them?</string>
+    <string name="discard_btn">Discard</string>
+    <string name="save_changes_btn">Save Changes</string>
+    <string name="restore_subs_lbl">Restore Subscription?</string>
+    <string name="restore_subs_note">This will re-activate the canceled subscription\nand resume tracking.</string>
+    <string name="restore_btn">Restore</string>
+    <string name="cancel_subs_lbl">Cancel Subscription?</string>
+    <string name="cancel_subs_note">This will stop tracking this subscription and mark it\nas canceled. You can restore it anytime.</string>
+    <string name="keep_tracking_btn">Keep Tracking</string>
+    <string name="delete_subs_lbl">Delete Subscription?</string>
+    <string name="delete_subs_note">This will permanently remove this subscription\nfrom your tracker. This action can’t be undone.</string>
+    <string name="delete_permanently_btn">Delete Permanently</string>
+
+    <!-- PROFILE & SETTINGS FRAGMENT TEXT -->
+    <!-- Profile & Settings -->
+    <string name="profile_profile_settings_lbl">Profile &amp; Settings</string>
+    <string name="profile_manage_your_account_lbl">Manage your account and app preferences</string>
+
+    <string name="profile_account_name_txt">Charles Racho</string>
+    <string name="profile_email_account_txt">rachocr@gmail.com</string>
+
+    <string name="profile_account_settings_lbl">Account Settings</string>
+    <string name="profile_change_password_lbl">Change Password</string>
+
+    <string name="profile_notification_settings_lbl">Notification Settings</string>
+    <string name="profile_in_app_reminders_lbl">In-app reminders</string>
+    <string name="profile_email_alerts_lbl">Email alerts</string>
+
+    <string name="profile_preference_lbl">Preference</string>
+    <string name="profile_currency_lbl">Currency</string>
+    <string name="profile_php_currency_lbl">PHP</string>
+    <string name="profile_usd_currency_lbl">USD</string>
+
+    <string name="profile_about_lbl">About</string>
+    <string name="profile_help_lbl">Help</string>
+    <string name="profile_privacy_policy_lbl">Privacy Policy</string>
+
+    <string name="profile_logout_lbl">Logout</string>
+    <string name="profile_deactivate_account_lbl">Deactivate Account</string>
+
+    <!-- PAYMENT FRAGMENT TEXT -->
+    <string name="payments">Payments</string>
+    <string name="browse_your_payments">Browse your payments by date or categories.</string>
+    <string name="category_icon">Category Icon</string>
+
+
+    <string name="subscription_entertainment">Entertainment</string>
+    <string name="subscription_productivity_tools">Productivity and Tools</string>
+    <string name="subscription_cloud_storage">Cloud Storage</string>
+    <string name="subscription_membership">Membership</string>
+    <string name="subscription_fooddelivery">Food Delivery</string>
+
+    <string name="smart_insights_message">Your most expensive subscription is: Netflix</string>
+
+    <string name="edit_subscription">Edit Subscription</string>
+    <string name="update_subscription">Update Subscription</string>
+    <string name="subscription_updated">Subscription updated!</string>
+    <string name="error_loading_subscription">Error loading subscription</string>
+
+    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID_HERE</string>
+
+    <!-- Profile & Settings / Change Password -->
+    <string name="profile_the_password_must_lbl">The password must be different than before.</string>
+
+    <string name="profile_current_password_lbl">Enter your current password</string>
+    <string name="profile_new_password_lbl">Enter your new password</string>
+    <string name="profile_confirm_password_lbl">Confirm your new password</string>
+
+    <string name="profile_characters_required_lbl">At least 8 characters</string>
+    <string name="profile_number_required_lbl">At least 1 number</string>
+    <string name="profile_required_letter_case_lbl">Both upper and lower case letters</string>
+
+    <string name="profile_continue_button">Continue</string>
+    <string name="profile_cancel_button">Cancel</string>
+
+
+    <!-- Profile & Settings / Help -->
+    <!-- Heading -->
+    <string name="profile_welcome_to_lbl">Welcome to PredictiBill Help!</string>
+    <string name="profile_heres_a_quick_lbl">Here\'s a quick guide to get you started:</string>
+
+    <!-- What does PredictiBill do? -->
+    <string name="profile_what_does_predictibill_lbl">What does PredictiBill do?</string>
+    <string name="profile_predictibill_helps_you_txt">
+        PredictiBill helps you track, organize, and manage \nall your recurring subscriptions in one place. You’ll
+        \nget timely reminders before upcoming charges \nand gain insights into your spending habits.</string>
+
+    <!-- Common Questions -->
+    <string name="profile_common_questions_lbl">Common Questions</string>
+
+    <!-- Question 1 - Q: Can I cancel subscriptions through the app? -->
+    <string name="profile_question_1_lbl">Q: Can I cancel subscriptions through the app?</string>
+    <!-- Answer to Question 1 -->
+    <string name="profile_answer_1_txt">
+        A: No. PredictiBill is a tracking tool only. You can
+        \nmark subscriptions and see details, but
+        \ncancellations must be done via the provider\'s
+        \nplatform (e.g., Netflix, Spotify).</string>
+
+    <!-- Question 2 - Q: How do I add a subscription? -->
+    <string name="profile_question_2_lbl">Q: How do I add a subscription?</string>
+    <!-- Answer to Question 1 -->
+    <string name="profile_answer_2_txt">
+        A: Go to the Subscriptions tab and tap Add
+        \nSubscription. Fill in the name, price, category, and
+        \nbilling cycle.</string>
+
+    <!-- Q: Will I get reminders?-->
+    <string name="profile_question_3_lbl">Q: Will I get reminders?</string>
+    <!-- Answer to Question 3 -->
+    <string name="profile_answer_3_txt">
+        A: Yes! PredictiBill sends alerts for upcoming billing
+        \ndates if notifications are enabled in your settings.</string>
+
+
+    <!-- Profile & Settings / Privacy Policy -->
+    <!-- Heading-->
+    <string name="profile_last_updated_lbl">Last updated: April 05, 2025</string>
+
+    <!-- 1. Information We Collect -->
+    <string name="profile_information_we_collect_lbl">1. Information We Collect</string>
+    <string name="profile_we_only_collect_txt">We only collect information you provide manually:</string>
+    <string name="profile_information_to_collect_txt">
+        \u2022 Subscription details (name, cost, billing date, \n  "   " etc.)
+        \n \u2022 Optional email address for notifications
+        \n \u2022 No payment credentials or sensitive financial \n "  " data are collected</string>
+
+    <!-- 2. How We Use Your Information -->
+    <string name="profile_how_we_use_lbl">2. How We Use Your Information</string>
+    <string name="profile_we_use_your_txt">We use your data solely to:</string>
+    <string name="profile_use_data_to_txt">
+       " "\u2022 Track your subscriptions
+        \n \u2022 Send reminders and generate analytics
+        \n \u2022 Improve your in-app experience</string>
+
+    <!-- 3. Data Storage & Security -->
+    <string name="profile_data_storage_security_lbl">3. Data Storage &amp; Security</string>
+    <string name="profile_all_data_is_txt">
+        " "\u2022 All data is stored locally on your device \n "   " unless cloud sync (e.g., Firebase) is enabled.
+        \n \u2022 We use standard encryption practices for any \n "   " cloud-stored data.</string>
+
+    <!-- 4. Sharing Your Data -->
+    <string name="profile_sharing_your_data_lbl">4. Sharing Your Data</string>
+    <string name="profile_we_do_not_txt">" "\u2022 We do not sell or share your data with third \n "   " parties.</string>
+
+    <!-- 5. Your Rights -->
+    <string name="profile_your_rights_lbl">5. Your Rights</string>
+    <string name="profile_you_can_txt">" "\u2022 You can:</string>
+    <string name="profile_user_rights_txt">\u2022 View and export your data
+         \n\u2022 Delete your data at any time
+         \n\u2022 Control notification permissions in your \n "  "device or app settings</string>
+
+
+    <!-- PROFILE AND SETTINGS CONTENT DESCRIPTION TEXT -->
+    <string name="logo_content_description">PredictiBill logo</string>
+    <string name="account_image_content_description">User Account Image Icon</string>
+    <string name="check_icon_content_description">Password Validation Check Icon</string>
+    <string name="open_category_content_description">Open Category</string>
+    <string name="close_button_icon_content_description">Close Button Icon</string>
+
+
+    <!-- PROFILE & SETTINGS (MAIN PAGE) FRAGMENT BUTTONS (DIALOG BOX) TEXT -->
+    <string name="image_view_question_mark">Question Mark</string>
+    <string name="image_view_exclamation_mark">Exclamation Mark</string>
+
+    <string name="logout_lbl">Logout?</string>
+    <string name="logout_note">Are you sure you want to log out
+        of your account?</string>
+
+    <string name="logout_btn">Logout</string>
+    <string name="stay_logged_in_btn">Stay Logged In</string>
+
+    <string name="deactivate_account_lbl">Deactivate Account?</string>
+    <string name="deactivate_account_note">Your account will be deactivated and you will no
+        \nlonger be able to use the app. You can reactivate \nit by logging back in.</string>
+
+    <string name="deactivate_btn">Deactivate</string>
+    <string name="cancel_btn">Cancel</string>
+
+    <!-- CHANGE PASSWORD FRAGMENT BUTTONS (DIALOG BOX) TEXT -->
+    <string name="confirm_change_password_lbl">Confirm Change Password?</string>
+    <string name="confirm_change_password_note">You are about to change your password.\nMake
+    sure you have saved it somewhere safe.</string>
+
+    <string name="change_password_btn">Change Password</string>
+
+    <string name="discard_password_change_lbl">Discard Password Change?</string>
+    <string name="discard_password_change_note">Are you sure you want to cancel updating your
+        password?</string>
+
+    <string name="discard_change_btn">Discard Change</string>
+    <string name="go_back_btn">Go Back</string>
+
+
 </resources>

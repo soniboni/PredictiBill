@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="367dp"
+    android:layout_height="64dp"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_rectangle_4"
+        android:padding="5dp">
+
+        <!-- Icon -->
+        <ImageView
+            android:id="@+id/bill_icon"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bills_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.006"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- Bill Name -->
+        <TextView
+            android:id="@+id/bill_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/bill_name"
+            android:textAppearance="@style/bill_name"
+            app:layout_constraintStart_toEndOf="@+id/bill_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <!-- Billing Cycle -->
+        <TextView
+            android:id="@+id/billing_cycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/billing_cycle"
+            android:textAppearance="@style/billing_cycle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bill_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.515" />
+
+        <!-- Bill Due On Label -->
+        <TextView
+            android:id="@+id/bill_dueon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/bill_dueon"
+            android:textAppearance="@style/bill_dueon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/bill_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <!-- Bill Due Date -->
+        <TextView
+            android:id="@+id/bill_duedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bill_duedate"
+            android:textAppearance="@style/bill_duedate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.010"
+            app:layout_constraintStart_toEndOf="@+id/bill_dueon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"/>
+
+        <!-- Category Name -->
+        <ImageView
+            android:id="@+id/category_name"
+            android:layout_width="87dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/category_name_entertainment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.987"
+            app:layout_constraintStart_toEndOf="@+id/bill_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <!-- Bill Price -->
+        <TextView
+            android:id="@+id/bill_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bill_price"
+            android:textAppearance="@style/bill_price"
+            android:gravity="end|center_vertical"
+            android:lineSpacingExtra="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.941"
+            app:layout_constraintStart_toEndOf="@+id/bill_duedate"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
